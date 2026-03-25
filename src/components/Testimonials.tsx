@@ -51,7 +51,9 @@ function StarIcon() {
 export default function Testimonials() {
   return (
     <section id="testimonials" className="relative mt-8">
-      <div className="max-w-[1800px] mx-auto bg-[#0d0d0d] rounded-[48px] px-6 md:px-14 lg:px-20 py-16 md:py-[100px] overflow-hidden">
+      <div className="relative max-w-[1800px] mx-auto bg-[#0d0d0d] rounded-[48px] px-6 md:px-14 lg:px-20 py-16 md:py-[100px] overflow-hidden">
+        {/* Border overlay */}
+        <div className="absolute inset-0 rounded-[48px] z-[3] pointer-events-none overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.1)", mask: "linear-gradient(#000 0%, rgba(0,0,0,0.16) 82.8442%)", WebkitMask: "linear-gradient(#000 0%, rgba(0,0,0,0.16) 82.8442%)" }} />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
           {/* Left image */}
           <Reveal variants={fadeLeft}>

@@ -65,116 +65,150 @@ const marqueeRow2 = [
   { icon: "🔗", text: "Brand Integrations" },
 ];
 
+function SectionButton({ href, children }: { href: string; children: string }) {
+  return (
+    <a href={href} className="relative flex flex-col items-center group">
+      <div
+        className="relative z-[2] flex flex-col items-center self-stretch w-auto p-[1.4px] overflow-hidden transition-shadow duration-300 group-hover:shadow-[rgba(255,255,255,0.12)_0px_1px_9px_0px]"
+        style={{ backgroundColor: "rgb(59,59,59)", borderRadius: "11.5px" }}
+      >
+        <div className="relative z-[4] flex items-center justify-center w-full overflow-hidden" style={{ backgroundColor: "rgb(0,0,0)", borderRadius: "10px", padding: "8px 24px" }}>
+          <span className="relative z-[2] text-[18px] leading-[1.6em] text-white font-[family-name:var(--font-inter-display)]">{children}</span>
+        </div>
+        <div className="absolute z-[1] w-[95px] h-[36px] overflow-hidden" style={{ top: "-19px", right: "-17px", backgroundColor: "white", filter: "blur(8px)" }} />
+      </div>
+    </a>
+  );
+}
+
 export default function Services() {
   return (
-    <section id="services" className="relative mt-8">
-      <div className="max-w-[1800px] mx-auto bg-[#0d0d0d] rounded-[48px] px-6 md:px-14 lg:px-20 py-16 md:py-[100px]">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
-          {/* Left content */}
-          <div>
-            {/* Badge */}
+    <section
+      id="services"
+      className="relative flex items-center justify-center w-full overflow-hidden rounded-[48px] bg-[#0d0d0d]"
+      style={{ padding: "100px 80px" }}
+    >
+      {/* Border overlay */}
+      <div
+        className="absolute inset-0 rounded-[48px] z-[3] pointer-events-none overflow-hidden"
+        style={{ border: "1px solid rgba(255,255,255,0.1)", mask: "linear-gradient(#000 0%, rgba(0,0,0,0.16) 82.8442%)", WebkitMask: "linear-gradient(#000 0%, rgba(0,0,0,0.16) 82.8442%)" }}
+      />
+
+      {/* Container – flex column, max-width 1600px, gap 44px */}
+      <div className="flex flex-col items-center gap-[44px] w-full max-w-[1600px]">
+        {/* Top container – flex wrap, gap 44px */}
+        <div className="flex flex-wrap items-center justify-center gap-[44px] w-full">
+          {/* Left content – flex 1, min-width 460px, gap 24px, pr 40px */}
+          <div className="flex flex-col items-start gap-6 flex-1 min-w-[460px] max-md:min-w-[240px] max-md:w-full pr-10 max-md:pr-0">
+            {/* Badge – dark card style */}
             <Reveal variants={fadeLeft}>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
-                <span className="w-2 h-2 rounded-full bg-white" />
-                <span className="text-sm text-white/80 font-[family-name:var(--font-satoshi)]">Design services</span>
+              <div
+                className="inline-flex items-center gap-1.5"
+                style={{ backgroundColor: "#0d0d0d", borderRadius: "20px", padding: "6px 16px", boxShadow: "rgba(0,0,0,0.4) 16px 24px 20px 8px, rgba(184,180,180,0.08) 0px 2px 0px 0px inset" }}
+              >
+                <div className="w-[11px] h-[11px] flex items-center justify-center rounded-[10px] bg-white">
+                  <div className="w-[8px] h-[9px] flex items-center justify-center rounded-[10px] bg-[#0d0d0d]">
+                    <div className="w-[5px] h-[5px] rounded-[10px] bg-white" />
+                  </div>
+                </div>
+                <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white font-[family-name:var(--font-satoshi)]">Design services</span>
               </div>
             </Reveal>
 
             <Reveal variants={fadeUp} delay={0.1}>
-              <h2 className="text-5xl md:text-7xl lg:text-[92px] font-normal leading-[1] mb-4 font-[family-name:var(--font-satoshi)]">
+              <h2 className="text-[44px] md:text-[74px] lg:text-[92px] font-normal leading-[1em] tracking-[0em] text-white font-[family-name:var(--font-satoshi)]">
                 Services
               </h2>
             </Reveal>
 
+            {/* Description – Inter Display, 24px, opacity 0.9 */}
             <Reveal variants={fadeUp} delay={0.15}>
-              <p className="text-white/50 text-2xl leading-relaxed mb-8 max-w-lg font-[family-name:var(--font-satoshi)]">
+              <p className="text-[20px] lg:text-[24px] leading-[1.4] text-[#ffffffa6] opacity-90 font-[family-name:var(--font-inter-display)]">
                 Helping businesses standout with brand identity packaging that captivates and converts effectively.
               </p>
             </Reveal>
 
-            {/* Tags */}
-            <StaggerReveal className="flex flex-wrap gap-2 mb-8" stagger={0.05} delay={0.2}>
+            {/* Tags – gap 16px, bg #0d0d0d, rounded 8px */}
+            <StaggerReveal className="flex flex-wrap gap-4" stagger={0.05} delay={0.2}>
               {tags.map((tag) => (
                 <Reveal key={tag} variants={fadeUp}>
-                  <span className="px-4 py-2 rounded-full border border-white/10 text-sm text-white/70 font-[family-name:var(--font-satoshi)]">
+                  <span className="py-[10px] px-[12px] rounded-lg bg-[#0d0d0d] text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] font-[family-name:var(--font-satoshi)]">
                     {tag}
                   </span>
                 </Reveal>
               ))}
             </StaggerReveal>
 
-            {/* CTAs */}
+            {/* CTAs – gap 24px, dark buttons */}
             <Reveal variants={fadeUp} delay={0.3}>
-              <div className="flex items-center gap-4">
-                <a
-                  href="https://cal.com/rick/get-rick-rolled"
-                  className="px-6 py-3 bg-white text-black rounded-full text-sm font-medium hover:bg-white/90 transition-colors font-[family-name:var(--font-satoshi)]"
-                >
-                  Book a Free Call
-                </a>
-                <a
-                  href="#projects"
-                  className="px-6 py-3 bg-transparent border border-white/20 text-white rounded-full text-sm font-medium hover:bg-white/5 transition-colors font-[family-name:var(--font-satoshi)]"
-                >
-                  See Projects
-                </a>
+              <div className="flex flex-wrap items-center gap-6">
+                <SectionButton href="https://cal.com/rick/get-rick-rolled">Book a Free Call</SectionButton>
+                <SectionButton href="#projects">See Projects</SectionButton>
               </div>
             </Reveal>
           </div>
 
-          {/* Right image */}
-          <Reveal variants={fadeRight} delay={0.2}>
-            <div className="relative rounded-2xl overflow-hidden h-[400px] lg:h-[500px]">
-              <Image
-                src="/images/services-pic.jpg"
-                alt="design pic"
-                fill
-                className="object-cover grayscale"
-                sizes="50vw"
-              />
+          {/* Right image – flex 1, min-width 460px, height 503px, rounded 17px, shadow */}
+          <Reveal variants={fadeRight} delay={0.2} className="flex-1 min-w-[460px] max-md:min-w-[240px] max-md:w-full">
+            <div
+              className="relative w-full overflow-hidden grayscale"
+              style={{ height: "503px", borderRadius: "17px", boxShadow: "20px 30px 20px 8px rgba(0,0,0,0.4)" }}
+            >
+              <Image src="/images/services-pic.jpg" alt="design pic" fill className="object-cover" sizes="50vw" />
             </div>
           </Reveal>
         </div>
 
-        {/* Service cards */}
-        <StaggerReveal className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12" stagger={0.1}>
-          {services.map((service) => (
-            <Reveal key={service.title} variants={scaleUp}>
-              <div className="p-6 rounded-2xl bg-black/40 border border-white/5">
-                <div className="flex items-center gap-3 mb-4">
-                  {service.icon}
-                  <h3 className="text-2xl font-semibold font-[family-name:var(--font-inter-display)]">
-                    {service.title}
-                  </h3>
+        {/* Service cards – flex wrap, gap 24px */}
+        <StaggerReveal className="flex flex-wrap gap-6 w-full" stagger={0.1}>
+          {/* Two columns */}
+          <div className="flex flex-col gap-6 flex-1 min-w-[460px] max-md:min-w-[260px]">
+            {services.slice(0, 2).map((service) => (
+              <Reveal key={service.title} variants={scaleUp}>
+                <div className="p-8 rounded-[20px] bg-black border border-white/[0.06]">
+                  <div className="flex items-center gap-3 mb-5">
+                    {service.icon}
+                    <h3 className="text-2xl font-semibold font-[family-name:var(--font-inter-display)]">{service.title}</h3>
+                  </div>
+                  <div className="w-full h-[1px] bg-white/10 mb-5" />
+                  <p className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] font-[family-name:var(--font-satoshi)]">{service.description}</p>
                 </div>
-                <p className="text-white/40 text-sm leading-relaxed font-[family-name:var(--font-satoshi)]">
-                  {service.description}
-                </p>
-              </div>
-            </Reveal>
-          ))}
+              </Reveal>
+            ))}
+          </div>
+          <div className="flex flex-col gap-6 flex-1 min-w-[460px] max-md:min-w-[260px]">
+            {services.slice(2, 4).map((service) => (
+              <Reveal key={service.title} variants={scaleUp}>
+                <div className="p-8 rounded-[20px] bg-black border border-white/[0.06]">
+                  <div className="flex items-center gap-3 mb-5">
+                    {service.icon}
+                    <h3 className="text-2xl font-semibold font-[family-name:var(--font-inter-display)]">{service.title}</h3>
+                  </div>
+                  <div className="w-full h-[1px] bg-white/10 mb-5" />
+                  <p className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] font-[family-name:var(--font-satoshi)]">{service.description}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </StaggerReveal>
 
-        {/* Marquee rows */}
-        <Reveal>
-          <div className="space-y-4 overflow-hidden">
-            {/* Row 1 */}
+        {/* Marquee – max-width 1400px */}
+        <Reveal className="w-full max-w-[1400px]">
+          <div className="flex flex-col overflow-hidden">
             <div className="relative overflow-hidden">
               <div className="flex animate-marquee">
                 {[...marqueeRow1, ...marqueeRow1, ...marqueeRow1, ...marqueeRow1, ...marqueeRow1].map((item, i) => (
-                  <div key={i} className="flex-shrink-0 flex items-center gap-2 px-5 py-2.5 mx-2 rounded-full border border-white/10 text-sm text-white/60 font-[family-name:var(--font-satoshi)]">
+                  <div key={i} className="flex-shrink-0 flex items-center gap-2 px-5 py-2.5 mx-2 rounded-full border border-white/10 text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] font-[family-name:var(--font-satoshi)]">
                     <span className="text-base">{item.icon}</span>
                     {item.text}
                   </div>
                 ))}
               </div>
             </div>
-
-            {/* Row 2 - reverse direction */}
-            <div className="relative overflow-hidden">
+            <div className="relative overflow-hidden mt-2">
               <div className="flex animate-marquee-reverse">
                 {[...marqueeRow2, ...marqueeRow2, ...marqueeRow2, ...marqueeRow2, ...marqueeRow2].map((item, i) => (
-                  <div key={i} className="flex-shrink-0 flex items-center gap-2 px-5 py-2.5 mx-2 rounded-full border border-white/10 text-sm text-white/60 font-[family-name:var(--font-satoshi)]">
+                  <div key={i} className="flex-shrink-0 flex items-center gap-2 px-5 py-2.5 mx-2 rounded-full border border-white/10 text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] font-[family-name:var(--font-satoshi)]">
                     <span className="text-base">{item.icon}</span>
                     {item.text}
                   </div>

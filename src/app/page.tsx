@@ -2,7 +2,6 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import ProjectsGrid from "@/components/ProjectsGrid";
 import AboutMe from "@/components/AboutMe";
-import RecentWorks from "@/components/RecentWorks";
 import Process from "@/components/Process";
 import Services from "@/components/Services";
 import Testimonials from "@/components/Testimonials";
@@ -16,7 +15,6 @@ export default function Home() {
       <Hero />
       <ProjectsGrid />
       <AboutMe />
-      <RecentWorks />
       <Process />
       <Services />
       <Testimonials />

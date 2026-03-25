@@ -43,85 +43,126 @@ const steps = [
   },
 ];
 
+function ProcessButton({ href, children }: { href: string; children: string }) {
+  return (
+    <a href={href} className="relative flex flex-col items-center group">
+      <div
+        className="relative z-[2] flex flex-col items-center self-stretch w-auto p-[1.4px] overflow-hidden transition-shadow duration-300 group-hover:shadow-[rgba(255,255,255,0.12)_0px_1px_9px_0px]"
+        style={{ backgroundColor: "rgb(59,59,59)", borderRadius: "11.5px" }}
+      >
+        <div
+          className="relative z-[4] flex items-center justify-center w-full overflow-hidden"
+          style={{ backgroundColor: "rgb(0,0,0)", borderRadius: "10px", padding: "8px 24px" }}
+        >
+          <span className="relative z-[2] text-[18px] leading-[1.6em] text-white font-[family-name:var(--font-inter-display)]">{children}</span>
+        </div>
+        <div className="absolute z-[1] w-[95px] h-[36px] overflow-hidden" style={{ top: "-19px", right: "-17px", backgroundColor: "white", filter: "blur(8px)" }} />
+      </div>
+    </a>
+  );
+}
+
 export default function Process() {
   return (
-    <section className="relative px-6 md:px-14 lg:px-20 py-16 md:py-[100px]">
-      <div className="max-w-[1600px] mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Left image */}
-          <Reveal variants={fadeLeft}>
-            <div className="relative rounded-2xl overflow-hidden h-[500px] lg:h-[700px]">
-              <Image
-                src="/images/process-pic.png"
-                alt="process pic"
-                fill
-                className="object-cover grayscale"
-              />
+    <section
+      className="relative flex items-center justify-center w-full overflow-hidden rounded-[48px] bg-[#0d0d0d]"
+      style={{ padding: "100px 80px" }}
+    >
+      {/* Border overlay – fades toward bottom */}
+      <div
+        className="absolute inset-0 rounded-[48px] z-[3] pointer-events-none overflow-hidden"
+        style={{
+          border: "1px solid rgba(255, 255, 255, 0.1)",
+          mask: "linear-gradient(#000 0%, rgba(0,0,0,0.16) 82.8442%)",
+          WebkitMask: "linear-gradient(#000 0%, rgba(0,0,0,0.16) 82.8442%)",
+        }}
+      />
+
+      {/* Container – flex-wrap, max-width 1600px, gap 44px */}
+      <div className="flex flex-wrap items-center justify-center gap-[44px] w-full max-w-[1600px]">
+        {/* Left image – flex: 1, min-width 460px, self-stretch, rounded 17px, shadow */}
+        <Reveal variants={fadeLeft} className="flex-1 min-w-[460px] max-md:min-w-[240px] max-md:w-full self-stretch">
+          <div
+            className="relative w-full h-full min-h-[360px] overflow-hidden grayscale"
+            style={{
+              borderRadius: "17px",
+              boxShadow: "20px 30px 20px 8px rgba(0,0,0,0.4)",
+            }}
+          >
+            <Image
+              src="/images/process-pic.png"
+              alt="process pic"
+              fill
+              className="object-cover"
+            />
+          </div>
+        </Reveal>
+
+        {/* Right content – flex: 1, min-width 460px, gap 24px */}
+        <div className="flex flex-col items-start justify-start gap-6 flex-1 min-w-[460px] max-md:min-w-[240px] max-md:w-full">
+          {/* Badge – dark card style with dot icon */}
+          <Reveal variants={fadeRight}>
+            <div
+              className="inline-flex items-center gap-1.5"
+              style={{
+                backgroundColor: "#0d0d0d",
+                borderRadius: "20px",
+                padding: "6px 16px",
+                boxShadow: "rgba(0,0,0,0.4) 16px 24px 20px 8px, rgba(184,180,180,0.08) 0px 2px 0px 0px inset",
+              }}
+            >
+              <div className="w-[11px] h-[11px] flex items-center justify-center rounded-[10px] bg-white">
+                <div className="w-[8px] h-[9px] flex items-center justify-center rounded-[10px] bg-[#0d0d0d]">
+                  <div className="w-[5px] h-[5px] rounded-[10px] bg-white" />
+                </div>
+              </div>
+              <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white font-[family-name:var(--font-satoshi)]">Design process</span>
             </div>
           </Reveal>
 
-          {/* Right content */}
-          <div>
-            {/* Badge */}
-            <Reveal variants={fadeRight}>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
-                <span className="w-2 h-2 rounded-full bg-white" />
-                <span className="text-sm text-white/80 font-[family-name:var(--font-satoshi)]">Design process</span>
-              </div>
-            </Reveal>
+          {/* Heading */}
+          <Reveal variants={fadeUp} delay={0.1}>
+            <h2 className="text-[44px] md:text-[74px] lg:text-[92px] font-normal leading-[1em] tracking-[0em] text-white font-[family-name:var(--font-satoshi)]">
+              Process
+            </h2>
+          </Reveal>
 
-            <Reveal variants={fadeUp} delay={0.1}>
-              <h2 className="text-5xl md:text-7xl lg:text-[92px] font-normal leading-[1] mb-4 font-[family-name:var(--font-satoshi)]">
-                Process
-              </h2>
-            </Reveal>
+          {/* Description – Inter Display, 24px, #ffffffa6, opacity 0.9, max-w 640px */}
+          <Reveal variants={fadeUp} delay={0.15}>
+            <p className="text-[20px] lg:text-[24px] leading-[1.4] text-[#ffffffa6] opacity-90 max-w-[640px] font-[family-name:var(--font-inter-display)]">
+              crafting bold visuals that inspire and elevate brands with thought process.
+            </p>
+          </Reveal>
 
-            <Reveal variants={fadeUp} delay={0.15}>
-              <p className="text-white/50 text-2xl leading-relaxed mb-8 max-w-lg font-[family-name:var(--font-satoshi)]">
-                crafting bold visuals that inspire and elevate brands with thought process.
-              </p>
-            </Reveal>
+          {/* CTAs – gap 24px, dark button style */}
+          <Reveal variants={fadeUp} delay={0.2}>
+            <div className="flex flex-wrap items-center gap-6">
+              <ProcessButton href="https://cal.com/rick/get-rick-rolled">Book a Free Call</ProcessButton>
+              <ProcessButton href="#projects">See Projects</ProcessButton>
+            </div>
+          </Reveal>
 
-            {/* CTAs */}
-            <Reveal variants={fadeUp} delay={0.2}>
-              <div className="flex items-center gap-4 mb-10">
-                <a
-                  href="https://cal.com/rick/get-rick-rolled"
-                  className="px-6 py-3 bg-white text-black rounded-full text-sm font-medium hover:bg-white/90 transition-colors font-[family-name:var(--font-satoshi)]"
-                >
-                  Book a Free Call
-                </a>
-                <a
-                  href="#projects"
-                  className="px-6 py-3 bg-transparent border border-white/20 text-white rounded-full text-sm font-medium hover:bg-white/5 transition-colors font-[family-name:var(--font-satoshi)]"
-                >
-                  See Projects
-                </a>
-              </div>
-            </Reveal>
-
-            {/* Steps */}
-            <StaggerReveal className="space-y-4" stagger={0.12} delay={0.3}>
-              {steps.map((step) => (
-                <Reveal key={step.number} variants={fadeUp}>
-                  <div className="p-6 rounded-2xl bg-[#0d0d0d] border border-white/5">
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="text-white/70">{step.icon}</div>
-                      <span className="text-xs text-white/40 bg-white/5 px-2.5 py-1 rounded-full font-[family-name:var(--font-satoshi)]">
-                        {step.number}
-                      </span>
-                    </div>
-                    <h3 className="text-4xl font-medium mb-3 font-[family-name:var(--font-satoshi)]">
-                      {step.title}
-                    </h3>
-                    <p className="text-white/40 text-sm leading-relaxed font-[family-name:var(--font-satoshi)]">
-                      {step.description}
-                    </p>
+          {/* Steps */}
+          <StaggerReveal className="flex flex-col gap-4 w-full" stagger={0.12} delay={0.3}>
+            {steps.map((step) => (
+              <Reveal key={step.number} variants={fadeUp}>
+                <div className="p-6 rounded-2xl bg-[#0d0d0d] border border-white/5">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="text-white/70">{step.icon}</div>
+                    <span className="text-xs text-white/40 bg-white/5 px-2.5 py-1 rounded-full font-[family-name:var(--font-satoshi)]">
+                      {step.number}
+                    </span>
                   </div>
-                </Reveal>
-              ))}
-            </StaggerReveal>
-          </div>
+                  <h3 className="text-[24px] lg:text-[32px] font-medium mb-3 font-[family-name:var(--font-satoshi)]">
+                    {step.title}
+                  </h3>
+                  <p className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] font-[family-name:var(--font-satoshi)]">
+                    {step.description}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </StaggerReveal>
         </div>
       </div>
     </section>

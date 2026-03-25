@@ -5,62 +5,83 @@ import { Reveal, StaggerReveal, fadeUp } from "@/lib/motion";
 
 function ArrowIcon() {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <line x1="7" y1="17" x2="17" y2="7" />
-      <polyline points="7 7 17 7 17 17" />
+    <svg width="14" height="14" viewBox="0 0 256 256" fill="white">
+      <path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z" />
     </svg>
   );
 }
 
 function ProjectCard({ src, href = "https://www.behance.net/" }: { src: string; href?: string }) {
   return (
-    <Reveal variants={fadeUp}>
-      <div className="group relative overflow-hidden rounded-2xl aspect-[494/463]">
-        <Image src={src} alt="project img" fill className="object-cover grayscale" sizes="(max-width: 768px) 100vw, 33vw" />
-        <a href={href} className="absolute bottom-[10px] left-2 right-2 flex items-center justify-center gap-1 py-3 px-5 bg-[rgba(99,99,99,0.3)] backdrop-blur-sm rounded-full text-xs text-white font-[family-name:var(--font-satoshi)]">
-          View Casestudy <ArrowIcon />
-        </a>
-      </div>
+    <Reveal variants={fadeUp} className="w-full">
+      <a
+        href={href}
+        className="group relative block w-full overflow-hidden rounded-[4px] grayscale hover:grayscale-0 transition-all duration-500"
+        style={{ aspectRatio: "1.06706" }}
+      >
+        <Image src={src} alt="project img" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+        <div
+          className="absolute z-[2] bottom-[10px] left-[8px] right-[8px] flex items-center justify-center gap-1 overflow-hidden"
+          style={{
+            padding: "12px 20px",
+            backdropFilter: "blur(6px)",
+            backgroundColor: "rgba(99,99,99,0.3)",
+            border: "1px solid rgb(214,214,214)",
+            borderRadius: "40px",
+            boxShadow: "rgba(92,92,92,0.3) 0px 0px 20px 4px",
+          }}
+        >
+          <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white font-[family-name:var(--font-satoshi)]">View Casestudy</span>
+          <ArrowIcon />
+        </div>
+      </a>
     </Reveal>
   );
 }
 
 export default function ProjectsGrid() {
   return (
-    <section id="projects" className="relative px-4 md:px-8 lg:px-10 py-4">
-      {/* Staggered 3-column grid: center column wider, align-items:center creates offset */}
-      <div className="flex flex-col md:flex-row justify-center items-center gap-2.5 max-w-[1600px] mx-auto">
-        {/* Left column */}
-        <StaggerReveal className="flex flex-col gap-2.5 w-full md:w-[31%]" stagger={0.15}>
+    <section
+      id="projects"
+      className="relative flex flex-col items-center w-full"
+      style={{ padding: "10px 5px 100px", gap: "54px" }}
+    >
+      {/* 3-column grid – center column 20% wider */}
+      <div className="flex flex-col md:flex-row items-center gap-[10px] w-full max-w-[1600px] mx-auto">
+        {/* Col 1 */}
+        <StaggerReveal className="flex flex-col items-center gap-[10px] flex-1 w-full overflow-hidden" stagger={0.15}>
           <ProjectCard src="/images/projects/project-1.webp" />
           <ProjectCard src="/images/projects/project-2.webp" />
           <ProjectCard src="/images/projects/project-3.webp" />
         </StaggerReveal>
 
-        {/* Center column */}
-        <StaggerReveal className="flex flex-col gap-2.5 w-full md:w-[37%]" stagger={0.15} delay={0.1}>
-          <ProjectCard src="/images/projects/project-4.webp" />
-          <ProjectCard src="/images/projects/project-5.webp" />
-          <ProjectCard src="/images/projects/project-6.webp" />
-        </StaggerReveal>
+        {/* Col 2 (center) – 20% wider via inline style on a wrapper div */}
+        <div className="w-full" style={{ flex: "1.2 0 0" }}>
+          <StaggerReveal className="flex flex-col items-center gap-[10px] w-full overflow-hidden" stagger={0.15} delay={0.1}>
+            <ProjectCard src="/images/projects/project-4.webp" />
+            <ProjectCard src="/images/projects/project-5.webp" />
+            <ProjectCard src="/images/projects/project-6.webp" />
+          </StaggerReveal>
+        </div>
 
-        {/* Right column */}
-        <StaggerReveal className="flex flex-col gap-2.5 w-full md:w-[31%]" stagger={0.15} delay={0.2}>
+        {/* Col 3 */}
+        <StaggerReveal className="flex flex-col items-center gap-[10px] flex-1 w-full overflow-hidden" stagger={0.15} delay={0.2}>
           <ProjectCard src="/images/projects/project-7.webp" />
           <ProjectCard src="/images/projects/project-8.webp" />
           <ProjectCard src="/images/projects/project-9.webp" />
         </StaggerReveal>
       </div>
 
-      {/* Bottom links */}
+      {/* Bottom CTAs */}
       <Reveal delay={0.3}>
-        <div className="flex items-center justify-center gap-4 mt-12">
-          <a href="#projects" className="text-sm text-white underline underline-offset-4 font-[family-name:var(--font-satoshi)]">
+        <div className="flex flex-wrap items-center justify-center gap-4 px-10">
+          <a href="#projects" className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white underline underline-offset-4 font-[family-name:var(--font-satoshi)]">
             All Projects
           </a>
           <a
             href="https://cal.com/rick/get-rick-rolled"
-            className="px-6 py-3 bg-transparent border border-white/20 text-white rounded-full text-sm font-medium hover:bg-white/5 transition-colors font-[family-name:var(--font-satoshi)]"
+            className="px-6 py-3 rounded-full text-[15px] leading-[1.5em] tracking-[-0.02em] text-white hover:bg-white/5 transition-colors font-[family-name:var(--font-satoshi)]"
+            style={{ border: "1px solid rgba(255,255,255,0.1)" }}
           >
             Book a Free Call
           </a>

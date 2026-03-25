@@ -5,11 +5,11 @@
 import { motion } from "@/lib/motion";
 
 const clientLogos = [
-  { src: "/images/client-logo-1.svg", alt: "Client 1" },
-  { src: "/images/client-logo-2.svg", alt: "Client 2" },
-  { src: "/images/client-logo-3.svg", alt: "Client 3" },
-  { src: "/images/client-logo-4.svg", alt: "Client 4" },
-  { src: "/images/client-logo-5.svg", alt: "Client 5" },
+  { src: "/images/client-logo-1.svg", alt: "Client 1", w: 125, h: 27 },
+  { src: "/images/client-logo-2.svg", alt: "Client 2", w: 79, h: 27 },
+  { src: "/images/client-logo-3.svg", alt: "Client 3", w: 86, h: 27 },
+  { src: "/images/client-logo-4.svg", alt: "Client 4", w: 83, h: 30 },
+  { src: "/images/client-logo-5.svg", alt: "Client 5", w: 79, h: 27 },
 ];
 
 function MouseIcon() {
@@ -25,117 +25,155 @@ function MouseIcon() {
 
 function HeroButton({ href, children }: { href: string; children: string }) {
   return (
-    <a href={href} className="relative block group">
+    <a href={href} className="relative flex flex-col items-center group">
+      {/* Container – 1.4px border via padding */}
       <div
-        className="relative rounded-[10px] px-6 py-2 border border-white/[0.15] bg-black transition-shadow duration-300 group-hover:shadow-[rgba(255,255,255,0.08)_0px_1px_9px_0px] overflow-hidden"
+        className="relative z-[2] flex flex-col items-center self-stretch w-auto p-[1.4px] overflow-hidden transition-shadow duration-300 group-hover:shadow-[rgba(255,255,255,0.12)_0px_1px_9px_0px]"
+        style={{ backgroundColor: "rgb(59,59,59)", borderRadius: "11.5px" }}
       >
-        {/* Top edge highlight */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-[1px] bg-white/40" />
-        {/* Subtle bottom inner glow */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40%] h-[6px] rounded-full opacity-30" style={{ background: "radial-gradient(50% 50%, rgb(180,180,180) 0%, transparent 100%)", filter: "blur(4px)" }} />
-        <span className="relative z-10 text-[17px] text-white font-[family-name:var(--font-satoshi)]">{children}</span>
+        {/* Inner – black fill */}
+        <div
+          className="relative z-[4] flex items-center justify-center w-full overflow-hidden"
+          style={{ backgroundColor: "rgb(0,0,0)", borderRadius: "10px", padding: "8px 24px" }}
+        >
+          {/* Inner glow bottom-left */}
+          <div className="absolute z-[1] w-[77px] h-[41px] overflow-hidden" style={{ top: "calc(118% - 20.5px)", left: "calc(9% - 38.5px)", background: "radial-gradient(50% 50%, rgb(163,163,163) 0%, transparent 100%)", filter: "blur(10px)", borderRadius: "999px", opacity: 0.41 }} />
+          {/* Inner glow top-right */}
+          <div className="absolute z-[1] w-[92px] h-[40px] overflow-hidden" style={{ top: "calc(0% - 20px)", left: "calc(75% - 46px)", background: "radial-gradient(50% 50%, rgb(115,115,115) 0%, transparent 100%)", filter: "blur(10px)", borderRadius: "999px" }} />
+          <span className="relative z-[2] text-[18px] leading-[1.6em] text-white font-[family-name:var(--font-inter-display)]">{children}</span>
+        </div>
+        {/* White Top glow */}
+        <div className="absolute z-[1] w-[95px] h-[36px] overflow-hidden" style={{ top: "-19px", right: "-17px", backgroundColor: "white", filter: "blur(8px)" }} />
+        {/* Bottom white glow left */}
+        <div className="absolute z-[1] w-[54px] h-[46px] overflow-hidden" style={{ bottom: "-18px", left: "-22px", backgroundColor: "rgb(230,230,230)", filter: "blur(8px)" }} />
+        {/* Bottom white glow right */}
+        <div className="absolute z-[1] w-[40px] h-[34px] overflow-hidden" style={{ bottom: "-17px", left: "-22px", backgroundColor: "white", filter: "blur(8px)" }} />
       </div>
+      {/* External glow left */}
+      <div className="absolute z-[1] w-[58px] h-[30px] overflow-hidden" style={{ top: "calc(84% - 15px)", left: "-11px", background: "radial-gradient(50% 50%, rgb(171,171,171) 0%, transparent 100%)", filter: "blur(10px)", borderRadius: "999px" }} />
+      {/* External glow right */}
+      <div className="absolute z-[1] w-[74px] h-[41px] overflow-hidden" style={{ top: "-7px", right: "-12px", background: "radial-gradient(50% 50% at 50% 50%, rgb(255,255,255) 0%, transparent 100%)", filter: "blur(10px)", borderRadius: "21px", opacity: 0.62 }} />
     </a>
   );
 }
 
-const ease = [0.22, 1, 0.36, 1];
-
 export default function Hero() {
   return (
-    <section id="hero" className="relative h-[82vh] flex flex-col overflow-hidden">
-      {/* Background effect layer - separate from content like reference */}
-      <div className="absolute inset-0 bg-black">
-        <div className="absolute inset-0">
+    <section
+      id="hero"
+      className="relative flex flex-col items-center gap-6 w-full overflow-hidden"
+      style={{ padding: "160px 40px 60px" }}
+    >
+      {/* BG animation layer */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute inset-0 bg-black">
           <div className="absolute top-[10%] left-[20%] w-[500px] h-[500px] rounded-full bg-white/[0.04] blur-[100px]" />
           <div className="absolute top-[20%] right-[15%] w-[600px] h-[600px] rounded-full bg-white/[0.06] blur-[120px]" />
           <div className="absolute bottom-[10%] left-[30%] w-[400px] h-[400px] rounded-full bg-white/[0.03] blur-[80px]" />
           <div className="absolute bottom-[20%] right-[25%] w-[300px] h-[300px] rounded-full bg-white/[0.05] blur-[90px]" />
         </div>
-        {/* Noise texture overlay like reference */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E\")", backgroundSize: "128px" }} />
-        {/* Glowing vertical line */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1px] h-[45%] bg-gradient-to-t from-white/40 via-white/20 to-transparent" />
+        {/* Overlay gradient – transparent top to black bottom */}
+        <div
+          className="absolute inset-0 z-[1] w-full h-full"
+          style={{ background: "linear-gradient(180deg, rgba(4,4,4,0) 55%, rgb(0,0,0) 100%)" }}
+        />
       </div>
 
-      {/* Main content area - flex-1 to center in space above logos */}
-      <main className="relative z-10 flex-1 flex flex-col items-center justify-center">
-        {/* Top content group */}
-        <div className="flex flex-col items-center gap-6 text-center px-4 max-w-4xl mx-auto">
-          {/* Badge - with glow dot and gradient sweep like reference */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="relative inline-flex items-center gap-2 px-4 py-2.5 rounded-[26px] bg-[rgba(10,10,10,0.4)] backdrop-blur-[68px] overflow-hidden"
-          >
-            {/* Gradient sweep overlay */}
-            <div className="absolute inset-0 rounded-[26px]" style={{ background: "linear-gradient(105deg, rgba(255,255,255,0.08) -19%, transparent 20%)" }} />
-            <span className="relative w-2 h-2 rounded-full bg-white" style={{ boxShadow: "rgb(189, 189, 189) 0px 0px 14px 1px" }} />
-            <span className="relative text-[15px] text-white font-[family-name:var(--font-satoshi)]">Crafting Unique Brand Identities</span>
-          </motion.div>
+      {/* Header+Main wrapper */}
+      <div className="relative z-[1] flex flex-col items-center w-full">
+        {/* Main – max-width 840px */}
+        <main className="flex flex-col items-center gap-[80px] w-full max-w-[840px] py-10">
+          {/* Top – badge/heading/subtitle/buttons + scroll indicator */}
+          <div className="flex flex-col items-center gap-[60px] w-full">
+            {/* H1+Body – gap 24px */}
+            <div className="flex flex-col items-center gap-6 w-full text-center">
+              {/* Badge */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                className="relative inline-flex items-center gap-[10px] rounded-[40px] bg-black overflow-visible"
+              >
+                <div
+                  className="relative z-[2] inline-flex items-center gap-[10px] overflow-hidden"
+                  style={{ backdropFilter: "blur(68px)", backgroundColor: "rgba(10,10,10,0.4)", borderRadius: "26px", padding: "10px 16px" }}
+                >
+                  <div className="relative w-[7px] h-[7px] flex-shrink-0">
+                    <div className="w-[5px] h-[5px] rounded-full bg-white" style={{ boxShadow: "rgb(189,189,189) 0px 0px 14px 1px" }} />
+                  </div>
+                  <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white font-[family-name:var(--font-satoshi)]">Crafting Unique Brand Identities</span>
+                </div>
+                {/* Gradient sweep */}
+                <div className="absolute z-[1] inset-[-1px] overflow-hidden rounded-[26px]" style={{ background: "linear-gradient(105deg, rgb(255,255,255) -19%, rgba(0,0,0,0) 20%)" }} />
+              </motion.div>
 
-          {/* Heading */}
-          <motion.h1
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 2.8, ease: "linear", delay: 0.5 }}
-            className="text-5xl md:text-7xl lg:text-[92px] font-light leading-[1] tracking-[-0.02em] font-[family-name:var(--font-satoshi)]"
-          >
-            Branding that you
-            <br />
-            need Indeed
-          </motion.h1>
+              {/* Heading */}
+              <motion.h1
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 2.8, ease: "linear", delay: 0.5 }}
+                className="text-[44px] md:text-[74px] lg:text-[92px] font-normal leading-[1em] tracking-[0em] text-white text-center font-[family-name:var(--font-satoshi)]"
+              >
+                Branding that you
+                <br />
+                need Indeed
+              </motion.h1>
 
-          {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 2.8, ease: "linear", delay: 0.7 }}
-            className="text-white/65 text-[15px] max-w-xl mx-auto leading-[1.5] tracking-[-0.3px] font-[family-name:var(--font-satoshi)]"
-          >
-            Elevate your brand with custom identity and package design. Showcase your story through bold visuals and strategic design solutions.
-          </motion.p>
+              {/* Subtitle */}
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 2.8, ease: "linear", delay: 0.7 }}
+                className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] max-w-[540px] text-center font-[family-name:var(--font-satoshi)]"
+              >
+                Elevate your brand with custom identity and package design. Showcase your story through bold visuals and strategic design solutions.
+              </motion.p>
 
-          {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.95, ease: "linear", delay: 1.0 }}
-            className="flex items-center justify-center gap-4"
-          >
-            <HeroButton href="https://framer.link/Z1h7gsj">Get Started Now</HeroButton>
-            <HeroButton href="#projects">See Projects</HeroButton>
-          </motion.div>
-        </div>
+              {/* CTAs – gap 16px */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.95, ease: "linear", delay: 1.0 }}
+                className="flex flex-wrap items-center justify-center gap-4"
+              >
+                <HeroButton href="https://framer.link/Z1h7gsj">Get Started Now</HeroButton>
+                <HeroButton href="#projects">See Projects</HeroButton>
+              </motion.div>
+            </div>
 
-        {/* Scroll indicator - separate from top content like reference */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.2 }}
-          className="flex items-center gap-4 justify-center text-[15px] text-white/65 font-[family-name:var(--font-satoshi)] mt-[50px]"
-        >
-          <span>Scroll down</span>
-          <div className="w-[185px] h-[1px] bg-white" />
-          <MouseIcon />
-          <div className="w-[185px] h-[1px] bg-white" />
-          <span>to see projects</span>
-        </motion.div>
-      </main>
+            {/* Scroll indicator – max-width 640px, height 38px, gap 16px */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 1.2 }}
+              className="flex items-center gap-4 w-full max-w-[640px] h-[38px]"
+            >
+              <span className="flex-shrink-0 text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] font-[family-name:var(--font-satoshi)]">Scroll down</span>
+              <div className="flex-1 h-[1px] bg-white/10" />
+              <MouseIcon />
+              <div className="flex-1 h-[1px] bg-white/10" />
+              <span className="flex-shrink-0 text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] font-[family-name:var(--font-satoshi)]">to see projects</span>
+            </motion.div>
+          </div>
+        </main>
+      </div>
 
-      {/* Client logos marquee - pinned to bottom of hero */}
+      {/* Client logos – height 55px */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.4 }}
-        className="relative z-10 w-full overflow-hidden py-2.5"
+        className="relative z-[1] w-full h-[55px] overflow-hidden"
         style={{ maskImage: "linear-gradient(to right, transparent 0%, black 12.5%, black 87.5%, transparent 100%)" }}
       >
-        <div className="flex animate-marquee-slow whitespace-nowrap gap-[100px]">
+        <div className="flex items-center h-full animate-marquee-slow whitespace-nowrap gap-[100px]">
           {[...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos].map((logo, i) => (
-            <div key={i} className="flex-shrink-0 flex items-center">
-              <img src={logo.src} alt={logo.alt} className="h-5 w-auto" style={{ filter: "brightness(0) invert(1)" }} />
+            <div key={i} className="flex-shrink-0 flex items-center" style={{ opacity: 0.65 }}>
+              <img
+                src={logo.src}
+                alt={logo.alt}
+                style={{ width: logo.w, height: logo.h, filter: "brightness(0.8) invert(1)", objectFit: "contain" }}
+              />
             </div>
           ))}
         </div>

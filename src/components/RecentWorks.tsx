@@ -5,11 +5,11 @@ import { useRef } from "react";
 import { Reveal, fadeUp } from "@/lib/motion";
 
 const works = [
-  { src: "/images/project-6.png", alt: "project img" },
-  { src: "/images/project-8.png", alt: "project img" },
-  { src: "/images/project-9.png", alt: "project img" },
-  { src: "/images/project-7.png", alt: "project img" },
-  { src: "/images/project-5.png", alt: "project img" },
+  { src: "/images/projects/project-6.webp", alt: "project img" },
+  { src: "/images/projects/project-8.webp", alt: "project img" },
+  { src: "/images/projects/project-9.webp", alt: "project img" },
+  { src: "/images/projects/project-7.webp", alt: "project img" },
+  { src: "/images/projects/project-5.webp", alt: "project img" },
 ];
 
 function ArrowIcon() {
