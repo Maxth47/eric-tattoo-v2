@@ -11,15 +11,17 @@ function ArrowIcon() {
   );
 }
 
-function ProjectCard({ src, href = "https://www.behance.net/" }: { src: string; href?: string }) {
+function ProjectCard({ src, href = "https://www.instagram.com/eric.le.tattoo/" }: { src: string; href?: string }) {
   return (
     <Reveal variants={fadeUp} className="w-full">
       <a
         href={href}
-        className="group relative block w-full overflow-hidden rounded-[4px] grayscale hover:grayscale-0 transition-all duration-500"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group relative block w-full overflow-hidden rounded-[4px]"
         style={{ aspectRatio: "1.06706" }}
       >
-        <Image src={src} alt="project img" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+        <Image src={src} alt="project img" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" sizes="(max-width: 768px) 100vw, 33vw" />
         <div
           className="absolute z-[2] bottom-[10px] left-[8px] right-[8px] flex items-center justify-center gap-1 overflow-hidden"
           style={{

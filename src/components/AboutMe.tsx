@@ -50,7 +50,7 @@ export default function AboutMe() {
   };
 
   return (
-    <section id="about-me" className="relative flex flex-col items-center gap-[44px] w-full py-[100px] px-[80px] max-md:px-[18px] max-md:py-[80px] overflow-hidden rounded-[48px] bg-[#0d0d0d]">
+    <section id="about-me" className="relative flex flex-col items-center gap-[44px] w-full py-[100px] px-[80px] max-md:px-[18px] max-md:py-[80px] overflow-hidden rounded-[48px]">
       {/* Border overlay – fades toward bottom */}
       <div
         className="absolute inset-0 rounded-[48px] z-[3] pointer-events-none overflow-hidden"
@@ -150,11 +150,13 @@ export default function AboutMe() {
             {works.map((work, i) => (
               <a
                 key={i}
-                href="https://www.behance.net/"
-                className="relative flex-shrink-0 h-full rounded-[4px] overflow-hidden grayscale hover:grayscale-0 transition-all duration-500"
+                href="https://www.instagram.com/eric.le.tattoo/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex-shrink-0 h-full rounded-[4px] overflow-hidden"
                 style={{ scrollSnapAlign: "center", width: "calc(25% - 7.5px)" }}
               >
-                <Image src={work.src} alt={work.alt} fill className="object-cover" sizes="25vw" />
+                <Image src={work.src} alt={work.alt} fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" sizes="25vw" />
                 <div
                   className="absolute bottom-4 left-4 right-4 flex items-center justify-center gap-2 py-3 rounded-full text-[15px] text-white"
                   style={{

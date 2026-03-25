@@ -65,7 +65,7 @@ function ProcessButton({ href, children }: { href: string; children: string }) {
 export default function Process() {
   return (
     <section
-      className="relative flex items-center justify-center w-full overflow-hidden rounded-[48px] bg-[#0d0d0d]"
+      className="relative flex items-center justify-center w-full overflow-hidden rounded-[48px]"
       style={{ padding: "100px 80px" }}
     >
       {/* Border overlay – fades toward bottom */}
