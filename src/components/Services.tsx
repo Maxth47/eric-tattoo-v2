@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { Reveal, StaggerReveal, fadeUp, fadeLeft, fadeRight, scaleUp } from "@/lib/motion";
 
 const tags = ["Product Design", "Brand Identity Design", "Branding", "Packaging Design", "Mochup Design"];
 
@@ -72,106 +73,116 @@ export default function Services() {
           {/* Left content */}
           <div>
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
-              <span className="w-2 h-2 rounded-full bg-white" />
-              <span className="text-sm text-white/80 font-[family-name:var(--font-satoshi)]">Design services</span>
-            </div>
+            <Reveal variants={fadeLeft}>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
+                <span className="w-2 h-2 rounded-full bg-white" />
+                <span className="text-sm text-white/80 font-[family-name:var(--font-satoshi)]">Design services</span>
+              </div>
+            </Reveal>
 
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-medium mb-4 font-[family-name:var(--font-inter-display)]">
-              Services
-            </h2>
+            <Reveal variants={fadeUp} delay={0.1}>
+              <h2 className="text-5xl md:text-7xl lg:text-[92px] font-normal leading-[1] mb-4 font-[family-name:var(--font-satoshi)]">
+                Services
+              </h2>
+            </Reveal>
 
-            <p className="text-white/50 text-base leading-relaxed mb-8 max-w-lg font-[family-name:var(--font-satoshi)]">
-              Helping businesses standout with brand identity packaging that captivates and converts effectively.
-            </p>
+            <Reveal variants={fadeUp} delay={0.15}>
+              <p className="text-white/50 text-2xl leading-relaxed mb-8 max-w-lg font-[family-name:var(--font-satoshi)]">
+                Helping businesses standout with brand identity packaging that captivates and converts effectively.
+              </p>
+            </Reveal>
 
             {/* Tags */}
-            <div className="flex flex-wrap gap-2 mb-8">
+            <StaggerReveal className="flex flex-wrap gap-2 mb-8" stagger={0.05} delay={0.2}>
               {tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-4 py-2 rounded-full border border-white/10 text-sm text-white/70 font-[family-name:var(--font-satoshi)]"
-                >
-                  {tag}
-                </span>
+                <Reveal key={tag} variants={fadeUp}>
+                  <span className="px-4 py-2 rounded-full border border-white/10 text-sm text-white/70 font-[family-name:var(--font-satoshi)]">
+                    {tag}
+                  </span>
+                </Reveal>
               ))}
-            </div>
+            </StaggerReveal>
 
             {/* CTAs */}
-            <div className="flex items-center gap-4">
-              <a
-                href="https://cal.com/rick/get-rick-rolled"
-                className="px-6 py-3 bg-white text-black rounded-full text-sm font-medium hover:bg-white/90 transition-colors font-[family-name:var(--font-satoshi)]"
-              >
-                Book a Free Call
-              </a>
-              <a
-                href="#projects"
-                className="px-6 py-3 bg-transparent border border-white/20 text-white rounded-full text-sm font-medium hover:bg-white/5 transition-colors font-[family-name:var(--font-satoshi)]"
-              >
-                See Projects
-              </a>
-            </div>
+            <Reveal variants={fadeUp} delay={0.3}>
+              <div className="flex items-center gap-4">
+                <a
+                  href="https://cal.com/rick/get-rick-rolled"
+                  className="px-6 py-3 bg-white text-black rounded-full text-sm font-medium hover:bg-white/90 transition-colors font-[family-name:var(--font-satoshi)]"
+                >
+                  Book a Free Call
+                </a>
+                <a
+                  href="#projects"
+                  className="px-6 py-3 bg-transparent border border-white/20 text-white rounded-full text-sm font-medium hover:bg-white/5 transition-colors font-[family-name:var(--font-satoshi)]"
+                >
+                  See Projects
+                </a>
+              </div>
+            </Reveal>
           </div>
 
           {/* Right image */}
-          <div className="relative rounded-2xl overflow-hidden h-[400px] lg:h-[500px]">
-            <Image
-              src="/images/services-pic.jpg"
-              alt="design pic"
-              fill
-              className="object-cover grayscale"
-              sizes="50vw"
-            />
-          </div>
+          <Reveal variants={fadeRight} delay={0.2}>
+            <div className="relative rounded-2xl overflow-hidden h-[400px] lg:h-[500px]">
+              <Image
+                src="/images/services-pic.jpg"
+                alt="design pic"
+                fill
+                className="object-cover grayscale"
+                sizes="50vw"
+              />
+            </div>
+          </Reveal>
         </div>
 
         {/* Service cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+        <StaggerReveal className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12" stagger={0.1}>
           {services.map((service) => (
-            <div
-              key={service.title}
-              className="p-6 rounded-2xl bg-black/40 border border-white/5"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                {service.icon}
-                <h3 className="text-lg font-semibold font-[family-name:var(--font-inter-display)]">
-                  {service.title}
-                </h3>
+            <Reveal key={service.title} variants={scaleUp}>
+              <div className="p-6 rounded-2xl bg-black/40 border border-white/5">
+                <div className="flex items-center gap-3 mb-4">
+                  {service.icon}
+                  <h3 className="text-2xl font-semibold font-[family-name:var(--font-inter-display)]">
+                    {service.title}
+                  </h3>
+                </div>
+                <p className="text-white/40 text-sm leading-relaxed font-[family-name:var(--font-satoshi)]">
+                  {service.description}
+                </p>
               </div>
-              <p className="text-white/40 text-sm leading-relaxed font-[family-name:var(--font-satoshi)]">
-                {service.description}
-              </p>
-            </div>
+            </Reveal>
           ))}
-        </div>
+        </StaggerReveal>
 
         {/* Marquee rows */}
-        <div className="space-y-4 overflow-hidden">
-          {/* Row 1 */}
-          <div className="relative overflow-hidden">
-            <div className="flex animate-marquee">
-              {[...marqueeRow1, ...marqueeRow1, ...marqueeRow1, ...marqueeRow1, ...marqueeRow1].map((item, i) => (
-                <div key={i} className="flex-shrink-0 flex items-center gap-2 px-5 py-2.5 mx-2 rounded-full border border-white/10 text-sm text-white/60 font-[family-name:var(--font-satoshi)]">
-                  <span className="text-base">{item.icon}</span>
-                  {item.text}
-                </div>
-              ))}
+        <Reveal>
+          <div className="space-y-4 overflow-hidden">
+            {/* Row 1 */}
+            <div className="relative overflow-hidden">
+              <div className="flex animate-marquee">
+                {[...marqueeRow1, ...marqueeRow1, ...marqueeRow1, ...marqueeRow1, ...marqueeRow1].map((item, i) => (
+                  <div key={i} className="flex-shrink-0 flex items-center gap-2 px-5 py-2.5 mx-2 rounded-full border border-white/10 text-sm text-white/60 font-[family-name:var(--font-satoshi)]">
+                    <span className="text-base">{item.icon}</span>
+                    {item.text}
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
 
-          {/* Row 2 - reverse direction */}
-          <div className="relative overflow-hidden">
-            <div className="flex animate-marquee-reverse">
-              {[...marqueeRow2, ...marqueeRow2, ...marqueeRow2, ...marqueeRow2, ...marqueeRow2].map((item, i) => (
-                <div key={i} className="flex-shrink-0 flex items-center gap-2 px-5 py-2.5 mx-2 rounded-full border border-white/10 text-sm text-white/60 font-[family-name:var(--font-satoshi)]">
-                  <span className="text-base">{item.icon}</span>
-                  {item.text}
-                </div>
-              ))}
+            {/* Row 2 - reverse direction */}
+            <div className="relative overflow-hidden">
+              <div className="flex animate-marquee-reverse">
+                {[...marqueeRow2, ...marqueeRow2, ...marqueeRow2, ...marqueeRow2, ...marqueeRow2].map((item, i) => (
+                  <div key={i} className="flex-shrink-0 flex items-center gap-2 px-5 py-2.5 mx-2 rounded-full border border-white/10 text-sm text-white/60 font-[family-name:var(--font-satoshi)]">
+                    <span className="text-base">{item.icon}</span>
+                    {item.text}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

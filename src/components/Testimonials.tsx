@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { Reveal, StaggerReveal, fadeUp, fadeLeft, fadeRight, scaleUp } from "@/lib/motion";
 
 const reviews = [
   {
@@ -53,98 +54,107 @@ export default function Testimonials() {
       <div className="max-w-[1800px] mx-auto bg-[#0d0d0d] rounded-[48px] px-6 md:px-14 lg:px-20 py-16 md:py-[100px] overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
           {/* Left image */}
-          <div className="relative rounded-2xl overflow-hidden h-[300px] lg:h-[400px]">
-            <Image
-              src="/images/client-pic.png"
-              alt="client pic"
-              fill
-              className="object-cover grayscale"
-            />
-          </div>
+          <Reveal variants={fadeLeft}>
+            <div className="relative rounded-2xl overflow-hidden h-[300px] lg:h-[400px]">
+              <Image
+                src="/images/client-pic.png"
+                alt="client pic"
+                fill
+                className="object-cover grayscale"
+              />
+            </div>
+          </Reveal>
 
           {/* Right content */}
           <div>
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
-              <span className="w-2 h-2 rounded-full bg-white" />
-              <span className="text-sm text-white/80 font-[family-name:var(--font-satoshi)]">Reviews</span>
-            </div>
+            <Reveal variants={fadeRight}>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
+                <span className="w-2 h-2 rounded-full bg-white" />
+                <span className="text-sm text-white/80 font-[family-name:var(--font-satoshi)]">Reviews</span>
+              </div>
+            </Reveal>
 
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-medium mb-4 font-[family-name:var(--font-inter-display)]">
-              Client Reviews
-            </h2>
+            <Reveal variants={fadeUp} delay={0.1}>
+              <h2 className="text-5xl md:text-7xl lg:text-[92px] font-normal leading-[1] mb-4 font-[family-name:var(--font-satoshi)]">
+                Client Reviews
+              </h2>
+            </Reveal>
 
-            <p className="text-white/50 text-base leading-relaxed mb-8 max-w-lg font-[family-name:var(--font-satoshi)]">
-              Real feedback from clients who trusted my design expertise to elevate their brands successfully.
-            </p>
+            <Reveal variants={fadeUp} delay={0.15}>
+              <p className="text-white/50 text-2xl leading-relaxed mb-8 max-w-lg font-[family-name:var(--font-satoshi)]">
+                Real feedback from clients who trusted my design expertise to elevate their brands successfully.
+              </p>
+            </Reveal>
 
             {/* CTAs */}
-            <div className="flex items-center gap-4">
-              <a
-                href="https://cal.com/rick/get-rick-rolled"
-                className="px-6 py-3 bg-white text-black rounded-full text-sm font-medium hover:bg-white/90 transition-colors font-[family-name:var(--font-satoshi)]"
-              >
-                Book a Free Call
-              </a>
-              <a
-                href="#services"
-                className="px-6 py-3 bg-transparent border border-white/20 text-white rounded-full text-sm font-medium hover:bg-white/5 transition-colors font-[family-name:var(--font-satoshi)]"
-              >
-                See Services
-              </a>
-            </div>
+            <Reveal variants={fadeUp} delay={0.2}>
+              <div className="flex items-center gap-4">
+                <a
+                  href="https://cal.com/rick/get-rick-rolled"
+                  className="px-6 py-3 bg-white text-black rounded-full text-sm font-medium hover:bg-white/90 transition-colors font-[family-name:var(--font-satoshi)]"
+                >
+                  Book a Free Call
+                </a>
+                <a
+                  href="#services"
+                  className="px-6 py-3 bg-transparent border border-white/20 text-white rounded-full text-sm font-medium hover:bg-white/5 transition-colors font-[family-name:var(--font-satoshi)]"
+                >
+                  See Services
+                </a>
+              </div>
+            </Reveal>
           </div>
         </div>
 
         {/* Reviews carousel - auto scrolling */}
-        <div className="relative overflow-hidden mb-12">
-          <div className="flex animate-marquee-slow">
-            {[...reviews, ...reviews, ...reviews, ...reviews].map((review, i) => (
-              <div
-                key={i}
-                className="flex-shrink-0 w-[350px] p-6 mx-2 rounded-2xl border border-white/5 bg-black/30"
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="relative w-10 h-10 rounded-full overflow-hidden">
+        <Reveal>
+          <div className="relative overflow-hidden mb-12">
+            <div className="flex animate-marquee-slow">
+              {[...reviews, ...reviews, ...reviews, ...reviews].map((review, i) => (
+                <div
+                  key={i}
+                  className="flex-shrink-0 w-[500px] px-10 pt-10 pb-20 mx-2 rounded-[10px] border border-white/5 bg-black/30 flex flex-col gap-[30px]"
+                >
+                  <div className="relative w-[84px] h-[84px] rounded-full overflow-hidden flex-shrink-0">
                     <Image src={review.avatar} alt="client pic" fill className="object-cover" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold font-[family-name:var(--font-inter-display)]">{review.name}</h4>
-                    <p className="text-xs text-white/40 font-[family-name:var(--font-satoshi)]">{review.role}</p>
+                    <h4 className="text-4xl font-medium font-[family-name:var(--font-satoshi)]">{review.name}</h4>
+                    <p className="text-[15px] text-white/65 mt-1 font-[family-name:var(--font-satoshi)]">{review.role}</p>
+                  </div>
+                  <p className="text-white text-lg leading-relaxed font-[family-name:var(--font-satoshi)]">
+                    {review.quote}
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-medium">{review.rating}</span>
+                    <div className="flex gap-0.5">
+                      {[...Array(5)].map((_, j) => (
+                        <StarIcon key={j} />
+                      ))}
+                    </div>
                   </div>
                 </div>
-                <p className="text-white/50 text-sm leading-relaxed mb-4 font-[family-name:var(--font-satoshi)]">
-                  {review.quote}
-                </p>
-                <div className="flex items-center gap-2">
-                  <span className="text-sm font-medium">{review.rating}</span>
-                  <div className="flex gap-0.5">
-                    {[...Array(5)].map((_, j) => (
-                      <StarIcon key={j} />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 rounded-2xl border border-white/5 bg-black/30 overflow-hidden">
+        <StaggerReveal className="grid grid-cols-1 md:grid-cols-3 rounded-2xl border border-white/5 bg-black/30 overflow-hidden" stagger={0.15}>
           {stats.map((stat, i) => (
-            <div
-              key={stat.value}
-              className={`p-8 text-center ${i < stats.length - 1 ? "md:border-r border-white/5" : ""}`}
-            >
-              <h3 className="text-4xl md:text-5xl font-semibold mb-2 font-[family-name:var(--font-inter-display)]">
-                {stat.value}
-              </h3>
-              <p className="text-white/40 text-sm font-[family-name:var(--font-satoshi)]">
-                {stat.label}
-              </p>
-            </div>
+            <Reveal key={stat.value} variants={scaleUp}>
+              <div className={`p-8 text-center ${i < stats.length - 1 ? "md:border-r border-white/5" : ""}`}>
+                <h3 className="text-4xl font-medium mb-2 font-[family-name:var(--font-satoshi)]">
+                  {stat.value}
+                </h3>
+                <p className="text-white/65 text-2xl font-[family-name:var(--font-satoshi)]">
+                  {stat.label}
+                </p>
+              </div>
+            </Reveal>
           ))}
-        </div>
+        </StaggerReveal>
       </div>
     </section>
   );

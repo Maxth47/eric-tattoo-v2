@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { Reveal, StaggerReveal, fadeUp, fadeLeft, fadeRight } from "@/lib/motion";
 
 const skills = [
   "Product Design",
@@ -26,64 +27,73 @@ export default function AboutMe() {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-11">
           {/* Left content */}
           <div className="flex flex-col gap-8 pr-0 lg:pr-5">
-            <h2 className="text-5xl md:text-7xl lg:text-[92px] font-normal leading-[1] font-[family-name:var(--font-satoshi)]">
-              Meet Meily
-            </h2>
+            <Reveal variants={fadeLeft}>
+              <h2 className="text-5xl md:text-7xl lg:text-[92px] font-normal leading-[1] font-[family-name:var(--font-satoshi)]">
+                Meet Meily
+              </h2>
+            </Reveal>
 
-            <p className="text-white/50 text-lg leading-relaxed font-[family-name:var(--font-satoshi)]">
-              I&apos;m Meily, a passionate Brand Identity &amp; Package Designer based in tokyo. I specialize in crafting bold visual identities and packaging that captivate and inspire, blending creativity with strategy to elevate brands.
-            </p>
+            <Reveal variants={fadeUp} delay={0.1}>
+              <p className="text-white/50 text-lg leading-relaxed font-[family-name:var(--font-satoshi)]">
+                I&apos;m Meily, a passionate Brand Identity &amp; Package Designer based in tokyo. I specialize in crafting bold visual identities and packaging that captivate and inspire, blending creativity with strategy to elevate brands.
+              </p>
+            </Reveal>
 
             {/* Divider */}
             <div className="border-t border-white/10" />
 
             {/* Skills */}
-            <div className="flex flex-wrap gap-4">
+            <StaggerReveal className="flex flex-wrap gap-4" stagger={0.05} delay={0.2}>
               {skills.map((skill) => (
-                <span
-                  key={skill}
-                  className="px-3 py-2.5 rounded-lg border border-white/10 text-[15px] text-white/70 font-[family-name:var(--font-satoshi)]"
-                >
-                  {skill}
-                </span>
+                <Reveal key={skill} variants={fadeUp}>
+                  <span className="px-3 py-2.5 rounded-lg border border-white/10 text-[15px] text-white/70 font-[family-name:var(--font-satoshi)]">
+                    {skill}
+                  </span>
+                </Reveal>
               ))}
-            </div>
+            </StaggerReveal>
 
             {/* Divider */}
             <div className="border-t border-white/10" />
 
             {/* Experience */}
-            <div className="space-y-6">
+            <StaggerReveal className="space-y-6" stagger={0.1} delay={0.3}>
               {experience.map((exp) => (
-                <div key={exp.role + exp.company} className="flex items-center justify-between">
-                  <span className="text-white/60 text-[15px] italic font-[family-name:var(--font-satoshi)] w-1/3">{exp.role}</span>
-                  <span className="text-white/60 text-[15px] font-[family-name:var(--font-satoshi)] w-1/3">{exp.company}</span>
-                  <span className="text-white/60 text-[15px] font-[family-name:var(--font-satoshi)] w-1/3 text-right">{exp.period}</span>
-                </div>
+                <Reveal key={exp.role + exp.company} variants={fadeUp}>
+                  <div className="flex items-center justify-between">
+                    <span className="text-white/60 text-[15px] italic font-[family-name:var(--font-satoshi)] w-1/3">{exp.role}</span>
+                    <span className="text-white/60 text-[15px] font-[family-name:var(--font-satoshi)] w-1/3">{exp.company}</span>
+                    <span className="text-white/60 text-[15px] font-[family-name:var(--font-satoshi)] w-1/3 text-right">{exp.period}</span>
+                  </div>
+                </Reveal>
               ))}
-            </div>
+            </StaggerReveal>
           </div>
 
           {/* Right image - woman portrait */}
-          <div className="relative rounded-2xl overflow-hidden min-h-[400px] lg:min-h-[570px]">
-            <Image
-              src="/images/project-4.jpg"
-              alt="profile pic"
-              fill
-              className="object-cover grayscale"
-              sizes="50vw"
-            />
-          </div>
+          <Reveal variants={fadeRight} delay={0.2}>
+            <div className="relative rounded-2xl overflow-hidden min-h-[400px] lg:min-h-[570px]">
+              <Image
+                src="/images/project-4.jpg"
+                alt="profile pic"
+                fill
+                className="object-cover grayscale"
+                sizes="50vw"
+              />
+            </div>
+          </Reveal>
         </div>
 
         {/* Recent Works label */}
-        <div className="flex items-center gap-3 mt-14 mb-2">
-          <h3 className="text-2xl font-normal font-[family-name:var(--font-satoshi)]">Recent Works</h3>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white/60">
-            <circle cx="12" cy="12" r="10" />
-            <path d="M8 12l4 4 4-4" />
-          </svg>
-        </div>
+        <Reveal delay={0.2}>
+          <div className="flex items-center gap-3 mt-14 mb-2">
+            <h3 className="text-2xl font-normal font-[family-name:var(--font-satoshi)]">Recent Works</h3>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white/60">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M8 12l4 4 4-4" />
+            </svg>
+          </div>
+        </Reveal>
        </div>
       </div>
     </section>

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { Reveal, StaggerReveal, fadeUp, fadeLeft, scaleUp } from "@/lib/motion";
 
 const faqs = [
   {
@@ -54,78 +55,86 @@ export default function FAQ() {
           {/* Left content */}
           <div>
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
-              <span className="w-2 h-2 rounded-full bg-white" />
-              <span className="text-sm text-white/80 font-[family-name:var(--font-satoshi)]">FAQ&apos;S</span>
-            </div>
+            <Reveal variants={fadeLeft}>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
+                <span className="w-2 h-2 rounded-full bg-white" />
+                <span className="text-sm text-white/80 font-[family-name:var(--font-satoshi)]">FAQ&apos;S</span>
+              </div>
+            </Reveal>
 
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-medium mb-4 font-[family-name:var(--font-inter-display)]">
-              Answers
-            </h2>
+            <Reveal variants={fadeUp} delay={0.1}>
+              <h2 className="text-5xl md:text-7xl lg:text-[92px] font-normal leading-[1] mb-4 font-[family-name:var(--font-satoshi)]">
+                Answers
+              </h2>
+            </Reveal>
 
-            <p className="text-white/50 text-base leading-relaxed mb-8 max-w-lg font-[family-name:var(--font-satoshi)]">
-              Find answers to common questions about my design process, services etc…
-            </p>
+            <Reveal variants={fadeUp} delay={0.15}>
+              <p className="text-white/50 text-2xl leading-relaxed mb-8 max-w-lg font-[family-name:var(--font-satoshi)]">
+                Find answers to common questions about my design process, services etc…
+              </p>
+            </Reveal>
 
             {/* Image */}
-            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] mb-8">
-              <Image
-                src="/images/faq-pic.jpg"
-                alt="design pic"
-                fill
-                className="object-cover grayscale"
-                sizes="50vw"
-              />
-            </div>
+            <Reveal variants={scaleUp} delay={0.2}>
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] mb-8">
+                <Image
+                  src="/images/faq-pic.jpg"
+                  alt="design pic"
+                  fill
+                  className="object-cover grayscale"
+                  sizes="50vw"
+                />
+              </div>
+            </Reveal>
 
             {/* Tags */}
-            <div className="flex flex-wrap gap-2 mb-8">
+            <StaggerReveal className="flex flex-wrap gap-2 mb-8" stagger={0.05} delay={0.3}>
               {faqTags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-4 py-2 rounded-full border border-white/10 text-sm text-white/70 font-[family-name:var(--font-satoshi)]"
-                >
-                  {tag}
-                </span>
+                <Reveal key={tag} variants={fadeUp}>
+                  <span className="px-4 py-2 rounded-full border border-white/10 text-sm text-white/70 font-[family-name:var(--font-satoshi)]">
+                    {tag}
+                  </span>
+                </Reveal>
               ))}
-            </div>
+            </StaggerReveal>
 
-            <a
-              href="https://cal.com/rick/get-rick-rolled"
-              className="inline-block px-6 py-3 bg-white text-black rounded-full text-sm font-medium hover:bg-white/90 transition-colors font-[family-name:var(--font-satoshi)]"
-            >
-              Book a Free Call
-            </a>
+            <Reveal variants={fadeUp} delay={0.35}>
+              <a
+                href="https://cal.com/rick/get-rick-rolled"
+                className="inline-block px-6 py-3 bg-white text-black rounded-full text-sm font-medium hover:bg-white/90 transition-colors font-[family-name:var(--font-satoshi)]"
+              >
+                Book a Free Call
+              </a>
+            </Reveal>
           </div>
 
           {/* Right - FAQ accordion */}
-          <div className="space-y-2">
+          <StaggerReveal className="space-y-2" stagger={0.06}>
             {faqs.map((faq, i) => (
-              <div
-                key={i}
-                className="rounded-xl border border-white/5 overflow-hidden"
-              >
-                <button
-                  onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
-                  className="w-full flex items-center justify-between p-5 text-left hover:bg-white/[0.02] transition-colors"
-                >
-                  <span className="text-sm font-medium font-[family-name:var(--font-satoshi)]">{faq.question}</span>
-                  <span className="text-white/40 text-lg flex-shrink-0 ml-4">
-                    {openIndex === i ? "×" : "+"}
-                  </span>
-                </button>
-                <div
-                  className={`overflow-hidden transition-all duration-300 ${
-                    openIndex === i ? "max-h-40 pb-5" : "max-h-0"
-                  }`}
-                >
-                  <p className="px-5 text-white/40 text-sm leading-relaxed font-[family-name:var(--font-satoshi)]">
-                    {faq.answer}
-                  </p>
+              <Reveal key={i} variants={fadeUp}>
+                <div className="rounded-xl border border-white/5 overflow-hidden">
+                  <button
+                    onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
+                    className="w-full flex items-center justify-between p-5 text-left hover:bg-white/[0.02] transition-colors"
+                  >
+                    <span className="text-lg font-normal font-[family-name:var(--font-satoshi)]">{faq.question}</span>
+                    <span className="text-white/40 text-lg flex-shrink-0 ml-4">
+                      {openIndex === i ? "×" : "+"}
+                    </span>
+                  </button>
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ${
+                      openIndex === i ? "max-h-40 pb-5" : "max-h-0"
+                    }`}
+                  >
+                    <p className="px-5 text-white/40 text-sm leading-relaxed font-[family-name:var(--font-satoshi)]">
+                      {faq.answer}
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
-          </div>
+          </StaggerReveal>
         </div>
       </div>
     </section>
