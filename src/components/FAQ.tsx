@@ -34,6 +34,14 @@ function SectionButton({ href, children }: { href: string; children: string }) {
   );
 }
 
+function PlusIcon() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor">
+      <path d="M228,128a12,12,0,0,1-12,12H140v76a12,12,0,0,1-24,0V140H40a12,12,0,0,1,0-24h76V40a12,12,0,0,1,24,0v76h76A12,12,0,0,1,228,128Z" />
+    </svg>
+  );
+}
+
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number>(0);
 
@@ -46,11 +54,24 @@ export default function FAQ() {
       {/* Border overlay */}
       <div className="absolute inset-0 rounded-[48px] z-[3] pointer-events-none overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.1)", mask: "linear-gradient(#000 0%, rgba(0,0,0,0.16) 82.8442%)", WebkitMask: "linear-gradient(#000 0%, rgba(0,0,0,0.16) 82.8442%)" }} />
 
+      {/* Blur overlay at bottom */}
+      <div
+        className="absolute z-[1] inset-0 overflow-hidden pointer-events-none"
+        style={{
+          top: "-115px", bottom: "-76px",
+          backdropFilter: "blur(8px)",
+          filter: "blur(40px)",
+          background: "linear-gradient(180deg, transparent 10%, rgb(0,0,0) 20%)",
+          mask: "linear-gradient(transparent 0%, black 5%)",
+          WebkitMask: "linear-gradient(transparent 0%, black 5%)",
+        }}
+      />
+
       {/* Container – flex-wrap, max-width 1600px, gap 44px */}
-      <div className="flex flex-wrap items-start justify-start gap-[44px] w-full max-w-[1600px]">
-        {/* Left column – flex 1, min-width 460px, gap 24px */}
+      <div className="relative z-[2] flex flex-wrap items-start justify-start gap-[44px] w-full max-w-[1600px]">
+        {/* Left column */}
         <div className="flex flex-col items-start gap-6 flex-1 min-w-[460px] max-md:min-w-[260px] max-md:w-full">
-          {/* Badge – dark card style */}
+          {/* Badge */}
           <Reveal variants={fadeLeft}>
             <div
               className="inline-flex items-center gap-1.5"
@@ -79,8 +100,8 @@ export default function FAQ() {
             </p>
           </Reveal>
 
-          {/* Image – grayscale, rounded 17px, height 503px, shadow */}
-          <Reveal variants={scaleUp} delay={0.2}>
+          {/* Image */}
+          <Reveal variants={scaleUp} delay={0.2} className="w-full">
             <div
               className="relative w-full overflow-hidden grayscale"
               style={{ height: "503px", borderRadius: "17px", boxShadow: "20px 30px 20px 8px rgba(0,0,0,0.4)" }}
@@ -89,7 +110,7 @@ export default function FAQ() {
             </div>
           </Reveal>
 
-          {/* Tags – bg #0d0d0d, rounded 8px, gap 16px */}
+          {/* Tags */}
           <StaggerReveal className="flex flex-wrap gap-4" stagger={0.05} delay={0.3}>
             {faqTags.map((tag) => (
               <Reveal key={tag} variants={fadeUp}>
@@ -100,36 +121,62 @@ export default function FAQ() {
             ))}
           </StaggerReveal>
 
-          {/* CTA – dark button style */}
+          {/* Divider line */}
+          <div className="w-full h-[1px] bg-white/10" />
+
+          {/* CTA */}
           <Reveal variants={fadeUp} delay={0.35}>
             <SectionButton href="https://cal.com/rick/get-rick-rolled">Book a Free Call</SectionButton>
           </Reveal>
         </div>
 
-        {/* Right – Accordion, flex 1, min-width 460px */}
+        {/* Right – Accordion */}
         <div className="flex-1 min-w-[460px] max-md:min-w-[260px] max-md:w-full">
-          <StaggerReveal className="flex flex-col gap-2" stagger={0.06}>
-            {faqs.map((faq, i) => (
-              <Reveal key={i} variants={fadeUp}>
-                <div className="rounded-xl border border-white/5 overflow-hidden">
+          <div className="flex flex-col gap-4 w-full">
+            {faqs.map((faq, i) => {
+              const isOpen = openIndex === i;
+              return (
+                <div
+                  key={i}
+                  className="overflow-hidden transition-all duration-300"
+                  style={{
+                    backgroundColor: "rgb(15,15,15)",
+                    borderRadius: "15px",
+                    boxShadow: "rgba(0,0,0,0.4) 5px 18px 10px 8px",
+                    padding: isOpen ? "0 20px 20px 10px" : "0 20px 0 10px",
+                  }}
+                >
+                  {/* Question row */}
                   <button
-                    onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
-                    className="w-full flex items-center justify-between p-5 text-left hover:bg-white/[0.02] transition-colors"
+                    onClick={() => setOpenIndex(isOpen ? -1 : i)}
+                    className="w-full flex items-center justify-start gap-[25px] cursor-pointer select-none"
+                    style={{ padding: isOpen ? "20px 20px 15px" : "20px" }}
                   >
-                    <span className="text-[18px] leading-[1.6em] font-normal text-white font-[family-name:var(--font-inter-display)]">{faq.question}</span>
-                    <span className="text-white/40 text-lg flex-shrink-0 ml-4">
-                      {openIndex === i ? "×" : "+"}
+                    <span className="flex-1 text-left text-[18px] leading-[1.6em] text-white font-[family-name:var(--font-inter-display)]">
+                      {faq.question}
                     </span>
+                    <div
+                      className="flex-shrink-0 w-[15px] h-[15px] text-white/60 transition-transform duration-300"
+                      style={{ transform: isOpen ? "rotate(45deg)" : "none" }}
+                    >
+                      <PlusIcon />
+                    </div>
                   </button>
-                  <div className={`overflow-hidden transition-all duration-300 ${openIndex === i ? "max-h-40 pb-5" : "max-h-0"}`}>
-                    <p className="px-5 text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] font-[family-name:var(--font-satoshi)]">
-                      {faq.answer}
-                    </p>
+
+                  {/* Answer */}
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ${isOpen ? "max-h-[200px] opacity-100" : "max-h-0 opacity-0"}`}
+                  >
+                    <div className="px-5 pb-1">
+                      <p className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffff99] text-left font-[family-name:var(--font-satoshi)]">
+                        {faq.answer}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </Reveal>
-            ))}
-          </StaggerReveal>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
