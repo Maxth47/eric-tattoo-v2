@@ -21,6 +21,18 @@
   }
 }
 
+/* Dot blink animation */
+@keyframes dot-blink {
+  0%, 100% { opacity: 1; box-shadow: rgb(189,189,189) 0px 0px 14px 1px; }
+  50% { opacity: 0.3; box-shadow: rgb(189,189,189) 0px 0px 4px 0px; }
+}
+
+@layer utilities {
+  .animate-dot-blink {
+    animation: dot-blink 2s ease-in-out infinite;
+  }
+}
+
 /* Marquee animation */
 @keyframes marquee {
   0% {

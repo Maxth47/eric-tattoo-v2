@@ -200,7 +200,7 @@ export default function Hero() {
                 >
                   <div className="relative w-[7px] h-[7px] flex-shrink-0">
                     <div
-                      className="w-[5px] h-[5px] rounded-full bg-white"
+                      className="w-[5px] h-[5px] rounded-full bg-white animate-dot-blink"
                       style={{ boxShadow: "rgb(189,189,189) 0px 0px 14px 1px" }}
                     />
                   </div>
