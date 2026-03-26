@@ -5,11 +5,36 @@
 import { motion } from "@/lib/motion";
 
 const clientLogos = [
-  { src: "/images/client-logo-1.svg", alt: "Client 1", w: 125, h: 27 },
-  { src: "/images/client-logo-2.svg", alt: "Client 2", w: 79, h: 27 },
-  { src: "/images/client-logo-3.svg", alt: "Client 3", w: 86, h: 27 },
-  { src: "/images/client-logo-4.svg", alt: "Client 4", w: 83, h: 30 },
-  { src: "/images/client-logo-5.svg", alt: "Client 5", w: 79, h: 27 },
+  {
+    src: "/images/client-logo-1.svg",
+    alt: "Tattoo studio partner logo",
+    w: 125,
+    h: 27,
+  },
+  {
+    src: "/images/client-logo-2.svg",
+    alt: "Tattoo industry partner",
+    w: 79,
+    h: 27,
+  },
+  {
+    src: "/images/client-logo-3.svg",
+    alt: "Tattoo supply partner",
+    w: 86,
+    h: 27,
+  },
+  {
+    src: "/images/client-logo-4.svg",
+    alt: "Tattoo convention partner",
+    w: 83,
+    h: 30,
+  },
+  {
+    src: "/images/client-logo-5.svg",
+    alt: "Tattoo brand partner",
+    w: 79,
+    h: 27,
+  },
 ];
 
 function MouseIcon() {
@@ -237,8 +262,8 @@ export default function Hero() {
                 transition={{ duration: 2.8, ease: "linear", delay: 0.7 }}
                 className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] max-w-[540px] text-center font-[family-name:var(--font-satoshi)]"
               >
-                Elevate your style with custom tattoo designs. Express your
-                story through bold artwork and creative design solutions.
+                Tattoo Helsinki — elevate your style with custom design tattoo art.
+                Fineline tattoo, cover-up &amp; more. Free tattoo consultation available.
               </motion.p>
 
               {/* CTAs – gap 16px */}

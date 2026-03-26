@@ -21,17 +21,40 @@ const skills = [
 ];
 
 const experience = [
-  { role: "Lead Artist", company: "Ink Studio Helsinki", period: "Currently" },
-  { role: "Tattoo Artist", company: "Black Canvas Tattoo", period: "2023-24" },
-  { role: "Apprentice", company: "Sacred Ink Studio", period: "2020-22" },
+  {
+    role: "Lead Artist",
+    company: "Tattoo Helsinki Studio",
+    period: "Currently",
+  },
+  {
+    role: "Guest Artist",
+    company: "Amsterdam, Berlin & Paris",
+    period: "2024-25",
+  },
+  { role: "Tattoo Artist", company: "Espoo Ink Studio", period: "2020-24" },
 ];
 
 const works = [
-  { src: "/images/projects/project-6.webp", alt: "project img" },
-  { src: "/images/projects/project-8.webp", alt: "project img" },
-  { src: "/images/projects/project-9.webp", alt: "project img" },
-  { src: "/images/projects/project-7.webp", alt: "project img" },
-  { src: "/images/projects/project-5.webp", alt: "project img" },
+  {
+    src: "/images/projects/project-6.webp",
+    alt: "Custom tattoo design by Eric Le Helsinki",
+  },
+  {
+    src: "/images/projects/project-8.webp",
+    alt: "Black and grey tattoo artwork by Eric Le",
+  },
+  {
+    src: "/images/projects/project-9.webp",
+    alt: "Fine line tattoo by Eric Le tattoo artist",
+  },
+  {
+    src: "/images/projects/project-7.webp",
+    alt: "Realism tattoo by Eric Le Helsinki Finland",
+  },
+  {
+    src: "/images/projects/project-5.webp",
+    alt: "Geometric tattoo design by Eric Le",
+  },
 ];
 
 function ArrowIcon() {
@@ -85,7 +108,9 @@ export default function AboutMe() {
               I&apos;m Eric, a passionate tattoo artist based in Helsinki. I
               specialize in crafting bold and meaningful tattoo designs that
               captivate and inspire, blending creativity with precision to bring
-              your vision to life.
+              your vision to life. As a guest tattoo artist in Amsterdam, Berlin
+              and Paris, I bring bold, meaningful art to clients across Europe.
+              Book a free tattoo consultation today.
             </p>
           </Reveal>
 
@@ -189,7 +214,10 @@ export default function AboutMe() {
           <div
             ref={scrollRef}
             className="flex gap-4 overflow-x-auto no-scrollbar h-full p-2.5"
-            style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
+            style={{
+              scrollSnapType: "x mandatory",
+              WebkitOverflowScrolling: "touch",
+            }}
           >
             {works.map((work, i) => (
               <a

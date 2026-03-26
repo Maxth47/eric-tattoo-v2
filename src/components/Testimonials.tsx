@@ -114,7 +114,7 @@ function ReviewCard({ review, className = "", style }: { review: typeof reviews[
     >
       <div className="flex flex-col gap-4 w-full">
         <div className="relative w-[64px] h-[64px] md:w-[84px] md:h-[84px] rounded-full overflow-hidden flex-shrink-0">
-          <Image src={review.avatar} alt="client pic" fill className="object-cover" />
+          <Image src={review.avatar} alt="Tattoo client review - Eric Le Tattoo Helsinki" fill className="object-cover" />
         </div>
         <div className="flex flex-col gap-[5px]">
           <h4 className="text-[20px] md:text-[24px] lg:text-[32px] font-medium font-[family-name:var(--font-satoshi)]">{review.name}</h4>
@@ -196,7 +196,7 @@ export default function Testimonials() {
             >
               <Image
                 src="/images/client-pic.webp"
-                alt="client pic"
+                alt="Tattoo client review - Eric Le Tattoo Helsinki"
                 fill
                 className="object-cover"
               />
