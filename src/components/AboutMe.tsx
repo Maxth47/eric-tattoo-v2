@@ -21,7 +21,7 @@ const skills = [
 ];
 
 const experience = [
-  { role: "Lead Artist", company: "Ink Studio Melbourne", period: "Currently" },
+  { role: "Lead Artist", company: "Ink Studio Helsinki", period: "Currently" },
   { role: "Tattoo Artist", company: "Black Canvas Tattoo", period: "2023-24" },
   { role: "Apprentice", company: "Sacred Ink Studio", period: "2020-22" },
 ];
@@ -82,7 +82,7 @@ export default function AboutMe() {
 
           <Reveal variants={fadeUp} delay={0.1}>
             <p className="text-white opacity-70 text-[18px] leading-[1.6em] max-w-[640px] font-[family-name:var(--font-inter-display)]">
-              I&apos;m Eric, a passionate tattoo artist based in Melbourne. I
+              I&apos;m Eric, a passionate tattoo artist based in Helsinki. I
               specialize in crafting bold and meaningful tattoo designs that
               captivate and inspire, blending creativity with precision to bring
               your vision to life.

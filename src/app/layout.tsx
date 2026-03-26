@@ -3,8 +3,9 @@ import "./globals.css";
 import AppWrapper from "@/components/AppWrapper";
 
 export const metadata: Metadata = {
-  title: "Eric Le – Tattoo Artist Melbourne",
-  description: "Crafting unique tattoo art. Elevate your style with custom tattoo designs by Eric Le, a passionate tattoo artist based in Melbourne.",
+  title: "Eric Le – Tattoo Artist Helsinki",
+  description:
+    "Crafting unique tattoo art. Elevate your style with custom tattoo designs by Eric Le, a passionate tattoo artist based in Helsinki.",
 };
 
 export default function RootLayout({
