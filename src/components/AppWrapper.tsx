@@ -3,12 +3,13 @@
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import LoadingScreen from "./LoadingScreen";
+import { BookingProvider } from "@/lib/BookingContext";
 
 export default function AppWrapper({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <>
+    <BookingProvider>
       <AnimatePresence mode="wait">
         {isLoading && (
           <LoadingScreen onComplete={() => setIsLoading(false)} />
@@ -22,6 +23,6 @@ export default function AppWrapper({ children }: { children: React.ReactNode }) 
       >
         {children}
       </div>
-    </>
+    </BookingProvider>
   );
 }

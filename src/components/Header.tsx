@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useBooking } from "@/lib/BookingContext";
 
 function SparkleIcon() {
   return (
@@ -21,6 +22,8 @@ const navLinks = [
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const { open: openBooking } = useBooking();
 
   return (
     <>
@@ -46,9 +49,9 @@ export default function Header() {
                 </a>
               ))}
             </nav>
-            <a
-              href="https://www.instagram.com/eric.le.tattoo/"
-              className="flex items-center gap-2 px-5 py-2.5 rounded-full text-[15px] text-white hover:brightness-110 transition-all font-[family-name:var(--font-satoshi)]"
+            <button
+              onClick={openBooking}
+              className="flex items-center gap-2 px-5 py-2.5 rounded-full text-[15px] text-white hover:brightness-110 transition-all font-[family-name:var(--font-satoshi)] cursor-pointer"
               style={{
                 border: "1px solid rgba(255, 255, 255, 0.1)",
                 backdropFilter: "blur(5px)",
@@ -58,7 +61,7 @@ export default function Header() {
             >
               <SparkleIcon />
               Book Now
-            </a>
+            </button>
           </div>
 
           {/* Mobile menu button */}
@@ -128,10 +131,9 @@ export default function Header() {
               transition={{ duration: 0.3, delay: 0.25 }}
               className="px-5 pt-8"
             >
-              <a
-                href="https://www.instagram.com/eric.le.tattoo/"
-                onClick={() => setMenuOpen(false)}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-[15px] text-white font-[family-name:var(--font-satoshi)]"
+              <button
+                onClick={() => { setMenuOpen(false); openBooking(); }}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-[15px] text-white font-[family-name:var(--font-satoshi)] cursor-pointer"
                 style={{
                   border: "1px solid rgba(255, 255, 255, 0.1)",
                   background: "linear-gradient(180deg, rgb(13, 13, 13) -74%, rgba(255, 255, 255, 0.1) 183%)",
@@ -140,7 +142,7 @@ export default function Header() {
               >
                 <SparkleIcon />
                 Book Now
-              </a>
+              </button>
             </motion.div>
           </motion.div>
         )}
