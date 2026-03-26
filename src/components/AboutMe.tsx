@@ -28,7 +28,7 @@ const experience = [
   },
   {
     role: "Guest Artist",
-    company: "Amsterdam, Berlin & Paris",
+    company: "Amsterdam & Berlin",
     period: "2024-25",
   },
   { role: "Tattoo Artist", company: "Espoo Ink Studio", period: "2020-24" },
@@ -108,8 +108,8 @@ export default function AboutMe() {
               I&apos;m Eric, a passionate tattoo artist based in Helsinki. I
               specialize in crafting bold and meaningful tattoo designs that
               captivate and inspire, blending creativity with precision to bring
-              your vision to life. As a guest tattoo artist in Amsterdam, Berlin
-              and Paris, I bring bold, meaningful art to clients across Europe.
+              your vision to life. As a guest tattoo artist in Amsterdam and
+              Berlin, I bring bold, meaningful art to clients across Europe.
               Book a free tattoo consultation today.
             </p>
           </Reveal>

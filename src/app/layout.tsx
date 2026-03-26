@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     template: "%s | Eric Le Tattoo Helsinki",
   },
   description:
-    "Tattoo Helsinki – Eric Le is a professional tattoo artist in Helsinki & Espoo, Finland. Specializing in fineline tattoo, design tattoo, tattoo cover-up & custom work. Guest tattoo artist in Amsterdam, Berlin & Paris. Free tattoo consultation – book your session today.",
+    "Tattoo Helsinki – Eric Le is a professional tattoo artist in Helsinki & Espoo, Finland. Specializing in fineline tattoo, design tattoo, tattoo cover-up & custom work. Guest tattoo artist in Amsterdam & Berlin. Free tattoo consultation – book your session today.",
   keywords: [
     "tattoo Helsinki",
     "tattoo helsinki",
@@ -25,8 +25,6 @@ export const metadata: Metadata = {
     "tattoo amsterdam",
     "tattoo Berlin",
     "tattoo berlin",
-    "tattoo Paris",
-    "tattoo paris",
     "design tattoo",
     "design tattoo Helsinki",
     "tattoo consultation",
@@ -46,7 +44,6 @@ export const metadata: Metadata = {
     "tattoo booking Helsinki",
     "guest tattoo artist Amsterdam",
     "guest tattoo artist Berlin",
-    "guest tattoo artist Paris",
     "tatuointi Helsinki",
     "tatuointi Espoo",
   ],
@@ -60,7 +57,7 @@ export const metadata: Metadata = {
     title:
       "Tattoo Helsinki | Eric Le – Fineline Tattoo, Design Tattoo & Cover-up",
     description:
-      "Tattoo Helsinki & Espoo – Eric tattoo artist specializing in fineline tattoo, design tattoo, tattoo cover-up. Guest artist tattoo Amsterdam, Berlin & Paris. Free tattoo consultation. Book today.",
+      "Tattoo Helsinki & Espoo – Eric tattoo artist specializing in fineline tattoo, design tattoo, tattoo cover-up. Guest artist tattoo Amsterdam & Berlin. Free tattoo consultation. Book today.",
     images: [
       {
         url: "/opengraph-image.jpg",
@@ -75,7 +72,7 @@ export const metadata: Metadata = {
     title:
       "Tattoo Helsinki | Eric Le – Fineline Tattoo, Design Tattoo & Cover-up",
     description:
-      "Tattoo Helsinki & Espoo – Eric tattoo artist. Fineline tattoo, design tattoo, tattoo cover-up. Guest artist Amsterdam, Berlin & Paris. Free consultation.",
+      "Tattoo Helsinki & Espoo – Eric tattoo artist. Fineline tattoo, design tattoo, tattoo cover-up. Guest artist Amsterdam & Berlin. Free consultation.",
     images: ["/opengraph-image.jpg"],
   },
   robots: {
@@ -123,7 +120,7 @@ export default function RootLayout({
               logo: `${siteUrl}/images/logo-eric.png`,
               image: `${siteUrl}/opengraph-image.jpg`,
               description:
-                "Tattoo Helsinki – Eric Le is a professional tattoo artist in Helsinki & Espoo, Finland. Specializing in fineline tattoo, design tattoo, tattoo cover-up, and custom work. Guest tattoo artist in Amsterdam, Berlin & Paris. Free tattoo consultation available.",
+                "Tattoo Helsinki – Eric Le is a professional tattoo artist in Helsinki & Espoo, Finland. Specializing in fineline tattoo, design tattoo, tattoo cover-up, and custom work. Guest tattoo artist in Amsterdam & Berlin. Free tattoo consultation available.",
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Helsinki",
@@ -148,7 +145,6 @@ export default function RootLayout({
                 { "@type": "City", name: "Helsinki" },
                 { "@type": "City", name: "Espoo" },
                 { "@type": "City", name: "Amsterdam" },
-                { "@type": "City", name: "Paris" },
                 { "@type": "City", name: "Berlin" },
               ],
               hasOfferCatalog: {

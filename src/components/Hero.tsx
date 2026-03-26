@@ -182,7 +182,7 @@ export default function Hero() {
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-40"
+          className="absolute inset-0 w-full h-full object-cover"
         >
           <source src="/hero-web.mp4" type="video/mp4" />
         </video>
@@ -262,8 +262,9 @@ export default function Hero() {
                 transition={{ duration: 2.8, ease: "linear", delay: 0.7 }}
                 className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] max-w-[540px] text-center font-[family-name:var(--font-satoshi)]"
               >
-                Tattoo Helsinki — elevate your style with custom design tattoo art.
-                Fineline tattoo, cover-up &amp; more. Free tattoo consultation available.
+                Tattoo Helsinki — elevate your style with custom design tattoo
+                art. Fineline tattoo, cover-up &amp; more. Free tattoo
+                consultation available.
               </motion.p>
 
               {/* CTAs – gap 16px */}

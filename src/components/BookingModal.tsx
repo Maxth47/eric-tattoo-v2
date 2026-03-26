@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
-const locations = ["Helsinki", "Amsterdam", "Berlin", "Paris", "Other"];
+const locations = ["Helsinki", "Amsterdam", "Berlin", "Other"];
 
 export default function BookingModal({
   isOpen,
@@ -84,7 +84,16 @@ export default function BookingModal({
             {/* Two-column layout like FAQ */}
             <div className="flex flex-col md:flex-row items-start justify-center gap-[44px] w-full max-w-[1400px] mx-auto pt-40">
               {/* Left – Title + Image */}
-              <div className="flex flex-col items-start gap-6 w-full md:w-[50%] md:max-w-[680px]">
+              <motion.div
+                initial={{ opacity: 0, x: -40 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.1,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="flex flex-col items-start gap-6 w-full md:w-[50%] md:max-w-[680px]"
+              >
                 {/* Badge */}
                 <div
                   className="inline-flex items-center gap-1.5"
@@ -133,10 +142,19 @@ export default function BookingModal({
                     sizes="50vw"
                   />
                 </div>
-              </div>
+              </motion.div>
 
               {/* Right – Form */}
-              <div className="w-full md:w-[45%] md:flex-1">
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.2,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="w-full md:w-[45%] md:flex-1"
+              >
                 <form
                   className="flex flex-col gap-4"
                   onSubmit={(e) => {
@@ -145,7 +163,16 @@ export default function BookingModal({
                   }}
                 >
                   {/* Row 1 */}
-                  <div className="flex flex-col sm:flex-row gap-4">
+                  <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.5,
+                      delay: 0.3,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                    className="flex flex-col sm:flex-row gap-4"
+                  >
                     <input
                       type="text"
                       placeholder="First name"
@@ -160,10 +187,19 @@ export default function BookingModal({
                       className="flex-1 px-5 py-5 rounded-[15px] bg-[rgb(15,15,15)] text-white text-[18px] leading-[1.6em] placeholder:text-white/30 font-[family-name:var(--font-inter-display)] outline-none border-none"
                       style={{ boxShadow: "rgba(0,0,0,0.4) 5px 18px 10px 8px" }}
                     />
-                  </div>
+                  </motion.div>
 
                   {/* Row 2 */}
-                  <div className="flex flex-col sm:flex-row gap-4">
+                  <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.5,
+                      delay: 0.4,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                    className="flex flex-col sm:flex-row gap-4"
+                  >
                     <input
                       type="tel"
                       placeholder="Phone number"
@@ -213,99 +249,188 @@ export default function BookingModal({
                         />
                       </svg>
                     </div>
-                  </div>
+                  </motion.div>
 
                   {/* Email */}
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    required
-                    className="w-full px-5 py-5 rounded-[15px] bg-[rgb(15,15,15)] text-white text-[18px] leading-[1.6em] placeholder:text-white/30 font-[family-name:var(--font-inter-display)] outline-none border-none"
-                    style={{ boxShadow: "rgba(0,0,0,0.4) 5px 18px 10px 8px" }}
-                  />
-
-                  {/* Description */}
-                  <textarea
-                    placeholder="Describe your ideas..."
-                    rows={5}
-                    className="w-full px-5 py-5 rounded-[15px] bg-[rgb(15,15,15)] text-white text-[18px] leading-[1.6em] placeholder:text-white/30 font-[family-name:var(--font-inter-display)] outline-none border-none resize-none"
-                    style={{ boxShadow: "rgba(0,0,0,0.4) 5px 18px 10px 8px" }}
-                  />
-
-                  {/* Image upload */}
-                  <div
-                    onDragOver={(e) => {
-                      e.preventDefault();
-                      setDragOver(true);
+                  <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.5,
+                      delay: 0.5,
+                      ease: [0.22, 1, 0.36, 1],
                     }}
-                    onDragLeave={() => setDragOver(false)}
-                    onDrop={handleDrop}
-                    onClick={() => fileRef.current?.click()}
-                    className={`w-full min-h-[140px] rounded-[15px] bg-[rgb(15,15,15)] flex flex-col items-center justify-center gap-2 cursor-pointer transition-colors ${dragOver ? "ring-1 ring-white/20" : ""}`}
-                    style={{ boxShadow: "rgba(0,0,0,0.4) 5px 18px 10px 8px" }}
                   >
                     <input
-                      ref={fileRef}
-                      type="file"
-                      accept="image/*"
-                      multiple
-                      hidden
-                      onChange={handleFileSelect}
+                      type="email"
+                      placeholder="Email"
+                      required
+                      className="w-full px-5 py-5 rounded-[15px] bg-[rgb(15,15,15)] text-white text-[18px] leading-[1.6em] placeholder:text-white/30 font-[family-name:var(--font-inter-display)] outline-none border-none"
+                      style={{ boxShadow: "rgba(0,0,0,0.4) 5px 18px 10px 8px" }}
                     />
-                    {files.length === 0 ? (
-                      <span className="text-[18px] text-white/30 font-[family-name:var(--font-inter-display)]">
-                        Drag your images here
-                      </span>
-                    ) : (
-                      <div className="flex flex-wrap gap-2 p-4">
-                        {files.map((f, i) => (
-                          <div key={i} className="relative group">
-                            <img
-                              src={URL.createObjectURL(f)}
-                              alt=""
-                              className="w-14 h-14 object-cover rounded-lg"
-                            />
-                            <button
-                              type="button"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                removeFile(i);
-                              }}
-                              className="absolute -top-1 -right-1 w-5 h-5 bg-white/20 hover:bg-red-500 rounded-full text-white text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all"
-                            >
-                              ×
-                            </button>
-                          </div>
-                        ))}
-                        {files.length < 5 && (
-                          <div className="w-14 h-14 rounded-lg border border-dashed border-white/10 flex items-center justify-center text-white/20 text-xl">
-                            +
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
+                  </motion.div>
+
+                  {/* Description */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.5,
+                      delay: 0.6,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                  >
+                    <textarea
+                      placeholder="Describe your ideas..."
+                      rows={5}
+                      className="w-full px-5 py-5 rounded-[15px] bg-[rgb(15,15,15)] text-white text-[18px] leading-[1.6em] placeholder:text-white/30 font-[family-name:var(--font-inter-display)] outline-none border-none resize-none"
+                      style={{ boxShadow: "rgba(0,0,0,0.4) 5px 18px 10px 8px" }}
+                    />
+                  </motion.div>
+
+                  {/* Image upload */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.5,
+                      delay: 0.7,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                  >
+                    <div
+                      onDragOver={(e) => {
+                        e.preventDefault();
+                        setDragOver(true);
+                      }}
+                      onDragLeave={() => setDragOver(false)}
+                      onDrop={handleDrop}
+                      onClick={() => fileRef.current?.click()}
+                      className={`w-full min-h-[140px] rounded-[15px] bg-[rgb(15,15,15)] flex flex-col items-center justify-center gap-2 cursor-pointer transition-colors ${dragOver ? "ring-1 ring-white/20" : ""}`}
+                      style={{ boxShadow: "rgba(0,0,0,0.4) 5px 18px 10px 8px" }}
+                    >
+                      <input
+                        ref={fileRef}
+                        type="file"
+                        accept="image/*"
+                        multiple
+                        hidden
+                        onChange={handleFileSelect}
+                      />
+                      {files.length === 0 ? (
+                        <span className="text-[18px] text-white/30 font-[family-name:var(--font-inter-display)]">
+                          Drag your images here
+                        </span>
+                      ) : (
+                        <div className="flex flex-wrap gap-2 p-4">
+                          {files.map((f, i) => (
+                            <div key={i} className="relative group">
+                              <img
+                                src={URL.createObjectURL(f)}
+                                alt=""
+                                className="w-14 h-14 object-cover rounded-lg"
+                              />
+                              <button
+                                type="button"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  removeFile(i);
+                                }}
+                                className="absolute -top-1 -right-1 w-5 h-5 bg-white/20 hover:bg-red-500 rounded-full text-white text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all"
+                              >
+                                ×
+                              </button>
+                            </div>
+                          ))}
+                          {files.length < 5 && (
+                            <div className="w-14 h-14 rounded-lg border border-dashed border-white/10 flex items-center justify-center text-white/20 text-xl">
+                              +
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  </motion.div>
 
                   {/* Submit – same style as hero/section buttons */}
-                  <button type="submit" className="w-full cursor-pointer group">
-                    <div
-                      className="relative z-[2] w-full p-[1.4px] overflow-hidden transition-shadow duration-300 group-hover:shadow-[rgba(255,255,255,0.12)_0px_1px_9px_0px]"
-                      style={{ backgroundColor: "rgb(59,59,59)", borderRadius: "11.5px" }}
+                  <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.5,
+                      delay: 0.8,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                  >
+                    <button
+                      type="submit"
+                      className="w-full cursor-pointer group"
                     >
                       <div
-                        className="relative z-[4] flex items-center justify-center w-full overflow-hidden"
-                        style={{ backgroundColor: "rgb(0,0,0)", borderRadius: "10px", padding: "16px 24px" }}
+                        className="relative z-[2] w-full p-[1.4px] overflow-hidden transition-shadow duration-300 group-hover:shadow-[rgba(255,255,255,0.12)_0px_1px_9px_0px]"
+                        style={{
+                          backgroundColor: "rgb(59,59,59)",
+                          borderRadius: "11.5px",
+                        }}
                       >
-                        <div className="absolute z-[1] w-[77px] h-[41px] overflow-hidden" style={{ top: "calc(118% - 20.5px)", left: "calc(9% - 38.5px)", background: "radial-gradient(50% 50%, rgb(163,163,163) 0%, transparent 100%)", filter: "blur(10px)", borderRadius: "999px", opacity: 0.41 }} />
-                        <div className="absolute z-[1] w-[92px] h-[40px] overflow-hidden" style={{ top: "calc(0% - 20px)", left: "calc(75% - 46px)", background: "radial-gradient(50% 50%, rgb(115,115,115) 0%, transparent 100%)", filter: "blur(10px)", borderRadius: "999px" }} />
-                        <span className="relative z-[2] text-[18px] leading-[1.6em] text-white font-[family-name:var(--font-inter-display)]">Book Now</span>
+                        <div
+                          className="relative z-[4] flex items-center justify-center w-full overflow-hidden"
+                          style={{
+                            backgroundColor: "rgb(0,0,0)",
+                            borderRadius: "10px",
+                            padding: "16px 24px",
+                          }}
+                        >
+                          <div
+                            className="absolute z-[1] w-[77px] h-[41px] overflow-hidden"
+                            style={{
+                              top: "calc(118% - 20.5px)",
+                              left: "calc(9% - 38.5px)",
+                              background:
+                                "radial-gradient(50% 50%, rgb(163,163,163) 0%, transparent 100%)",
+                              filter: "blur(10px)",
+                              borderRadius: "999px",
+                              opacity: 0.41,
+                            }}
+                          />
+                          <div
+                            className="absolute z-[1] w-[92px] h-[40px] overflow-hidden"
+                            style={{
+                              top: "calc(0% - 20px)",
+                              left: "calc(75% - 46px)",
+                              background:
+                                "radial-gradient(50% 50%, rgb(115,115,115) 0%, transparent 100%)",
+                              filter: "blur(10px)",
+                              borderRadius: "999px",
+                            }}
+                          />
+                          <span className="relative z-[2] text-[18px] leading-[1.6em] text-white font-[family-name:var(--font-inter-display)]">
+                            Book Now
+                          </span>
+                        </div>
+                        <div
+                          className="absolute z-[1] w-[95px] h-[36px] overflow-hidden"
+                          style={{
+                            top: "-19px",
+                            right: "-17px",
+                            backgroundColor: "white",
+                            filter: "blur(8px)",
+                          }}
+                        />
+                        <div
+                          className="absolute z-[1] w-[54px] h-[46px] overflow-hidden"
+                          style={{
+                            bottom: "-18px",
+                            left: "-22px",
+                            backgroundColor: "rgb(230,230,230)",
+                            filter: "blur(8px)",
+                          }}
+                        />
                       </div>
-                      <div className="absolute z-[1] w-[95px] h-[36px] overflow-hidden" style={{ top: "-19px", right: "-17px", backgroundColor: "white", filter: "blur(8px)" }} />
-                      <div className="absolute z-[1] w-[54px] h-[46px] overflow-hidden" style={{ bottom: "-18px", left: "-22px", backgroundColor: "rgb(230,230,230)", filter: "blur(8px)" }} />
-                    </div>
-                  </button>
+                    </button>
+                  </motion.div>
                 </form>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         </motion.div>

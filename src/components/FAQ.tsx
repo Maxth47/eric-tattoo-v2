@@ -5,16 +5,51 @@ import { useState } from "react";
 import { Reveal, StaggerReveal, fadeUp, fadeLeft, scaleUp } from "@/lib/motion";
 
 const faqs = [
-{ question: "How do I book a tattoo session?", answer: "Simply reach out through Instagram DM or book a consultation. We'll discuss your design idea, placement, size, and schedule your session." },
-  { question: "How much does a tattoo cost?", answer: "Pricing varies based on size, detail, and placement. Small pieces start from €250, while larger custom work is quoted individually. Contact me for a detailed quote." },
-  { question: "How long does a tattoo session take?", answer: "Session length varies based on the design. Small tattoos take 1-2 hours, while larger pieces may require multiple sessions of 4-6 hours each." },
-  { question: "Do you do cover-up tattoos?", answer: "Yes! I specialize in cover-up work. We'll assess your existing tattoo and create a design that effectively covers it while looking amazing." },
-  { question: "How should I prepare for my tattoo session?", answer: "Get a good night's sleep, eat a proper meal beforehand, stay hydrated, and avoid alcohol 24 hours before your session. Wear comfortable clothing that allows easy access to the tattoo area." },
-  { question: "What is the aftercare process?", answer: "I provide detailed aftercare instructions after each session. Generally, keep the tattoo clean, moisturized, avoid sun exposure, and don't submerge it in water for 2-3 weeks." },
-  { question: "Do you require a deposit?", answer: "Yes, a non-refundable deposit is required to secure your booking. This goes toward the final cost of your tattoo and ensures commitment from both sides." },
-  { question: "Can I bring my own design?", answer: "Absolutely! I welcome reference images and your own designs. I'll work with you to refine and adapt it to work beautifully as a tattoo." },
-  { question: "Do you offer instalment payments?", answer: "Yes! We support instalment payments through Klarna, so you can split the cost of your tattoo into manageable payments. Ask about Klarna options when booking your session." },
-  { question: "Do you work as a guest artist in other cities?", answer: "Yes! I regularly travel as a guest artist to Helsinki, Amsterdam, Berlin, and Paris. Follow me on Instagram for announcements on upcoming guest spots and booking availability in each city." },
+  {
+    question: "How do I book a tattoo session?",
+    answer:
+      "Simply reach out through Instagram DM or book a consultation. We'll discuss your design idea, placement, size, and schedule your session.",
+  },
+  {
+    question: "How much does a tattoo cost?",
+    answer:
+      "Pricing varies based on size, detail, and placement. Small pieces start from €250, while larger custom work is quoted individually. Contact me for a detailed quote.",
+  },
+  {
+    question: "Do you do cover-up tattoos?",
+    answer:
+      "Yes! I specialize in cover-up work. We'll assess your existing tattoo and create a design that effectively covers it while looking amazing.",
+  },
+  {
+    question: "How should I prepare for my tattoo session?",
+    answer:
+      "Get a good night's sleep, eat a proper meal beforehand, stay hydrated, and avoid alcohol 24 hours before your session. Wear comfortable clothing that allows easy access to the tattoo area.",
+  },
+  {
+    question: "What is the aftercare process?",
+    answer:
+      "I provide detailed aftercare instructions after each session. Generally, keep the tattoo clean, moisturized, avoid sun exposure, and don't submerge it in water for 2-3 weeks.",
+  },
+  {
+    question: "Do you require a deposit?",
+    answer:
+      "Yes, a non-refundable deposit is required to secure your booking. This goes toward the final cost of your tattoo and ensures commitment from both sides.",
+  },
+  {
+    question: "Can I bring my own design?",
+    answer:
+      "Absolutely! I welcome reference images and your own designs. I'll work with you to refine and adapt it to work beautifully as a tattoo.",
+  },
+  {
+    question: "Do you offer instalment payments?",
+    answer:
+      "Yes! We support instalment payments through Klarna, so you can split the cost of your tattoo into manageable payments. Ask about Klarna options when booking your session.",
+  },
+  {
+    question: "Do you work as a guest artist in other cities?",
+    answer:
+      "Yes! I regularly travel as a guest artist to Helsinki, Amsterdam, and Berlin. Follow me on Instagram for announcements on upcoming guest spots and booking availability in each city.",
+  },
 ];
 
 const faqTags = ["Custom Tattoos", "Black & Grey", "Fine Line"];
@@ -26,10 +61,27 @@ function SectionButton({ href, children }: { href: string; children: string }) {
         className="relative z-[2] flex flex-col items-center self-stretch w-auto p-[1.4px] overflow-hidden transition-shadow duration-300 group-hover:shadow-[rgba(255,255,255,0.12)_0px_1px_9px_0px]"
         style={{ backgroundColor: "rgb(59,59,59)", borderRadius: "11.5px" }}
       >
-        <div className="relative z-[4] flex items-center justify-center w-full overflow-hidden" style={{ backgroundColor: "rgb(0,0,0)", borderRadius: "10px", padding: "8px 24px" }}>
-          <span className="relative z-[2] text-[18px] leading-[1.6em] text-white font-[family-name:var(--font-inter-display)]">{children}</span>
+        <div
+          className="relative z-[4] flex items-center justify-center w-full overflow-hidden"
+          style={{
+            backgroundColor: "rgb(0,0,0)",
+            borderRadius: "10px",
+            padding: "8px 24px",
+          }}
+        >
+          <span className="relative z-[2] text-[18px] leading-[1.6em] text-white font-[family-name:var(--font-inter-display)]">
+            {children}
+          </span>
         </div>
-        <div className="absolute z-[1] w-[95px] h-[36px] overflow-hidden" style={{ top: "-19px", right: "-17px", backgroundColor: "white", filter: "blur(8px)" }} />
+        <div
+          className="absolute z-[1] w-[95px] h-[36px] overflow-hidden"
+          style={{
+            top: "-19px",
+            right: "-17px",
+            backgroundColor: "white",
+            filter: "blur(8px)",
+          }}
+        />
       </div>
     </a>
   );
@@ -52,16 +104,25 @@ export default function FAQ() {
       className="relative flex items-center justify-center w-full overflow-visible rounded-[48px] px-[18px] py-[80px] md:px-[80px] md:py-[100px]"
     >
       {/* Border overlay */}
-      <div className="absolute inset-0 rounded-[48px] z-[3] pointer-events-none overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.1)", mask: "linear-gradient(#000 0%, rgba(0,0,0,0.16) 82.8442%)", WebkitMask: "linear-gradient(#000 0%, rgba(0,0,0,0.16) 82.8442%)" }} />
+      <div
+        className="absolute inset-0 rounded-[48px] z-[3] pointer-events-none overflow-hidden"
+        style={{
+          border: "1px solid rgba(255,255,255,0.1)",
+          mask: "linear-gradient(#000 0%, rgba(0,0,0,0.16) 82.8442%)",
+          WebkitMask: "linear-gradient(#000 0%, rgba(0,0,0,0.16) 82.8442%)",
+        }}
+      />
 
       {/* Blur overlay at bottom */}
       <div
         className="absolute z-[1] inset-0 overflow-hidden pointer-events-none"
         style={{
-          top: "-115px", bottom: "-76px",
+          top: "-115px",
+          bottom: "-76px",
           backdropFilter: "blur(8px)",
           filter: "blur(40px)",
-          background: "linear-gradient(180deg, transparent 10%, rgb(0,0,0) 20%)",
+          background:
+            "linear-gradient(180deg, transparent 10%, rgb(0,0,0) 20%)",
           mask: "linear-gradient(transparent 0%, black 5%)",
           WebkitMask: "linear-gradient(transparent 0%, black 5%)",
         }}
@@ -75,14 +136,22 @@ export default function FAQ() {
           <Reveal variants={fadeLeft}>
             <div
               className="inline-flex items-center gap-1.5"
-              style={{ backgroundColor: "#0d0d0d", borderRadius: "20px", padding: "6px 16px", boxShadow: "rgba(0,0,0,0.4) 16px 24px 20px 8px, rgba(184,180,180,0.08) 0px 2px 0px 0px inset" }}
+              style={{
+                backgroundColor: "#0d0d0d",
+                borderRadius: "20px",
+                padding: "6px 16px",
+                boxShadow:
+                  "rgba(0,0,0,0.4) 16px 24px 20px 8px, rgba(184,180,180,0.08) 0px 2px 0px 0px inset",
+              }}
             >
               <div className="w-[11px] h-[11px] flex items-center justify-center rounded-[10px] bg-white">
                 <div className="w-[8px] h-[9px] flex items-center justify-center rounded-[10px] bg-[#0d0d0d]">
                   <div className="w-[5px] h-[5px] rounded-[10px] bg-white" />
                 </div>
               </div>
-              <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white font-[family-name:var(--font-satoshi)]">FAQ&apos;S</span>
+              <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white font-[family-name:var(--font-satoshi)]">
+                FAQ&apos;S
+              </span>
             </div>
           </Reveal>
 
@@ -96,7 +165,8 @@ export default function FAQ() {
           {/* Description */}
           <Reveal variants={fadeUp} delay={0.15}>
             <p className="text-[20px] lg:text-[24px] leading-[1.4] text-[#ffffffa6] opacity-90 max-w-[640px] font-[family-name:var(--font-inter-display)]">
-              Find answers to common questions about my design process, services etc…
+              Find answers to common questions about my design process, services
+              etc…
             </p>
           </Reveal>
 
@@ -104,14 +174,27 @@ export default function FAQ() {
           <Reveal variants={scaleUp} delay={0.2} className="w-full">
             <div
               className="relative w-full overflow-hidden grayscale h-[300px] md:h-[503px]"
-              style={{ borderRadius: "17px", boxShadow: "20px 30px 20px 8px rgba(0,0,0,0.4)" }}
+              style={{
+                borderRadius: "17px",
+                boxShadow: "20px 30px 20px 8px rgba(0,0,0,0.4)",
+              }}
             >
-              <Image src="/images/faq-artist.webp" alt="Eric Le - Tattoo Artist" fill className="object-cover object-top" sizes="50vw" />
+              <Image
+                src="/images/faq-artist.webp"
+                alt="Eric Le - Tattoo Artist"
+                fill
+                className="object-cover object-top"
+                sizes="50vw"
+              />
             </div>
           </Reveal>
 
           {/* Tags */}
-          <StaggerReveal className="flex flex-wrap gap-3 justify-start" stagger={0.05} delay={0.3}>
+          <StaggerReveal
+            className="flex flex-wrap gap-3 justify-start"
+            stagger={0.05}
+            delay={0.3}
+          >
             {faqTags.map((tag) => (
               <Reveal key={tag} variants={fadeUp}>
                 <span className="py-[10px] px-[12px] rounded-lg bg-[#0d0d0d] text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] font-[family-name:var(--font-satoshi)]">
@@ -126,7 +209,9 @@ export default function FAQ() {
 
           {/* CTA */}
           <Reveal variants={fadeUp} delay={0.35}>
-            <SectionButton href="https://www.instagram.com/eric.le.tattoo/">Book a Session</SectionButton>
+            <SectionButton href="https://www.instagram.com/eric.le.tattoo/">
+              Book a Session
+            </SectionButton>
           </Reveal>
         </div>
 
