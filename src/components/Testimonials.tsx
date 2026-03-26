@@ -46,7 +46,7 @@ const reviews = [
 ];
 
 const stats = [
-  { value: "300+", label: "tattoos completed." },
+  { value: "200+", label: "tattoos completed." },
   { value: "96%", label: "Client satisfaction rate." },
   { value: "5+", label: "Years of experience" },
 ];

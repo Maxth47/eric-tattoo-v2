@@ -159,7 +159,7 @@ export default function AboutMe() {
       </div>
 
       {/* Recent Works label */}
-      <Reveal className="w-full">
+      <Reveal className="w-full max-w-[1600px]">
         <div className="flex items-center gap-2 w-full">
           <h3 className="text-[24px] md:text-[20px] lg:text-[24px] font-normal leading-[1.4] text-[#ffffffa6] font-[family-name:var(--font-inter-display)]">
             Recent Works
@@ -220,7 +220,7 @@ export default function AboutMe() {
                   }}
                 >
                   <span className="font-[family-name:var(--font-satoshi)] tracking-[-0.02em] leading-[1.5em]">
-                    View on Instagram
+                    View Casestudy
                   </span>
                   <ArrowIcon />
                 </div>

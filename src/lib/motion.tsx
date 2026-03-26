@@ -45,7 +45,7 @@ export function Reveal({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: true, margin: "-150px" }}
       variants={variants}
       transition={{ duration: 0.7, ease, delay }}
       className={className}
@@ -70,7 +70,7 @@ export function StaggerReveal({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: true, margin: "-150px" }}
       variants={{
         hidden: {},
         visible: { transition: { staggerChildren: stagger, delayChildren: delay } },

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import AppWrapper from "@/components/AppWrapper";
 
 export const metadata: Metadata = {
   title: "Eric Le – Tattoo Artist Melbourne",
@@ -19,12 +20,12 @@ export default function RootLayout({
           rel="stylesheet"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter+Display:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Inter+Display:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
       </head>
       <body className="antialiased">
-        {children}
+        <AppWrapper>{children}</AppWrapper>
       </body>
     </html>
   );

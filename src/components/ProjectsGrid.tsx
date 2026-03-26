@@ -33,7 +33,7 @@ function ProjectCard({ src, href = "https://www.instagram.com/eric.le.tattoo/" }
             boxShadow: "rgba(92,92,92,0.3) 0px 0px 20px 4px",
           }}
         >
-          <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white font-[family-name:var(--font-satoshi)]">View on Instagram</span>
+          <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white font-[family-name:var(--font-satoshi)]">View Casestudy</span>
           <ArrowIcon />
         </div>
       </a>
