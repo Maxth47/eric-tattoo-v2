@@ -14,9 +14,18 @@ const clientLogos = [
 
 function MouseIcon() {
   return (
-    <svg width="25" height="38" viewBox="0 0 256 256" fill="white" className="flex-shrink-0">
+    <svg
+      width="25"
+      height="38"
+      viewBox="0 0 256 256"
+      fill="white"
+      className="flex-shrink-0"
+    >
       <g>
-        <path d="M200,80v96a56,56,0,0,1-56,56H112a56,56,0,0,1-56-56V80a56,56,0,0,1,56-56h32A56,56,0,0,1,200,80Z" opacity="0.2" />
+        <path
+          d="M200,80v96a56,56,0,0,1-56,56H112a56,56,0,0,1-56-56V80a56,56,0,0,1,56-56h32A56,56,0,0,1,200,80Z"
+          opacity="0.2"
+        />
         <path d="M144,16H112A64.07,64.07,0,0,0,48,80v96a64.07,64.07,0,0,0,64,64h32a64.07,64.07,0,0,0,64-64V80A64.07,64.07,0,0,0,144,16Zm48,160a48.05,48.05,0,0,1-48,48H112a48.05,48.05,0,0,1-48-48V80a48.05,48.05,0,0,1,48-48h32a48.05,48.05,0,0,1,48,48ZM136,64v48a8,8,0,0,1-16,0V64a8,8,0,0,1,16,0Z" />
       </g>
     </svg>
@@ -34,25 +43,97 @@ function HeroButton({ href, children }: { href: string; children: string }) {
         {/* Inner – black fill */}
         <div
           className="relative z-[4] flex items-center justify-center w-full overflow-hidden"
-          style={{ backgroundColor: "rgb(0,0,0)", borderRadius: "10px", padding: "8px 24px" }}
+          style={{
+            backgroundColor: "rgb(0,0,0)",
+            borderRadius: "10px",
+            padding: "8px 24px",
+          }}
         >
           {/* Inner glow bottom-left */}
-          <div className="absolute z-[1] w-[77px] h-[41px] overflow-hidden" style={{ top: "calc(118% - 20.5px)", left: "calc(9% - 38.5px)", background: "radial-gradient(50% 50%, rgb(163,163,163) 0%, transparent 100%)", filter: "blur(10px)", borderRadius: "999px", opacity: 0.41 }} />
+          <div
+            className="absolute z-[1] w-[77px] h-[41px] overflow-hidden"
+            style={{
+              top: "calc(118% - 20.5px)",
+              left: "calc(9% - 38.5px)",
+              background:
+                "radial-gradient(50% 50%, rgb(163,163,163) 0%, transparent 100%)",
+              filter: "blur(10px)",
+              borderRadius: "999px",
+              opacity: 0.41,
+            }}
+          />
           {/* Inner glow top-right */}
-          <div className="absolute z-[1] w-[92px] h-[40px] overflow-hidden" style={{ top: "calc(0% - 20px)", left: "calc(75% - 46px)", background: "radial-gradient(50% 50%, rgb(115,115,115) 0%, transparent 100%)", filter: "blur(10px)", borderRadius: "999px" }} />
-          <span className="relative z-[2] text-[18px] leading-[1.6em] text-white font-[family-name:var(--font-inter-display)]">{children}</span>
+          <div
+            className="absolute z-[1] w-[92px] h-[40px] overflow-hidden"
+            style={{
+              top: "calc(0% - 20px)",
+              left: "calc(75% - 46px)",
+              background:
+                "radial-gradient(50% 50%, rgb(115,115,115) 0%, transparent 100%)",
+              filter: "blur(10px)",
+              borderRadius: "999px",
+            }}
+          />
+          <span className="relative z-[2] text-[18px] leading-[1.6em] text-white font-[family-name:var(--font-inter-display)]">
+            {children}
+          </span>
         </div>
         {/* White Top glow */}
-        <div className="absolute z-[1] w-[95px] h-[36px] overflow-hidden" style={{ top: "-19px", right: "-17px", backgroundColor: "white", filter: "blur(8px)" }} />
+        <div
+          className="absolute z-[1] w-[95px] h-[36px] overflow-hidden"
+          style={{
+            top: "-19px",
+            right: "-17px",
+            backgroundColor: "white",
+            filter: "blur(8px)",
+          }}
+        />
         {/* Bottom white glow left */}
-        <div className="absolute z-[1] w-[54px] h-[46px] overflow-hidden" style={{ bottom: "-18px", left: "-22px", backgroundColor: "rgb(230,230,230)", filter: "blur(8px)" }} />
+        <div
+          className="absolute z-[1] w-[54px] h-[46px] overflow-hidden"
+          style={{
+            bottom: "-18px",
+            left: "-22px",
+            backgroundColor: "rgb(230,230,230)",
+            filter: "blur(8px)",
+          }}
+        />
         {/* Bottom white glow right */}
-        <div className="absolute z-[1] w-[40px] h-[34px] overflow-hidden" style={{ bottom: "-17px", left: "-22px", backgroundColor: "white", filter: "blur(8px)" }} />
+        <div
+          className="absolute z-[1] w-[40px] h-[34px] overflow-hidden"
+          style={{
+            bottom: "-17px",
+            left: "-22px",
+            backgroundColor: "white",
+            filter: "blur(8px)",
+          }}
+        />
       </div>
       {/* External glow left */}
-      <div className="absolute z-[1] w-[58px] h-[30px] overflow-hidden" style={{ top: "calc(84% - 15px)", left: "-11px", background: "radial-gradient(50% 50%, rgb(171,171,171) 0%, transparent 100%)", filter: "blur(10px)", borderRadius: "999px" }} />
+      <div
+        className="absolute z-[1] w-[58px] h-[30px] overflow-hidden"
+        style={{
+          top: "calc(84% - 15px)",
+          left: "-11px",
+          background:
+            "radial-gradient(50% 50%, rgb(171,171,171) 0%, transparent 100%)",
+          filter: "blur(10px)",
+          borderRadius: "999px",
+        }}
+      />
       {/* External glow right */}
-      <div className="absolute z-[1] w-[74px] h-[41px] overflow-hidden" style={{ top: "-7px", right: "-12px", background: "radial-gradient(50% 50% at 50% 50%, rgb(255,255,255) 0%, transparent 100%)", filter: "blur(10px)", borderRadius: "21px", opacity: 0.62 }} />
+      <div
+        className="absolute z-[1] w-[74px] h-[41px] overflow-hidden"
+        style={{
+          top: "-7px",
+          right: "-12px",
+          background:
+            "radial-gradient(50% 50% at 50% 50%, rgb(255,255,255) 0%, transparent 100%)",
+          filter: "blur(10px)",
+          borderRadius: "21px",
+          opacity: 0.62,
+        }}
+      />
     </a>
   );
 }
@@ -61,8 +142,12 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex flex-col items-center gap-6 w-full overflow-hidden"
-      style={{ padding: "160px 40px 60px" }}
+      className="relative flex flex-col items-center justify-center gap-6 w-full overflow-hidden"
+      style={{
+        padding: "160px 40px 260px",
+        minHeight: "100vh",
+        marginBottom: "-200px",
+      }}
     >
       {/* BG animation layer */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -75,14 +160,20 @@ export default function Hero() {
         {/* Overlay gradient – transparent top to black bottom */}
         <div
           className="absolute inset-0 z-[1] w-full h-full"
-          style={{ background: "linear-gradient(180deg, rgba(4,4,4,0) 55%, rgb(0,0,0) 100%)" }}
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(4,4,4,0) 55%, rgb(0,0,0) 100%)",
+          }}
         />
       </div>
 
       {/* Header+Main wrapper */}
-      <div className="relative z-[1] flex flex-col items-center w-full">
+      <div className="relative z-[1] flex flex-col items-center w-full pb-10">
         {/* Main – max-width 840px */}
-        <main className="flex flex-col items-center gap-[80px] w-full max-w-[840px]" style={{ padding: "40px 0" }}>
+        <main
+          className="flex flex-col items-center gap-[80px] w-full max-w-[840px]"
+          style={{ padding: "40px 0" }}
+        >
           {/* Top – badge/heading/subtitle/buttons + scroll indicator */}
           <div className="flex flex-col items-center gap-[60px] w-full">
             {/* H1+Body – gap 24px */}
@@ -96,15 +187,31 @@ export default function Hero() {
               >
                 <div
                   className="relative z-[2] inline-flex items-center gap-[10px] overflow-hidden"
-                  style={{ backdropFilter: "blur(68px)", backgroundColor: "rgba(10,10,10,0.4)", borderRadius: "26px", padding: "10px 16px" }}
+                  style={{
+                    backdropFilter: "blur(68px)",
+                    backgroundColor: "rgba(10,10,10,0.4)",
+                    borderRadius: "26px",
+                    padding: "10px 16px",
+                  }}
                 >
                   <div className="relative w-[7px] h-[7px] flex-shrink-0">
-                    <div className="w-[5px] h-[5px] rounded-full bg-white" style={{ boxShadow: "rgb(189,189,189) 0px 0px 14px 1px" }} />
+                    <div
+                      className="w-[5px] h-[5px] rounded-full bg-white"
+                      style={{ boxShadow: "rgb(189,189,189) 0px 0px 14px 1px" }}
+                    />
                   </div>
-                  <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white font-[family-name:var(--font-satoshi)]">Crafting Unique Tattoo Art</span>
+                  <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white font-[family-name:var(--font-satoshi)]">
+                    Crafting Unique Tattoo Art
+                  </span>
                 </div>
                 {/* Gradient sweep */}
-                <div className="absolute z-[1] inset-[-1px] overflow-hidden rounded-[26px]" style={{ background: "linear-gradient(105deg, rgb(255,255,255) -19%, rgba(0,0,0,0) 20%)" }} />
+                <div
+                  className="absolute z-[1] inset-[-1px] overflow-hidden rounded-[26px]"
+                  style={{
+                    background:
+                      "linear-gradient(105deg, rgb(255,255,255) -19%, rgba(0,0,0,0) 20%)",
+                  }}
+                />
               </motion.div>
 
               {/* Heading */}
@@ -126,7 +233,8 @@ export default function Hero() {
                 transition={{ duration: 2.8, ease: "linear", delay: 0.7 }}
                 className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] max-w-[540px] text-center font-[family-name:var(--font-satoshi)]"
               >
-                Elevate your style with custom tattoo designs. Express your story through bold artwork and creative design solutions.
+                Elevate your style with custom tattoo designs. Express your
+                story through bold artwork and creative design solutions.
               </motion.p>
 
               {/* CTAs – gap 16px */}
@@ -136,7 +244,9 @@ export default function Hero() {
                 transition={{ duration: 0.95, ease: "linear", delay: 1.0 }}
                 className="flex flex-wrap items-center justify-center gap-4"
               >
-                <HeroButton href="https://www.instagram.com/eric.le.tattoo/">Book Now</HeroButton>
+                <HeroButton href="https://www.instagram.com/eric.le.tattoo/">
+                  Book Now
+                </HeroButton>
                 <HeroButton href="#projects">See Portfolio</HeroButton>
               </motion.div>
             </div>
@@ -148,40 +258,54 @@ export default function Hero() {
               transition={{ duration: 1, delay: 1.2 }}
               className="flex items-center gap-4 w-full max-w-[640px] h-[38px]"
             >
-              <span className="flex-shrink-0 text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] font-[family-name:var(--font-satoshi)]">Scroll down</span>
+              <span className="flex-shrink-0 text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] font-[family-name:var(--font-satoshi)]">
+                Scroll down
+              </span>
               <div className="flex-1 h-[1px] bg-white/10" />
               <MouseIcon />
               <div className="flex-1 h-[1px] bg-white/10" />
-              <span className="flex-shrink-0 text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] font-[family-name:var(--font-satoshi)]">to see projects</span>
+              <span className="flex-shrink-0 text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] font-[family-name:var(--font-satoshi)]">
+                to see projects
+              </span>
             </motion.div>
           </div>
         </main>
       </div>
 
-      {/* Client logos – height 55px, matching reference carousel */}
+      {/* Client logos – height 55px */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.4 }}
-        className="relative z-[1] w-full h-[55px] flex items-center overflow-hidden"
+        className="relative z-[1] w-full overflow-hidden p-2.5"
         style={{
-          padding: "10px",
-          maskImage: "linear-gradient(to right, rgba(0,0,0,0) 0%, rgb(0,0,0) 12.5%, rgb(0,0,0) 87.5%, rgba(0,0,0,0) 100%)",
+          maskImage:
+            "linear-gradient(to right, transparent 0%, black 12.5%, black 87.5%, transparent 100%)",
         }}
       >
-        <ul className="flex items-center h-full gap-[100px] m-0 p-0 list-none animate-marquee-slow">
-          {[...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos].map((logo, i) => (
-            <li key={i} aria-hidden={i >= clientLogos.length * 2} className="flex-shrink-0">
-              <div className="relative overflow-hidden" style={{ width: logo.w, height: logo.h, opacity: 0.65, filter: "brightness(0.8)" }}>
-                <img
-                  src={logo.src}
-                  alt={logo.alt}
-                  style={{ display: "block", width: "100%", height: "100%", objectFit: "contain", filter: "invert(1)" }}
-                />
-              </div>
-            </li>
+        <div className="flex animate-marquee-slow whitespace-nowrap gap-[100px] items-center h-[35px]">
+          {[
+            ...clientLogos,
+            ...clientLogos,
+            ...clientLogos,
+            ...clientLogos,
+            ...clientLogos,
+            ...clientLogos,
+          ].map((logo, i) => (
+            <div
+              key={i}
+              className="flex-shrink-0 flex items-center"
+              style={{ opacity: 0.65 }}
+            >
+              <img
+                src={logo.src}
+                alt={logo.alt}
+                className="h-[27px] w-auto"
+                style={{ filter: "brightness(0) invert(1)" }}
+              />
+            </div>
           ))}
-        </ul>
+        </div>
       </motion.div>
     </section>
   );

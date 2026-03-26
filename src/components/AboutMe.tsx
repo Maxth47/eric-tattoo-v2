@@ -2,7 +2,13 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-import { Reveal, StaggerReveal, fadeUp, fadeLeft, fadeRight } from "@/lib/motion";
+import {
+  Reveal,
+  StaggerReveal,
+  fadeUp,
+  fadeLeft,
+  fadeRight,
+} from "@/lib/motion";
 
 const skills = [
   "Custom Tattoos",
@@ -50,7 +56,10 @@ export default function AboutMe() {
   };
 
   return (
-    <section id="about-me" className="relative flex flex-col items-center gap-[44px] w-full py-[100px] px-[80px] max-md:px-[18px] max-md:py-[80px] overflow-hidden rounded-[48px]">
+    <section
+      id="about-me"
+      className="relative flex flex-col items-center gap-[44px] w-full py-[100px] px-[80px] max-md:px-[18px] max-md:py-[80px] overflow-hidden rounded-[48px]"
+    >
       {/* Border overlay – fades toward bottom */}
       <div
         className="absolute inset-0 rounded-[48px] z-[3] pointer-events-none overflow-hidden"
@@ -73,7 +82,10 @@ export default function AboutMe() {
 
           <Reveal variants={fadeUp} delay={0.1}>
             <p className="text-white opacity-70 text-[18px] leading-[1.6em] max-w-[640px] font-[family-name:var(--font-inter-display)]">
-              I&apos;m Eric, a passionate tattoo artist based in Melbourne. I specialize in crafting bold and meaningful tattoo designs that captivate and inspire, blending creativity with precision to bring your vision to life.
+              I&apos;m Eric, a passionate tattoo artist based in Melbourne. I
+              specialize in crafting bold and meaningful tattoo designs that
+              captivate and inspire, blending creativity with precision to bring
+              your vision to life.
             </p>
           </Reveal>
 
@@ -81,7 +93,11 @@ export default function AboutMe() {
           <div className="w-full h-[1px] bg-white/10" />
 
           {/* Skills – gap 16px */}
-          <StaggerReveal className="flex flex-wrap gap-4" stagger={0.05} delay={0.2}>
+          <StaggerReveal
+            className="flex flex-wrap gap-4"
+            stagger={0.05}
+            delay={0.2}
+          >
             {skills.map((skill) => (
               <Reveal key={skill} variants={fadeUp}>
                 <span className="py-[10px] px-[12px] rounded-lg bg-[#0d0d0d] text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] font-[family-name:var(--font-satoshi)]">
@@ -95,16 +111,26 @@ export default function AboutMe() {
           <div className="w-full h-[1px] bg-white/10" />
 
           {/* Experience – gap 20px */}
-          <StaggerReveal className="flex flex-col gap-5" stagger={0.1} delay={0.3}>
+          <StaggerReveal
+            className="flex flex-col gap-5"
+            stagger={0.1}
+            delay={0.3}
+          >
             {experience.map((exp) => (
               <Reveal key={exp.role + exp.company} variants={fadeUp}>
                 <div
                   className="flex flex-wrap items-center gap-12 p-4 rounded-[10px] bg-black w-full"
                   style={{ boxShadow: "rgba(0, 0, 0, 0.4) 16px 24px 20px 8px" }}
                 >
-                  <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] italic font-[family-name:var(--font-satoshi)] flex-1 text-left">{exp.role}</span>
-                  <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] font-[family-name:var(--font-satoshi)] flex-1 text-left">{exp.company}</span>
-                  <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] font-[family-name:var(--font-satoshi)] flex-1 text-right">{exp.period}</span>
+                  <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] italic font-[family-name:var(--font-satoshi)] flex-1 text-left">
+                    {exp.role}
+                  </span>
+                  <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] font-[family-name:var(--font-satoshi)] flex-1 text-left">
+                    {exp.company}
+                  </span>
+                  <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] font-[family-name:var(--font-satoshi)] flex-1 text-right">
+                    {exp.period}
+                  </span>
                 </div>
               </Reveal>
             ))}
@@ -112,8 +138,15 @@ export default function AboutMe() {
         </div>
 
         {/* Right image – aspect-ratio 1.067, border-radius 4px */}
-        <Reveal variants={fadeRight} delay={0.2} className="flex-1 min-w-[460px] max-md:min-w-[240px] max-md:w-full">
-          <div className="relative rounded-[4px] overflow-hidden w-full" style={{ aspectRatio: "1.067" }}>
+        <Reveal
+          variants={fadeRight}
+          delay={0.2}
+          className="flex-1 min-w-[460px] max-md:min-w-[240px] max-md:w-full"
+        >
+          <div
+            className="relative rounded-[4px] overflow-hidden w-full"
+            style={{ aspectRatio: "1.067" }}
+          >
             <Image
               src="/images/project-4.jpg"
               alt="profile pic"
@@ -126,11 +159,22 @@ export default function AboutMe() {
       </div>
 
       {/* Recent Works label */}
-      <Reveal>
-        <div className="flex items-center gap-2 w-full max-w-[1600px]">
-          <h3 className="text-[24px] md:text-[20px] lg:text-[24px] font-normal leading-[1.4] text-[#ffffffa6] font-[family-name:var(--font-inter-display)]">Recent Works</h3>
-          <svg width="24" height="24" viewBox="0 0 256 256" fill="currentColor" className="text-white">
-            <path d="M224,128a96,96,0,1,1-96-96A96,96,0,0,1,224,128Z" opacity="0.2" />
+      <Reveal className="w-full">
+        <div className="flex items-center gap-2 w-full">
+          <h3 className="text-[24px] md:text-[20px] lg:text-[24px] font-normal leading-[1.4] text-[#ffffffa6] font-[family-name:var(--font-inter-display)]">
+            Recent Works
+          </h3>
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 256 256"
+            fill="currentColor"
+            className="text-white"
+          >
+            <path
+              d="M224,128a96,96,0,1,1-96-96A96,96,0,0,1,224,128Z"
+              opacity="0.2"
+            />
             <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm37.66-85.66a8,8,0,0,1,0,11.32l-32,32a8,8,0,0,1-11.32,0l-32-32a8,8,0,0,1,11.32-11.32L120,148.69V88a8,8,0,0,1,16,0v60.69l18.34-18.35A8,8,0,0,1,165.66,130.34Z" />
           </svg>
         </div>
@@ -154,9 +198,18 @@ export default function AboutMe() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative flex-shrink-0 h-full rounded-[4px] overflow-hidden"
-                style={{ scrollSnapAlign: "center", width: "calc(25% - 7.5px)" }}
+                style={{
+                  scrollSnapAlign: "center",
+                  width: "calc(25% - 7.5px)",
+                }}
               >
-                <Image src={work.src} alt={work.alt} fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" sizes="25vw" />
+                <Image
+                  src={work.src}
+                  alt={work.alt}
+                  fill
+                  className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                  sizes="25vw"
+                />
                 <div
                   className="absolute bottom-4 left-4 right-4 flex items-center justify-center gap-2 py-3 rounded-full text-[15px] text-white"
                   style={{
@@ -166,7 +219,9 @@ export default function AboutMe() {
                     boxShadow: "rgba(92, 92, 92, 0.3) 0px 0px 20px 4px",
                   }}
                 >
-                  <span className="font-[family-name:var(--font-satoshi)] tracking-[-0.02em] leading-[1.5em]">View on Instagram</span>
+                  <span className="font-[family-name:var(--font-satoshi)] tracking-[-0.02em] leading-[1.5em]">
+                    View on Instagram
+                  </span>
                   <ArrowIcon />
                 </div>
               </a>
@@ -179,7 +234,14 @@ export default function AboutMe() {
             className="absolute left-5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/20 flex items-center justify-center text-white opacity-0 hover:opacity-100 transition-opacity"
             aria-label="Previous"
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
               <polyline points="15 18 9 12 15 6" />
             </svg>
           </button>
@@ -188,7 +250,14 @@ export default function AboutMe() {
             className="absolute right-5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/20 flex items-center justify-center text-white transition-opacity"
             aria-label="Next"
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
               <polyline points="9 18 15 12 9 6" />
             </svg>
           </button>
