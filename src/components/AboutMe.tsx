@@ -108,9 +108,11 @@ export default function AboutMe() {
               I&apos;m Eric, a passionate tattoo artist based in Helsinki. I
               specialize in crafting bold and meaningful tattoo designs that
               captivate and inspire, blending creativity with precision to bring
-              your vision to life. As a guest tattoo artist in Amsterdam and
-              Berlin, I bring bold, meaningful art to clients across Europe.
-              Book a free tattoo consultation today.
+              your vision to life.
+              <br />
+              <br /> As a guest tattoo artist in Amsterdam and Berlin, I bring
+              bold, meaningful art to clients across Europe. Book a free tattoo
+              consultation today.
             </p>
           </Reveal>
 

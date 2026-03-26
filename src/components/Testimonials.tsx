@@ -44,6 +44,14 @@ const reviews = [
       "\"I came to Eric with a tattoo I'd regretted for years, and he transformed it into something I'm genuinely proud of. His cover-up skills are exceptional — you'd never know there was anything underneath.\"",
     rating: "5.0",
   },
+  {
+    avatar: "/images/review-avatar-5.png",
+    name: "Marcus Holm",
+    role: "Full Sleeve Client",
+    quote:
+      '"Eric is a true artist. His fineline work is incredibly precise and the geometric elements he incorporated into my sleeve are flawless. Worth every minute of the sessions."',
+    rating: "5.0",
+  },
 ];
 
 const stats = [
