@@ -119,7 +119,7 @@ export default function BookingModal({
 
                 {/* Image – height matches form */}
                 <div
-                  className="relative w-full overflow-hidden grayscale h-[250px] md:h-[320px]"
+                  className="relative w-full overflow-hidden grayscale h-[300px] md:h-[400px]"
                   style={{
                     borderRadius: "17px",
                     boxShadow: "20px 30px 20px 8px rgba(0,0,0,0.4)",
@@ -286,12 +286,23 @@ export default function BookingModal({
                     )}
                   </div>
 
-                  {/* Submit */}
-                  <button
-                    type="submit"
-                    className="w-full py-5 rounded-[15px] border border-white/20 bg-transparent text-white text-[18px] font-medium font-[family-name:var(--font-inter-display)] hover:bg-white hover:text-black transition-all duration-300 cursor-pointer"
-                  >
-                    Send
+                  {/* Submit – same style as hero/section buttons */}
+                  <button type="submit" className="w-full cursor-pointer group">
+                    <div
+                      className="relative z-[2] w-full p-[1.4px] overflow-hidden transition-shadow duration-300 group-hover:shadow-[rgba(255,255,255,0.12)_0px_1px_9px_0px]"
+                      style={{ backgroundColor: "rgb(59,59,59)", borderRadius: "11.5px" }}
+                    >
+                      <div
+                        className="relative z-[4] flex items-center justify-center w-full overflow-hidden"
+                        style={{ backgroundColor: "rgb(0,0,0)", borderRadius: "10px", padding: "16px 24px" }}
+                      >
+                        <div className="absolute z-[1] w-[77px] h-[41px] overflow-hidden" style={{ top: "calc(118% - 20.5px)", left: "calc(9% - 38.5px)", background: "radial-gradient(50% 50%, rgb(163,163,163) 0%, transparent 100%)", filter: "blur(10px)", borderRadius: "999px", opacity: 0.41 }} />
+                        <div className="absolute z-[1] w-[92px] h-[40px] overflow-hidden" style={{ top: "calc(0% - 20px)", left: "calc(75% - 46px)", background: "radial-gradient(50% 50%, rgb(115,115,115) 0%, transparent 100%)", filter: "blur(10px)", borderRadius: "999px" }} />
+                        <span className="relative z-[2] text-[18px] leading-[1.6em] text-white font-[family-name:var(--font-inter-display)]">Book Now</span>
+                      </div>
+                      <div className="absolute z-[1] w-[95px] h-[36px] overflow-hidden" style={{ top: "-19px", right: "-17px", backgroundColor: "white", filter: "blur(8px)" }} />
+                      <div className="absolute z-[1] w-[54px] h-[46px] overflow-hidden" style={{ bottom: "-18px", left: "-22px", backgroundColor: "rgb(230,230,230)", filter: "blur(8px)" }} />
+                    </div>
                   </button>
                 </form>
               </div>
