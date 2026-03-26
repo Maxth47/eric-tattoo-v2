@@ -5,15 +5,15 @@ import { useState } from "react";
 import { Reveal, StaggerReveal, fadeUp, fadeLeft, scaleUp } from "@/lib/motion";
 
 const faqs = [
-  { question: "What tattoo styles do you specialize in?", answer: "I specialize in black & grey, fine line, realism, geometric, and custom designs. Each piece is tailored to your vision and style." },
-  { question: "How do I book a tattoo session?", answer: "Simply reach out through Instagram DM or book a consultation. We'll discuss your design idea, placement, size, and schedule your session." },
-  { question: "How much does a tattoo cost?", answer: "Pricing varies based on size, detail, and placement. Small pieces start from $150, while larger custom work is quoted individually. Contact me for a detailed quote." },
+{ question: "How do I book a tattoo session?", answer: "Simply reach out through Instagram DM or book a consultation. We'll discuss your design idea, placement, size, and schedule your session." },
+  { question: "How much does a tattoo cost?", answer: "Pricing varies based on size, detail, and placement. Small pieces start from €250, while larger custom work is quoted individually. Contact me for a detailed quote." },
   { question: "How long does a tattoo session take?", answer: "Session length varies based on the design. Small tattoos take 1-2 hours, while larger pieces may require multiple sessions of 4-6 hours each." },
   { question: "Do you do cover-up tattoos?", answer: "Yes! I specialize in cover-up work. We'll assess your existing tattoo and create a design that effectively covers it while looking amazing." },
   { question: "How should I prepare for my tattoo session?", answer: "Get a good night's sleep, eat a proper meal beforehand, stay hydrated, and avoid alcohol 24 hours before your session. Wear comfortable clothing that allows easy access to the tattoo area." },
   { question: "What is the aftercare process?", answer: "I provide detailed aftercare instructions after each session. Generally, keep the tattoo clean, moisturized, avoid sun exposure, and don't submerge it in water for 2-3 weeks." },
   { question: "Do you require a deposit?", answer: "Yes, a non-refundable deposit is required to secure your booking. This goes toward the final cost of your tattoo and ensures commitment from both sides." },
   { question: "Can I bring my own design?", answer: "Absolutely! I welcome reference images and your own designs. I'll work with you to refine and adapt it to work beautifully as a tattoo." },
+  { question: "Do you offer instalment payments?", answer: "Yes! We support instalment payments through Klarna, so you can split the cost of your tattoo into manageable payments. Ask about Klarna options when booking your session." },
 ];
 
 const faqTags = ["Custom Tattoos", "Black & Grey", "Fine Line"];

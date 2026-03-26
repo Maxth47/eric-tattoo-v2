@@ -195,7 +195,7 @@ export default function Testimonials() {
               style={{ borderRadius: "8px" }}
             >
               <Image
-                src="/images/client-pic.png"
+                src="/images/client-pic.webp"
                 alt="client pic"
                 fill
                 className="object-cover"

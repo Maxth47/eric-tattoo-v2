@@ -51,16 +51,17 @@ export default function Footer() {
         <div className="flex flex-col items-center gap-8 w-full max-w-[840px] text-center">
           {/* Badge – same style as hero */}
           <Reveal>
-            <div className="relative inline-flex items-center gap-[10px] rounded-[40px] bg-black overflow-visible">
+            <div className="relative inline-flex items-center gap-[10px] rounded-[40px] bg-black">
               <div
                 className="relative z-[2] inline-flex items-center gap-[10px] overflow-hidden"
                 style={{ backdropFilter: "blur(68px)", backgroundColor: "rgba(10,10,10,0.4)", borderRadius: "26px", padding: "10px 16px" }}
               >
                 <div className="relative w-[7px] h-[7px] flex-shrink-0">
-                  <div className="w-[5px] h-[5px] rounded-full bg-green-400" style={{ boxShadow: "rgb(74,222,128) 0px 0px 14px 1px" }} />
+                  <div className="w-[5px] h-[5px] rounded-full bg-white" style={{ borderRadius: "84px", boxShadow: "rgb(189,189,189) 0px 0px 14px 1px" }} />
                 </div>
-                <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white font-[family-name:var(--font-satoshi)]">Available For Work</span>
+                <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white whitespace-pre font-[family-name:var(--font-satoshi)]">Available For Work</span>
               </div>
+              {/* Gradient sweep */}
               <div className="absolute z-[1] inset-[-1px] overflow-hidden rounded-[26px]" style={{ background: "linear-gradient(105deg, rgb(255,255,255) -19%, rgba(0,0,0,0) 20%)" }} />
             </div>
           </Reveal>

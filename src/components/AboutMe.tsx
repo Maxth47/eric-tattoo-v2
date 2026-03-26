@@ -148,7 +148,7 @@ export default function AboutMe() {
             style={{ aspectRatio: "0.667" }}
           >
             <Image
-              src="/images/artist-3.webp"
+              src="/images/artist-4.webp"
               alt="Eric Le - Tattoo Artist"
               fill
               className="object-cover grayscale"

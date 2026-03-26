@@ -302,7 +302,7 @@ export default function Services() {
               }}
             >
               <Image
-                src="/images/services-pic.jpg"
+                src="/images/services-pic.webp"
                 alt="design pic"
                 fill
                 className="object-cover"
