@@ -106,7 +106,7 @@ export default function FAQ() {
               className="relative w-full overflow-hidden grayscale"
               style={{ height: "503px", borderRadius: "17px", boxShadow: "20px 30px 20px 8px rgba(0,0,0,0.4)" }}
             >
-              <Image src="/images/faq-pic.jpg" alt="design pic" fill className="object-cover" sizes="50vw" />
+              <Image src="/images/faq-artist.webp" alt="Eric Le - Tattoo Artist" fill className="object-cover object-top" sizes="50vw" />
             </div>
           </Reveal>
 

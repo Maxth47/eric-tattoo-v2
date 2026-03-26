@@ -145,11 +145,11 @@ export default function AboutMe() {
         >
           <div
             className="relative rounded-[4px] overflow-hidden w-full"
-            style={{ aspectRatio: "1.067" }}
+            style={{ aspectRatio: "0.667" }}
           >
             <Image
-              src="/images/project-4.jpg"
-              alt="profile pic"
+              src="/images/artist-3.webp"
+              alt="Eric Le - Tattoo Artist"
               fill
               className="object-cover grayscale"
               sizes="50vw"

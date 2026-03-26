@@ -149,20 +149,23 @@ export default function Hero() {
         marginBottom: "-200px",
       }}
     >
-      {/* BG animation layer */}
+      {/* BG video layer */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute inset-0 bg-black">
-          <div className="absolute top-[10%] left-[20%] w-[500px] h-[500px] rounded-full bg-white/[0.04] blur-[100px]" />
-          <div className="absolute top-[20%] right-[15%] w-[600px] h-[600px] rounded-full bg-white/[0.06] blur-[120px]" />
-          <div className="absolute bottom-[10%] left-[30%] w-[400px] h-[400px] rounded-full bg-white/[0.03] blur-[80px]" />
-          <div className="absolute bottom-[20%] right-[25%] w-[300px] h-[300px] rounded-full bg-white/[0.05] blur-[90px]" />
-        </div>
-        {/* Overlay gradient – transparent top to black bottom */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-40"
+        >
+          <source src="/hero-web.mp4" type="video/mp4" />
+        </video>
+        {/* Overlay gradient – darken top and bottom */}
         <div
           className="absolute inset-0 z-[1] w-full h-full"
           style={{
             background:
-              "linear-gradient(180deg, rgba(4,4,4,0) 55%, rgb(0,0,0) 100%)",
+              "linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.3) 60%, rgb(0,0,0) 100%)",
           }}
         />
       </div>

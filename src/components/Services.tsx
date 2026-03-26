@@ -372,13 +372,7 @@ export default function Services() {
               }}
             >
               <div className="flex items-center gap-6 animate-marquee whitespace-nowrap h-full p-2.5">
-                {[
-                  ...marqueeRow1,
-                  ...marqueeRow1,
-                  ...marqueeRow1,
-                  ...marqueeRow1,
-                  ...marqueeRow1,
-                ].map((item, i) => (
+                {[...marqueeRow1, ...marqueeRow1].map((item, i) => (
                   <div
                     key={i}
                     className="flex-shrink-0 flex items-center gap-[10px] bg-[#0d0d0d] rounded-[78px] text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] font-[family-name:var(--font-satoshi)]"
@@ -401,13 +395,7 @@ export default function Services() {
               }}
             >
               <div className="flex items-center gap-6 animate-marquee-reverse whitespace-nowrap h-full p-2.5">
-                {[
-                  ...marqueeRow2,
-                  ...marqueeRow2,
-                  ...marqueeRow2,
-                  ...marqueeRow2,
-                  ...marqueeRow2,
-                ].map((item, i) => (
+                {[...marqueeRow2, ...marqueeRow2].map((item, i) => (
                   <div
                     key={i}
                     className="flex-shrink-0 flex items-center gap-[10px] bg-[#0d0d0d] rounded-[78px] text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] font-[family-name:var(--font-satoshi)]"

@@ -21,15 +21,22 @@ function SectionButton({ href, children }: { href: string; children: string }) {
 export default function Footer() {
   return (
     <footer className="relative flex flex-col items-center w-full overflow-hidden" style={{ padding: "0 80px" }}>
-      {/* BG animation layer */}
+      {/* BG video layer – B&W */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute inset-0 bg-black">
-          <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-white/5 blur-[120px]" />
-          <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full bg-white/8 blur-[100px]" />
-          <div className="absolute bottom-1/4 left-1/3 w-[400px] h-[400px] rounded-full bg-white/3 blur-[80px]" />
-        </div>
-        {/* Overlay gradient */}
-        <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(180deg, rgba(4,4,4,0) 55%, rgb(0,0,0) 100%)" }} />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-30"
+        >
+          <source src="/footer-web.mp4" type="video/mp4" />
+        </video>
+        {/* Overlay gradient – darken edges */}
+        <div
+          className="absolute inset-0 z-[1] w-full h-full"
+          style={{ background: "linear-gradient(180deg, rgb(0,0,0) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.4) 70%, rgb(0,0,0) 100%)" }}
+        />
       </div>
 
       {/* Main content – 100vh, space-between, max-width 1600px */}
