@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useRef, useEffect, useCallback } from "react";
 import {
   Reveal,
   StaggerReveal,
@@ -99,12 +100,76 @@ function SectionButton({ href, children }: { href: string; children: string }) {
   );
 }
 
+function ReviewCard({ review, className = "", style }: { review: typeof reviews[0]; className?: string; style?: React.CSSProperties }) {
+  return (
+    <div
+      className={`flex flex-col gap-[30px] overflow-hidden ${className}`}
+      style={{
+        padding: "32px 24px 40px",
+        backdropFilter: "blur(50px)",
+        background: "linear-gradient(180deg, #0d0d0d 25%, rgba(0,0,0,0) 100%)",
+        borderRadius: "10px",
+        ...style,
+      }}
+    >
+      <div className="flex flex-col gap-4 w-full">
+        <div className="relative w-[64px] h-[64px] md:w-[84px] md:h-[84px] rounded-full overflow-hidden flex-shrink-0">
+          <Image src={review.avatar} alt="client pic" fill className="object-cover" />
+        </div>
+        <div className="flex flex-col gap-[5px]">
+          <h4 className="text-[20px] md:text-[24px] lg:text-[32px] font-medium font-[family-name:var(--font-satoshi)]">{review.name}</h4>
+          <p className="text-[13px] md:text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] font-[family-name:var(--font-satoshi)]">{review.role}</p>
+        </div>
+      </div>
+      <p className="text-[15px] md:text-[18px] leading-[1.6em] text-white font-[family-name:var(--font-inter-display)]">
+        {review.quote}
+      </p>
+      <div className="flex items-center gap-2">
+        <span className="text-[15px] font-medium text-white">{review.rating}</span>
+        <div className="flex gap-0.5">
+          {[...Array(5)].map((_, j) => <StarIcon key={j} />)}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MobileReviewCarousel() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const indexRef = useRef(0);
+
+  const scrollToNext = useCallback(() => {
+    if (!scrollRef.current) return;
+    indexRef.current = (indexRef.current + 1) % reviews.length;
+    const card = scrollRef.current.children[indexRef.current] as HTMLElement;
+    if (card) {
+      scrollRef.current.scrollTo({ left: card.offsetLeft - 16, behavior: "smooth" });
+    }
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(scrollToNext, 4000);
+    return () => clearInterval(interval);
+  }, [scrollToNext]);
+
+  return (
+    <div
+      ref={scrollRef}
+      className="flex gap-4 overflow-x-auto no-scrollbar px-4 pb-4"
+      style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
+    >
+      {reviews.map((review, i) => (
+        <ReviewCard key={i} review={review} className="w-[85vw] flex-shrink-0" style={{ scrollSnapAlign: "center" }} />
+      ))}
+    </div>
+  );
+}
+
 export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="relative flex items-center justify-center w-full overflow-hidden rounded-[48px]"
-      style={{ padding: "100px 80px" }}
+      className="relative flex items-center justify-center w-full overflow-hidden rounded-[48px] px-[18px] py-[80px] md:px-[80px] md:py-[100px]"
     >
       {/* Border overlay */}
       <div
@@ -119,15 +184,15 @@ export default function Testimonials() {
       {/* Container */}
       <div className="flex flex-col items-center gap-[44px] w-full max-w-[1600px]">
         {/* Top – image + text side by side */}
-        <div className="flex flex-wrap items-center justify-center gap-[44px] w-full overflow-hidden">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-[44px] w-full overflow-hidden">
           {/* Left image */}
           <Reveal
             variants={fadeLeft}
-            className="flex-1 min-w-[460px] max-md:min-w-[240px] max-md:w-full"
+            className="flex-1 min-w-0 md:min-w-[460px] w-full md:w-auto"
           >
             <div
-              className="relative w-full overflow-hidden grayscale"
-              style={{ height: "503px", borderRadius: "8px" }}
+              className="relative w-full overflow-hidden grayscale h-[300px] md:h-[503px]"
+              style={{ borderRadius: "8px" }}
             >
               <Image
                 src="/images/client-pic.png"
@@ -139,7 +204,7 @@ export default function Testimonials() {
           </Reveal>
 
           {/* Right text content */}
-          <div className="flex flex-col items-start gap-6 flex-1 min-w-[460px] max-md:min-w-[240px] max-md:w-full">
+          <div className="flex flex-col items-start gap-6 flex-1 min-w-0 md:min-w-[460px] w-full md:w-auto">
             {/* Badge – dark card style */}
             <Reveal variants={fadeRight}>
               <div
@@ -189,64 +254,24 @@ export default function Testimonials() {
 
         {/* Bottom – carousel + stats */}
         <div className="flex flex-col items-center gap-6 w-full overflow-hidden">
-          {/* Review carousel – height 500px, mask fade */}
+          {/* Review carousel */}
           <Reveal className="w-full">
+            {/* Mobile: auto-advancing snap carousel */}
+            <div className="md:hidden">
+              <MobileReviewCarousel />
+            </div>
+
+            {/* Desktop: marquee */}
             <div
-              className="relative w-full overflow-hidden"
+              className="relative w-full overflow-hidden hidden md:block"
               style={{
                 height: "500px",
-                maskImage:
-                  "linear-gradient(to right, transparent 0%, black 12.5%, black 87.5%, transparent 100%)",
+                maskImage: "linear-gradient(to right, transparent 0%, black 12.5%, black 87.5%, transparent 100%)",
               }}
             >
               <div className="flex gap-6 animate-marquee-slow h-full p-2.5">
                 {[...reviews, ...reviews].map((review, i) => (
-                  <div
-                    key={i}
-                    className="flex-shrink-0 w-[500px] flex flex-col gap-[30px] overflow-hidden"
-                    style={{
-                      padding: "40px 40px 80px",
-                      backdropFilter: "blur(50px)",
-                      background:
-                        "linear-gradient(180deg, #0d0d0d 25%, rgba(0,0,0,0) 100%)",
-                      borderRadius: "10px",
-                    }}
-                  >
-                    <div className="flex flex-col gap-4 w-full">
-                      <div
-                        className="relative w-[84px] h-[84px] rounded-full overflow-hidden flex-shrink-0"
-                        style={{ borderRadius: "42px" }}
-                      >
-                        <Image
-                          src={review.avatar}
-                          alt="client pic"
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                      <div className="flex flex-col gap-[5px]">
-                        <h4 className="text-[24px] lg:text-[32px] font-medium font-[family-name:var(--font-satoshi)]">
-                          {review.name}
-                        </h4>
-                        <p className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] font-[family-name:var(--font-satoshi)]">
-                          {review.role}
-                        </p>
-                      </div>
-                    </div>
-                    <p className="text-[18px] leading-[1.6em] text-white font-[family-name:var(--font-inter-display)]">
-                      {review.quote}
-                    </p>
-                    <div className="flex items-center gap-2">
-                      <span className="text-[15px] font-medium text-white">
-                        {review.rating}
-                      </span>
-                      <div className="flex gap-0.5">
-                        {[...Array(5)].map((_, j) => (
-                          <StarIcon key={j} />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+                  <ReviewCard key={i} review={review} className="w-[500px] flex-shrink-0" />
                 ))}
               </div>
             </div>

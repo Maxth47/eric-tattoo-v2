@@ -48,8 +48,7 @@ export default function FAQ() {
   return (
     <section
       id="faq"
-      className="relative flex items-center justify-center w-full overflow-visible rounded-[48px]"
-      style={{ padding: "100px 80px" }}
+      className="relative flex items-center justify-center w-full overflow-visible rounded-[48px] px-[18px] py-[80px] md:px-[80px] md:py-[100px]"
     >
       {/* Border overlay */}
       <div className="absolute inset-0 rounded-[48px] z-[3] pointer-events-none overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.1)", mask: "linear-gradient(#000 0%, rgba(0,0,0,0.16) 82.8442%)", WebkitMask: "linear-gradient(#000 0%, rgba(0,0,0,0.16) 82.8442%)" }} />
@@ -68,9 +67,9 @@ export default function FAQ() {
       />
 
       {/* Container – flex-wrap, max-width 1600px, gap 44px */}
-      <div className="relative z-[2] flex flex-wrap items-start justify-start gap-[44px] w-full max-w-[1600px]">
+      <div className="relative z-[2] flex flex-col md:flex-row items-start justify-start gap-[44px] w-full max-w-[1600px]">
         {/* Left column */}
-        <div className="flex flex-col items-start gap-6 flex-1 min-w-[460px] max-md:min-w-[260px] max-md:w-full">
+        <div className="flex flex-col items-start gap-6 flex-1 min-w-0 md:min-w-[460px] w-full md:w-auto">
           {/* Badge */}
           <Reveal variants={fadeLeft}>
             <div
@@ -103,15 +102,15 @@ export default function FAQ() {
           {/* Image */}
           <Reveal variants={scaleUp} delay={0.2} className="w-full">
             <div
-              className="relative w-full overflow-hidden grayscale"
-              style={{ height: "503px", borderRadius: "17px", boxShadow: "20px 30px 20px 8px rgba(0,0,0,0.4)" }}
+              className="relative w-full overflow-hidden grayscale h-[300px] md:h-[503px]"
+              style={{ borderRadius: "17px", boxShadow: "20px 30px 20px 8px rgba(0,0,0,0.4)" }}
             >
               <Image src="/images/faq-artist.webp" alt="Eric Le - Tattoo Artist" fill className="object-cover object-top" sizes="50vw" />
             </div>
           </Reveal>
 
           {/* Tags */}
-          <StaggerReveal className="flex flex-wrap gap-4" stagger={0.05} delay={0.3}>
+          <StaggerReveal className="flex flex-wrap gap-3 justify-start" stagger={0.05} delay={0.3}>
             {faqTags.map((tag) => (
               <Reveal key={tag} variants={fadeUp}>
                 <span className="py-[10px] px-[12px] rounded-lg bg-[#0d0d0d] text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] font-[family-name:var(--font-satoshi)]">
@@ -131,7 +130,7 @@ export default function FAQ() {
         </div>
 
         {/* Right – Accordion */}
-        <div className="flex-1 min-w-[460px] max-md:min-w-[260px] max-md:w-full">
+        <div className="flex-1 min-w-0 md:min-w-[460px] w-full md:w-auto">
           <div className="flex flex-col gap-4 w-full">
             {faqs.map((faq, i) => {
               const isOpen = openIndex === i;

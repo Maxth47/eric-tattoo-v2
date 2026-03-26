@@ -71,9 +71,9 @@ export default function AboutMe() {
       />
 
       {/* Container – max-width 1600px, flex-wrap */}
-      <div className="flex flex-wrap justify-center items-center gap-[44px] w-full max-w-[1600px]">
+      <div className="flex flex-col md:flex-row justify-center items-center gap-[44px] w-full max-w-[1600px]">
         {/* Left column – more info */}
-        <div className="flex flex-col gap-8 flex-1 min-w-[460px] max-md:min-w-[240px] max-md:w-full pr-5 max-md:pr-0">
+        <div className="flex flex-col gap-8 flex-1 min-w-0 md:min-w-[460px] w-full md:w-auto pr-5 max-md:pr-0">
           <Reveal variants={fadeLeft}>
             <h2 className="text-[44px] md:text-[64px] lg:text-[92px] font-normal leading-[1em] tracking-[0em] text-white font-[family-name:var(--font-satoshi)]">
               Meet Eric
@@ -94,7 +94,7 @@ export default function AboutMe() {
 
           {/* Skills – gap 16px */}
           <StaggerReveal
-            className="flex flex-wrap gap-4"
+            className="flex flex-wrap gap-3 justify-start"
             stagger={0.05}
             delay={0.2}
           >
@@ -141,7 +141,7 @@ export default function AboutMe() {
         <Reveal
           variants={fadeRight}
           delay={0.2}
-          className="flex-1 min-w-[460px] max-md:min-w-[240px] max-md:w-full"
+          className="flex-1 min-w-0 md:min-w-[460px] w-full md:w-auto"
         >
           <div
             className="relative rounded-[4px] overflow-hidden w-full"
@@ -185,11 +185,11 @@ export default function AboutMe() {
 
       {/* Carousel – height 355px, inside section */}
       <Reveal className="w-full max-w-[1600px]">
-        <div className="relative h-[355px]">
+        <div className="relative h-[300px] md:h-[355px]">
           <div
             ref={scrollRef}
-            className="flex gap-2.5 overflow-x-auto no-scrollbar h-full p-2.5"
-            style={{ scrollSnapType: "x mandatory" }}
+            className="flex gap-4 overflow-x-auto no-scrollbar h-full p-2.5"
+            style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}
           >
             {works.map((work, i) => (
               <a
@@ -197,11 +197,8 @@ export default function AboutMe() {
                 href="https://www.instagram.com/eric.le.tattoo/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex-shrink-0 h-full rounded-[4px] overflow-hidden"
-                style={{
-                  scrollSnapAlign: "center",
-                  width: "calc(25% - 7.5px)",
-                }}
+                className="group relative flex-shrink-0 h-full rounded-[4px] overflow-hidden w-[70vw] md:w-[calc(25%-7.5px)]"
+                style={{ scrollSnapAlign: "center" }}
               >
                 <Image
                   src={work.src}

@@ -61,8 +61,7 @@ function ProcessButton({ href, children }: { href: string; children: string }) {
 export default function Process() {
   return (
     <section
-      className="relative flex items-center justify-center w-full overflow-hidden rounded-[48px]"
-      style={{ padding: "100px 80px" }}
+      className="relative flex items-center justify-center w-full overflow-hidden rounded-[48px] px-[18px] py-[80px] md:px-[80px] md:py-[100px]"
     >
       {/* Border overlay – fades toward bottom */}
       <div
@@ -75,11 +74,11 @@ export default function Process() {
       />
 
       {/* Container – flex-wrap, max-width 1600px, gap 44px */}
-      <div className="flex flex-wrap items-center justify-center gap-[44px] w-full max-w-[1600px]">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-[44px] w-full max-w-[1600px]">
         {/* Left image – flex: 1, min-width 460px, self-stretch, rounded 17px, shadow */}
-        <Reveal variants={fadeLeft} className="flex-1 min-w-[460px] max-md:min-w-[240px] max-md:w-full self-stretch">
+        <Reveal variants={fadeLeft} className="flex-1 min-w-0 md:min-w-[460px] w-full md:w-auto self-stretch">
           <div
-            className="relative w-full h-full min-h-[360px] overflow-hidden grayscale"
+            className="relative w-full h-full min-h-[260px] md:min-h-[360px] overflow-hidden grayscale"
             style={{
               borderRadius: "17px",
               boxShadow: "20px 30px 20px 8px rgba(0,0,0,0.4)",
@@ -95,7 +94,7 @@ export default function Process() {
         </Reveal>
 
         {/* Right content – flex: 1, min-width 460px, gap 24px */}
-        <div className="flex flex-col items-start justify-start gap-6 flex-1 min-w-[460px] max-md:min-w-[240px] max-md:w-full">
+        <div className="flex flex-col items-start justify-start gap-6 flex-1 min-w-0 md:min-w-[460px] w-full md:w-auto">
           {/* Badge – dark card style with dot icon */}
           <Reveal variants={fadeRight}>
             <div

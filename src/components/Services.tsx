@@ -206,8 +206,7 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative flex items-center justify-center w-full overflow-hidden rounded-[48px]"
-      style={{ padding: "100px 80px" }}
+      className="relative flex items-center justify-center w-full overflow-hidden rounded-[48px] px-[18px] py-[80px] md:px-[80px] md:py-[100px]"
     >
       {/* Border overlay */}
       <div
@@ -222,9 +221,9 @@ export default function Services() {
       {/* Container – flex column, max-width 1600px, gap 44px */}
       <div className="flex flex-col items-center gap-[44px] w-full max-w-[1600px]">
         {/* Top container – flex wrap, gap 44px */}
-        <div className="flex flex-wrap items-center justify-center gap-[44px] w-full">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-[44px] w-full">
           {/* Left content – flex 1, min-width 460px, gap 24px, pr 40px */}
-          <div className="flex flex-col items-start gap-6 flex-1 min-w-[460px] max-md:min-w-[240px] max-md:w-full pr-10 max-md:pr-0">
+          <div className="flex flex-col items-start gap-6 flex-1 min-w-0 md:min-w-[460px] w-full md:w-auto pr-10 max-md:pr-0">
             {/* Badge – dark card style */}
             <Reveal variants={fadeLeft}>
               <div
@@ -264,13 +263,13 @@ export default function Services() {
 
             {/* Tags – gap 16px, bg #0d0d0d, rounded 8px */}
             <StaggerReveal
-              className="flex flex-wrap gap-4"
+              className="flex flex-wrap gap-3 justify-start"
               stagger={0.05}
               delay={0.2}
             >
               {tags.map((tag) => (
                 <Reveal key={tag} variants={fadeUp}>
-                  <span className="py-[10px] px-[12px] rounded-lg bg-[#0d0d0d] text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] font-[family-name:var(--font-satoshi)]">
+                  <span className="py-2 px-3 rounded-lg bg-[#0d0d0d] text-[13px] md:text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] whitespace-nowrap font-[family-name:var(--font-satoshi)]">
                     {tag}
                   </span>
                 </Reveal>
@@ -292,12 +291,12 @@ export default function Services() {
           <Reveal
             variants={fadeRight}
             delay={0.2}
-            className="flex-1 min-w-[460px] max-md:min-w-[240px] max-md:w-full"
+            className="flex-1 min-w-0 md:min-w-[460px] w-full md:w-auto"
           >
             <div
-              className="relative w-full overflow-hidden grayscale"
+              className="relative w-full h-[300px] md:h-[503px] overflow-hidden grayscale"
               style={{
-                height: "503px",
+                height: undefined,
                 borderRadius: "17px",
                 boxShadow: "20px 30px 20px 8px rgba(0,0,0,0.4)",
               }}
@@ -314,9 +313,9 @@ export default function Services() {
         </div>
 
         {/* Service cards – flex wrap, gap 24px */}
-        <StaggerReveal className="flex flex-wrap gap-6 w-full" stagger={0.1}>
+        <StaggerReveal className="flex flex-col md:flex-row gap-6 w-full" stagger={0.1}>
           {/* Two columns */}
-          <div className="flex flex-col gap-6 flex-1 min-w-[460px] max-md:min-w-[260px]">
+          <div className="flex flex-col gap-6 flex-1 w-full md:min-w-[460px]">
             {services.slice(0, 2).map((service) => (
               <Reveal key={service.title} variants={scaleUp}>
                 <div
@@ -337,7 +336,7 @@ export default function Services() {
               </Reveal>
             ))}
           </div>
-          <div className="flex flex-col gap-6 flex-1 min-w-[460px] max-md:min-w-[260px]">
+          <div className="flex flex-col gap-6 flex-1 w-full md:min-w-[460px]">
             {services.slice(2, 4).map((service) => (
               <Reveal key={service.title} variants={scaleUp}>
                 <div

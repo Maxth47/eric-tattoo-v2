@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { Reveal, StaggerReveal, fadeUp } from "@/lib/motion";
 
 function ArrowIcon() {
   return (
@@ -13,7 +12,7 @@ function ArrowIcon() {
 
 function ProjectCard({ src, href = "https://www.instagram.com/eric.le.tattoo/" }: { src: string; href?: string }) {
   return (
-    <Reveal variants={fadeUp} className="w-full">
+    <div className="w-full">
       <a
         href={href}
         target="_blank"
@@ -37,7 +36,7 @@ function ProjectCard({ src, href = "https://www.instagram.com/eric.le.tattoo/" }
           <ArrowIcon />
         </div>
       </a>
-    </Reveal>
+    </div>
   );
 }
 
@@ -51,44 +50,42 @@ export default function ProjectsGrid() {
       {/* 3-column grid – center column 20% wider */}
       <div className="flex flex-col md:flex-row items-center gap-[10px] w-full max-w-[1600px] mx-auto">
         {/* Col 1 */}
-        <StaggerReveal className="flex flex-col items-center gap-[10px] flex-1 w-full overflow-hidden" stagger={0.15}>
+        <div className="flex flex-col items-center gap-[10px] flex-1 w-full overflow-hidden">
           <ProjectCard src="/images/projects/project-1.webp" />
           <ProjectCard src="/images/projects/project-2.webp" />
           <ProjectCard src="/images/projects/project-3.webp" />
-        </StaggerReveal>
+        </div>
 
-        {/* Col 2 (center) – 20% wider via inline style on a wrapper div */}
+        {/* Col 2 (center) – 20% wider */}
         <div className="w-full" style={{ flex: "1.2 0 0" }}>
-          <StaggerReveal className="flex flex-col items-center gap-[10px] w-full overflow-hidden" stagger={0.15} delay={0.1}>
+          <div className="flex flex-col items-center gap-[10px] w-full overflow-hidden">
             <ProjectCard src="/images/projects/project-4.webp" />
             <ProjectCard src="/images/projects/project-5.webp" />
             <ProjectCard src="/images/projects/project-6.webp" />
-          </StaggerReveal>
+          </div>
         </div>
 
         {/* Col 3 */}
-        <StaggerReveal className="flex flex-col items-center gap-[10px] flex-1 w-full overflow-hidden" stagger={0.15} delay={0.2}>
+        <div className="flex flex-col items-center gap-[10px] flex-1 w-full overflow-hidden">
           <ProjectCard src="/images/projects/project-7.webp" />
           <ProjectCard src="/images/projects/project-8.webp" />
           <ProjectCard src="/images/projects/project-9.webp" />
-        </StaggerReveal>
+        </div>
       </div>
 
       {/* Bottom CTAs */}
-      <Reveal delay={0.3}>
-        <div className="flex flex-wrap items-center justify-center gap-4 px-10">
-          <a href="#projects" className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white underline underline-offset-4 font-[family-name:var(--font-satoshi)]">
-            All Works
-          </a>
-          <a
-            href="https://www.instagram.com/eric.le.tattoo/"
-            className="px-6 py-3 rounded-full text-[15px] leading-[1.5em] tracking-[-0.02em] text-white hover:bg-white/5 transition-colors font-[family-name:var(--font-satoshi)]"
-            style={{ border: "1px solid rgba(255,255,255,0.1)" }}
-          >
-            Book a Session
-          </a>
-        </div>
-      </Reveal>
+      <div className="flex flex-wrap items-center justify-center gap-4 px-10">
+        <a href="#projects" className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white underline underline-offset-4 font-[family-name:var(--font-satoshi)]">
+          All Works
+        </a>
+        <a
+          href="https://www.instagram.com/eric.le.tattoo/"
+          className="px-6 py-3 rounded-full text-[15px] leading-[1.5em] tracking-[-0.02em] text-white hover:bg-white/5 transition-colors font-[family-name:var(--font-satoshi)]"
+          style={{ border: "1px solid rgba(255,255,255,0.1)" }}
+        >
+          Book a Session
+        </a>
+      </div>
     </section>
   );
 }

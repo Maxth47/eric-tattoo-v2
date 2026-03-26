@@ -142,9 +142,10 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex flex-col items-center justify-center gap-6 w-full overflow-hidden"
+      className="relative flex flex-col items-center justify-center gap-6 w-full overflow-hidden px-[18px] md:px-[40px]"
       style={{
-        padding: "160px 40px 260px",
+        paddingTop: "120px",
+        paddingBottom: "260px",
         minHeight: "100vh",
         marginBottom: "-200px",
       }}

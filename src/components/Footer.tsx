@@ -20,7 +20,7 @@ function SectionButton({ href, children }: { href: string; children: string }) {
 
 export default function Footer() {
   return (
-    <footer className="relative flex flex-col items-center w-full overflow-hidden" style={{ padding: "0 80px" }}>
+    <footer className="relative flex flex-col items-center w-full overflow-hidden px-[20px] md:px-[80px]">
       {/* BG video layer – B&W */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <video
@@ -106,7 +106,7 @@ export default function Footer() {
         {/* Footer detail – bottom bar, space-between */}
         <Reveal variants={fadeUp} delay={0.4} className="w-full">
           <div className="flex flex-row items-end justify-between w-full">
-            <div className="flex flex-row flex-1 items-center justify-between">
+            <div className="flex flex-col md:flex-row flex-1 items-center justify-between gap-6">
               <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white font-[family-name:var(--font-satoshi)]">
                 eric.le.tattoo@gmail.com
               </span>
