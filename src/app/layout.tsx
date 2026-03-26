@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Portfolite – Framer Portfolio Template",
-  description: "Crafting Unique Brand Identities - Branding that you need Indeed",
+  title: "Eric Le – Tattoo Artist Melbourne",
+  description: "Crafting unique tattoo art. Elevate your style with custom tattoo designs by Eric Le, a passionate tattoo artist based in Melbourne.",
 };
 
 export default function RootLayout({
