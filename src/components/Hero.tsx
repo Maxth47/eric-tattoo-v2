@@ -82,7 +82,7 @@ export default function Hero() {
       {/* Header+Main wrapper */}
       <div className="relative z-[1] flex flex-col items-center w-full">
         {/* Main – max-width 840px */}
-        <main className="flex flex-col items-center gap-[80px] w-full max-w-[840px] py-10">
+        <main className="flex flex-col items-center gap-[80px] w-full max-w-[840px]" style={{ padding: "40px 0" }}>
           {/* Top – badge/heading/subtitle/buttons + scroll indicator */}
           <div className="flex flex-col items-center gap-[60px] w-full">
             {/* H1+Body – gap 24px */}
@@ -101,7 +101,7 @@ export default function Hero() {
                   <div className="relative w-[7px] h-[7px] flex-shrink-0">
                     <div className="w-[5px] h-[5px] rounded-full bg-white" style={{ boxShadow: "rgb(189,189,189) 0px 0px 14px 1px" }} />
                   </div>
-                  <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white font-[family-name:var(--font-satoshi)]">Crafting Unique Brand Identities</span>
+                  <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white font-[family-name:var(--font-satoshi)]">Crafting Unique Tattoo Art</span>
                 </div>
                 {/* Gradient sweep */}
                 <div className="absolute z-[1] inset-[-1px] overflow-hidden rounded-[26px]" style={{ background: "linear-gradient(105deg, rgb(255,255,255) -19%, rgba(0,0,0,0) 20%)" }} />
@@ -114,7 +114,7 @@ export default function Hero() {
                 transition={{ duration: 2.8, ease: "linear", delay: 0.5 }}
                 className="text-[44px] md:text-[74px] lg:text-[92px] font-normal leading-[1em] tracking-[0em] text-white text-center font-[family-name:var(--font-satoshi)]"
               >
-                Branding that you
+                Tattoo Art that you
                 <br />
                 need Indeed
               </motion.h1>
@@ -126,7 +126,7 @@ export default function Hero() {
                 transition={{ duration: 2.8, ease: "linear", delay: 0.7 }}
                 className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] max-w-[540px] text-center font-[family-name:var(--font-satoshi)]"
               >
-                Elevate your brand with custom identity and package design. Showcase your story through bold visuals and strategic design solutions.
+                Elevate your style with custom tattoo designs. Express your story through bold artwork and creative design solutions.
               </motion.p>
 
               {/* CTAs – gap 16px */}
@@ -136,8 +136,8 @@ export default function Hero() {
                 transition={{ duration: 0.95, ease: "linear", delay: 1.0 }}
                 className="flex flex-wrap items-center justify-center gap-4"
               >
-                <HeroButton href="https://framer.link/Z1h7gsj">Get Started Now</HeroButton>
-                <HeroButton href="#projects">See Projects</HeroButton>
+                <HeroButton href="https://www.instagram.com/eric.le.tattoo/">Book Now</HeroButton>
+                <HeroButton href="#projects">See Portfolio</HeroButton>
               </motion.div>
             </div>
 
@@ -158,25 +158,30 @@ export default function Hero() {
         </main>
       </div>
 
-      {/* Client logos – height 55px */}
+      {/* Client logos – height 55px, matching reference carousel */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.4 }}
-        className="relative z-[1] w-full h-[55px] overflow-hidden"
-        style={{ maskImage: "linear-gradient(to right, transparent 0%, black 12.5%, black 87.5%, transparent 100%)" }}
+        className="relative z-[1] w-full h-[55px] flex items-center overflow-hidden"
+        style={{
+          padding: "10px",
+          maskImage: "linear-gradient(to right, rgba(0,0,0,0) 0%, rgb(0,0,0) 12.5%, rgb(0,0,0) 87.5%, rgba(0,0,0,0) 100%)",
+        }}
       >
-        <div className="flex items-center h-full animate-marquee-slow whitespace-nowrap gap-[100px]">
-          {[...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos].map((logo, i) => (
-            <div key={i} className="flex-shrink-0 flex items-center" style={{ opacity: 0.65 }}>
-              <img
-                src={logo.src}
-                alt={logo.alt}
-                style={{ width: logo.w, height: logo.h, filter: "brightness(0.8) invert(1)", objectFit: "contain" }}
-              />
-            </div>
+        <ul className="flex items-center h-full gap-[100px] m-0 p-0 list-none animate-marquee-slow">
+          {[...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos].map((logo, i) => (
+            <li key={i} aria-hidden={i >= clientLogos.length * 2} className="flex-shrink-0">
+              <div className="relative overflow-hidden" style={{ width: logo.w, height: logo.h, opacity: 0.65, filter: "brightness(0.8)" }}>
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  style={{ display: "block", width: "100%", height: "100%", objectFit: "contain", filter: "invert(1)" }}
+                />
+              </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </motion.div>
     </section>
   );

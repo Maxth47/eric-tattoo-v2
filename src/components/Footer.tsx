@@ -61,21 +61,21 @@ export default function Footer() {
           {/* Heading – Satoshi 36px, weight 500, letter-spacing -0.01em */}
           <Reveal delay={0.1}>
             <h2 className="text-[30px] md:text-[34px] lg:text-[36px] font-medium leading-[1.2em] tracking-[-0.01em] text-white text-center font-[family-name:var(--font-satoshi)]">
-              Curious about what we can create together? Let&apos;s bring something extraordinary to life!
+              Ready to get your next tattoo? Let&apos;s create something extraordinary together!
             </h2>
           </Reveal>
 
           {/* CTA – dark button, gap 40px container */}
           <Reveal delay={0.2}>
             <div className="flex items-center justify-center gap-10">
-              <SectionButton href="https://cal.com/rick/get-rick-rolled">Book a Free Call</SectionButton>
+              <SectionButton href="https://www.instagram.com/eric.le.tattoo/">Book a Session</SectionButton>
             </div>
           </Reveal>
 
           {/* Social icons – gap 24px */}
           <Reveal delay={0.3}>
             <div className="flex items-center justify-center gap-6">
-              <a href="https://www.behance.net/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors rounded-full">
+              <a href="https://www.instagram.com/eric.le.tattoo/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors rounded-full">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988H0V5.021h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.061-3.207 8.061zM3 11h3.584c2.508 0 2.906-3-.312-3H3v3zm3.391 3H3v3.016h3.341c3.055 0 2.868-3.016.05-3.016z" />
                 </svg>
@@ -101,16 +101,13 @@ export default function Footer() {
           <div className="flex flex-row items-end justify-between w-full">
             <div className="flex flex-row flex-1 items-center justify-between">
               <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white font-[family-name:var(--font-satoshi)]">
-                hello@framebase.design
+                eric.le.tattoo@gmail.com
               </span>
               <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white font-[family-name:var(--font-satoshi)]">
-                Design In{" "}
-                <a href="https://framer.link/framebase" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-80 transition-opacity">
-                  Framer
-                </a>
+                Tattoo Art by Eric Le
               </span>
               <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white font-[family-name:var(--font-satoshi)]">
-                All rights reserved, ©2025
+                All rights reserved, ©2025 Eric Le
               </span>
             </div>
           </div>

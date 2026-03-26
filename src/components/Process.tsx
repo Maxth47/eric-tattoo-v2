@@ -13,7 +13,7 @@ const steps = [
       </svg>
     ),
     title: "Define Your Vision",
-    description: "Find the perfect plan tailored to your needs, offering the right balance of features, flexibility, and value to help you achieve your goals effortlessly.",
+    description: "Share your tattoo idea, placement, and size. We'll discuss your vision and create a concept that perfectly captures what you want.",
   },
   {
     number: "2",
@@ -27,8 +27,8 @@ const steps = [
         <line x1="3" y1="18" x2="3.01" y2="18" />
       </svg>
     ),
-    title: "Submit Your Request",
-    description: "Easily submit your design requirements through our private design portal, ensuring a seamless process where your vision is understood, refined, and brought to life with precision and creativity.",
+    title: "Design & Refine",
+    description: "I'll create a custom design based on your brief. We'll refine it together until it's exactly what you envisioned.",
   },
   {
     number: "3",
@@ -38,8 +38,8 @@ const steps = [
         <path d="M13.73 21a2 2 0 0 1-3.46 0" />
       </svg>
     ),
-    title: "Project Delivered",
-    description: "As a dedicated freelancer, I ensure your project is completed with precision and delivered within 2-3 days. With a keen eye for detail and a passion for quality, I bring your vision to life—on time and beyond expectations.",
+    title: "Tattoo Session",
+    description: "Once the design is approved, we'll schedule your session. I ensure every tattoo is executed with precision, care, and attention to detail.",
   },
 ];
 
@@ -116,7 +116,7 @@ export default function Process() {
                   <div className="w-[5px] h-[5px] rounded-[10px] bg-white" />
                 </div>
               </div>
-              <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white font-[family-name:var(--font-satoshi)]">Design process</span>
+              <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white font-[family-name:var(--font-satoshi)]">Booking process</span>
             </div>
           </Reveal>
 
@@ -130,15 +130,15 @@ export default function Process() {
           {/* Description – Inter Display, 24px, #ffffffa6, opacity 0.9, max-w 640px */}
           <Reveal variants={fadeUp} delay={0.15}>
             <p className="text-[20px] lg:text-[24px] leading-[1.4] text-[#ffffffa6] opacity-90 max-w-[640px] font-[family-name:var(--font-inter-display)]">
-              crafting bold visuals that inspire and elevate brands with thought process.
+              crafting meaningful tattoos from concept to completion with a seamless process.
             </p>
           </Reveal>
 
           {/* CTAs – gap 24px, dark button style */}
           <Reveal variants={fadeUp} delay={0.2}>
             <div className="flex flex-wrap items-center gap-6">
-              <ProcessButton href="https://cal.com/rick/get-rick-rolled">Book a Free Call</ProcessButton>
-              <ProcessButton href="#projects">See Projects</ProcessButton>
+              <ProcessButton href="https://www.instagram.com/eric.le.tattoo/">Book a Session</ProcessButton>
+              <ProcessButton href="#projects">See Portfolio</ProcessButton>
             </div>
           </Reveal>
 
@@ -146,19 +146,44 @@ export default function Process() {
           <StaggerReveal className="flex flex-col gap-4 w-full" stagger={0.12} delay={0.3}>
             {steps.map((step) => (
               <Reveal key={step.number} variants={fadeUp}>
-                <div className="p-6 rounded-2xl bg-[#0d0d0d] border border-white/5">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="text-white/70">{step.icon}</div>
-                    <span className="text-xs text-white/40 bg-white/5 px-2.5 py-1 rounded-full font-[family-name:var(--font-satoshi)]">
+                <div
+                  className="relative flex flex-col items-start gap-6 overflow-hidden"
+                  style={{
+                    backgroundColor: "#0d0d0d",
+                    borderRadius: "30px",
+                    padding: "44px 32px 32px",
+                    boxShadow: "rgba(0,0,0,0.4) 16px 24px 20px 8px",
+                  }}
+                >
+                  {/* Icon */}
+                  <div className="text-white/70 w-[30px] h-[29px]">{step.icon}</div>
+                  {/* Heading */}
+                  <h3 className="text-[30px] md:text-[34px] lg:text-[36px] font-medium leading-[1.2em] tracking-[-0.01em] text-white font-[family-name:var(--font-satoshi)]">
+                    {step.title}
+                  </h3>
+                  {/* Divider */}
+                  <div className="w-full h-[1px] bg-white/10" />
+                  {/* Description */}
+                  <p className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] text-left font-[family-name:var(--font-satoshi)]">
+                    {step.description}
+                  </p>
+                  {/* Step badge – absolute top-right */}
+                  <div
+                    className="absolute z-[1] flex items-center justify-center overflow-hidden"
+                    style={{
+                      top: "10px",
+                      right: "13px",
+                      width: "34px",
+                      height: "34px",
+                      backgroundColor: "#0d0d0d",
+                      borderRadius: "100px",
+                      boxShadow: "rgba(184,180,180,0.14) 0px 2px 0px 0px inset",
+                    }}
+                  >
+                    <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] font-[family-name:var(--font-satoshi)]">
                       {step.number}
                     </span>
                   </div>
-                  <h3 className="text-[24px] lg:text-[32px] font-medium mb-3 font-[family-name:var(--font-satoshi)]">
-                    {step.title}
-                  </h3>
-                  <p className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] font-[family-name:var(--font-satoshi)]">
-                    {step.description}
-                  </p>
                 </div>
               </Reveal>
             ))}

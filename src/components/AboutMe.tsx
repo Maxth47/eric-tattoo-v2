@@ -5,19 +5,19 @@ import { useRef } from "react";
 import { Reveal, StaggerReveal, fadeUp, fadeLeft, fadeRight } from "@/lib/motion";
 
 const skills = [
-  "Product Design",
-  "Brand Identity Design",
-  "UX Design",
-  "Branding",
-  "Packaging Design",
-  "Figma",
-  "Photoshop",
+  "Custom Tattoos",
+  "Black & Grey",
+  "Fine Line",
+  "Realism",
+  "Cover-ups",
+  "Geometric",
+  "Watercolor",
 ];
 
 const experience = [
-  { role: "Freelance", company: "GreenLeaf Co", period: "Currently" },
-  { role: "Brand Designer", company: "UrbanFit Studio", period: "2023-24" },
-  { role: "Package Designer", company: "GreenK Studio", period: "2020-22" },
+  { role: "Lead Artist", company: "Ink Studio Melbourne", period: "Currently" },
+  { role: "Tattoo Artist", company: "Black Canvas Tattoo", period: "2023-24" },
+  { role: "Apprentice", company: "Sacred Ink Studio", period: "2020-22" },
 ];
 
 const works = [
@@ -67,13 +67,13 @@ export default function AboutMe() {
         <div className="flex flex-col gap-8 flex-1 min-w-[460px] max-md:min-w-[240px] max-md:w-full pr-5 max-md:pr-0">
           <Reveal variants={fadeLeft}>
             <h2 className="text-[44px] md:text-[64px] lg:text-[92px] font-normal leading-[1em] tracking-[0em] text-white font-[family-name:var(--font-satoshi)]">
-              Meet Meily
+              Meet Eric
             </h2>
           </Reveal>
 
           <Reveal variants={fadeUp} delay={0.1}>
             <p className="text-white opacity-70 text-[18px] leading-[1.6em] max-w-[640px] font-[family-name:var(--font-inter-display)]">
-              I&apos;m Meily, a passionate Brand Identity &amp; Package Designer based in tokyo. I specialize in crafting bold visual identities and packaging that captivate and inspire, blending creativity with strategy to elevate brands.
+              I&apos;m Eric, a passionate tattoo artist based in Melbourne. I specialize in crafting bold and meaningful tattoo designs that captivate and inspire, blending creativity with precision to bring your vision to life.
             </p>
           </Reveal>
 
@@ -166,7 +166,7 @@ export default function AboutMe() {
                     boxShadow: "rgba(92, 92, 92, 0.3) 0px 0px 20px 4px",
                   }}
                 >
-                  <span className="font-[family-name:var(--font-satoshi)] tracking-[-0.02em] leading-[1.5em]">View Casestudy</span>
+                  <span className="font-[family-name:var(--font-satoshi)] tracking-[-0.02em] leading-[1.5em]">View on Instagram</span>
                   <ArrowIcon />
                 </div>
               </a>

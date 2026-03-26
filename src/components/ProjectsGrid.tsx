@@ -33,7 +33,7 @@ function ProjectCard({ src, href = "https://www.instagram.com/eric.le.tattoo/" }
             boxShadow: "rgba(92,92,92,0.3) 0px 0px 20px 4px",
           }}
         >
-          <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white font-[family-name:var(--font-satoshi)]">View Casestudy</span>
+          <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white font-[family-name:var(--font-satoshi)]">View on Instagram</span>
           <ArrowIcon />
         </div>
       </a>
@@ -78,14 +78,14 @@ export default function ProjectsGrid() {
       <Reveal delay={0.3}>
         <div className="flex flex-wrap items-center justify-center gap-4 px-10">
           <a href="#projects" className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white underline underline-offset-4 font-[family-name:var(--font-satoshi)]">
-            All Projects
+            All Works
           </a>
           <a
-            href="https://cal.com/rick/get-rick-rolled"
+            href="https://www.instagram.com/eric.le.tattoo/"
             className="px-6 py-3 rounded-full text-[15px] leading-[1.5em] tracking-[-0.02em] text-white hover:bg-white/5 transition-colors font-[family-name:var(--font-satoshi)]"
             style={{ border: "1px solid rgba(255,255,255,0.1)" }}
           >
-            Book a Free Call
+            Book a Session
           </a>
         </div>
       </Reveal>

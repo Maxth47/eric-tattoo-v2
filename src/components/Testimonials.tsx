@@ -7,37 +7,37 @@ const reviews = [
   {
     avatar: "/images/review-avatar-1.png",
     name: "Richards Johnson",
-    role: "Creative Director & Lead Designer",
-    quote: "\"Working with Meily was a seamless experience. Her ability to merge creativity with functionality resulted in designs that not only looked stunning but also drove meaningful engagement. Highly recommended!\"",
+    role: "First Tattoo Client",
+    quote: "\"Getting my first tattoo with Eric was an incredible experience. He made me feel completely at ease, explained every step, and the result exceeded all my expectations. Absolutely stunning work!\"",
     rating: "5.0",
   },
   {
     avatar: "/images/review-avatar-2.png",
     name: "June Lee",
-    role: "CEO of GreenRoots",
-    quote: "\"Meily's strategic approach to design brought our brand vision to life. The packaging and brand elements she developed elevated our aesthetic and aligned perfectly with our sustainability values.\"",
+    role: "Sleeve Collector",
+    quote: "\"Eric's work on my full sleeve was phenomenal. His attention to detail and ability to create a cohesive design across multiple sessions is unmatched. Every element flows perfectly together.\"",
     rating: "5.0",
   },
   {
     avatar: "/images/review-avatar-3.png",
     name: "Jona Carter",
-    role: "Founder of EcoLux",
-    quote: "\"Every project Meily touches turns into a perfect blend of design and purpose. She crafted packaging that reflected our eco-friendly mission while making our products stand out on the shelves.\"",
+    role: "Regular Client",
+    quote: "\"Eric's realism work is absolutely mind-blowing. The portrait he did for me looks like a photograph on my skin. His talent for capturing lifelike detail is truly remarkable.\"",
     rating: "5.0",
   },
   {
     avatar: "/images/review-avatar-4.png",
     name: "Sofia Toms",
-    role: "Founder at GreenK Studios",
-    quote: "\"Meily's designs speak for themselves — bold, strategic, and impactful. She took the time to understand our brand and delivered results that exceeded every expectation.\"",
+    role: "Cover-up Client",
+    quote: "\"I came to Eric with a tattoo I'd regretted for years, and he transformed it into something I'm genuinely proud of. His cover-up skills are exceptional — you'd never know there was anything underneath.\"",
     rating: "5.0",
   },
 ];
 
 const stats = [
-  { value: "180+", label: "design projects completed." },
+  { value: "500+", label: "tattoos completed." },
   { value: "96%", label: "Client satisfaction rate." },
-  { value: "15+", label: "Years of experience" },
+  { value: "5+", label: "Years of experience" },
 ];
 
 function StarIcon() {
@@ -110,14 +110,14 @@ export default function Testimonials() {
 
             <Reveal variants={fadeUp} delay={0.15}>
               <p className="text-[20px] lg:text-[24px] leading-[1.4] text-[#ffffffa6] opacity-90 max-w-[640px] font-[family-name:var(--font-inter-display)]">
-                Real feedback from clients who trusted my design expertise to elevate their brands successfully.
+                Real feedback from clients who trusted my tattoo artistry to bring their vision to life.
               </p>
             </Reveal>
 
             <Reveal variants={fadeUp} delay={0.2}>
               <div className="flex flex-wrap items-center gap-6">
-                <SectionButton href="https://cal.com/rick/get-rick-rolled">Book a Free Call</SectionButton>
-                <SectionButton href="#services">See Services</SectionButton>
+                <SectionButton href="https://www.instagram.com/eric.le.tattoo/">Book a Session</SectionButton>
+                <SectionButton href="#services">See Styles</SectionButton>
               </div>
             </Reveal>
           </div>

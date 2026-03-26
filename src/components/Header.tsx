@@ -38,13 +38,13 @@ export default function Header() {
           <a href="#testimonials" className="text-[15px] text-white hover:text-white/65 transition-colors font-[family-name:var(--font-satoshi)]">
             Testimonials
           </a>
-          <a href="https://cal.com/rick/get-rick-rolled" className="text-[15px] text-white hover:text-white/65 transition-colors font-[family-name:var(--font-satoshi)]">
+          <a href="https://www.instagram.com/eric.le.tattoo/" className="text-[15px] text-white hover:text-white/65 transition-colors font-[family-name:var(--font-satoshi)]">
             Contact
           </a>
         </nav>
 
         <a
-          href="https://framer.link/Z1h7gsj"
+          href="https://www.instagram.com/eric.le.tattoo/"
           className="flex items-center gap-2 px-5 py-2.5 rounded-full text-[15px] text-white hover:brightness-110 transition-all font-[family-name:var(--font-satoshi)]"
           style={{
             border: "1px solid rgba(255, 255, 255, 0.1)",
@@ -54,7 +54,7 @@ export default function Header() {
           }}
         >
           <SparkleIcon />
-          Get Template
+          Book Now
         </a>
       </div>
       </div>

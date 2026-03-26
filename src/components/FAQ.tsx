@@ -5,18 +5,18 @@ import { useState } from "react";
 import { Reveal, StaggerReveal, fadeUp, fadeLeft, scaleUp } from "@/lib/motion";
 
 const faqs = [
-  { question: "What services do you provide?", answer: "I specialize in brand identity and package design, with experience in web design, UI/UX, and to create brand experiences." },
-  { question: "How do I start working with you?", answer: "Simply reach out through the contact form or book a free call. We'll discuss your project needs, timeline, and budget to ensure we're a perfect fit." },
-  { question: "What design tools do you use?", answer: "I primarily use Figma for UI/UX design, Adobe Photoshop and Illustrator for brand identity work, and various prototyping tools for interactive designs." },
-  { question: "How long does a project take?", answer: "Project timelines vary based on complexity. A brand identity project typically takes 2-4 weeks, while packaging design can be completed in 1-3 weeks." },
-  { question: "Do you provide revisions?", answer: "Yes, all projects include revision rounds to ensure the final design meets your expectations. The number of revisions depends on the project scope." },
-  { question: "What industries do you work with?", answer: "I work across various industries including tech, food & beverage, fashion, wellness, and sustainability-focused brands." },
-  { question: "Do you offer development services?", answer: "While my focus is on design, I collaborate with trusted developers to bring designs to life. I can recommend development partners for your project." },
-  { question: "What is your pricing structure?", answer: "Pricing is project-based and depends on scope, complexity, and timeline. Contact me for a detailed quote tailored to your specific needs." },
-  { question: "Can you redesign my existing website?", answer: "Absolutely! I offer website redesign services that focus on improving user experience, visual appeal, and brand consistency." },
+  { question: "What tattoo styles do you specialize in?", answer: "I specialize in black & grey, fine line, realism, geometric, and custom designs. Each piece is tailored to your vision and style." },
+  { question: "How do I book a tattoo session?", answer: "Simply reach out through Instagram DM or book a consultation. We'll discuss your design idea, placement, size, and schedule your session." },
+  { question: "How much does a tattoo cost?", answer: "Pricing varies based on size, detail, and placement. Small pieces start from $150, while larger custom work is quoted individually. Contact me for a detailed quote." },
+  { question: "How long does a tattoo session take?", answer: "Session length varies based on the design. Small tattoos take 1-2 hours, while larger pieces may require multiple sessions of 4-6 hours each." },
+  { question: "Do you do cover-up tattoos?", answer: "Yes! I specialize in cover-up work. We'll assess your existing tattoo and create a design that effectively covers it while looking amazing." },
+  { question: "How should I prepare for my tattoo session?", answer: "Get a good night's sleep, eat a proper meal beforehand, stay hydrated, and avoid alcohol 24 hours before your session. Wear comfortable clothing that allows easy access to the tattoo area." },
+  { question: "What is the aftercare process?", answer: "I provide detailed aftercare instructions after each session. Generally, keep the tattoo clean, moisturized, avoid sun exposure, and don't submerge it in water for 2-3 weeks." },
+  { question: "Do you require a deposit?", answer: "Yes, a non-refundable deposit is required to secure your booking. This goes toward the final cost of your tattoo and ensures commitment from both sides." },
+  { question: "Can I bring my own design?", answer: "Absolutely! I welcome reference images and your own designs. I'll work with you to refine and adapt it to work beautifully as a tattoo." },
 ];
 
-const faqTags = ["Product Design", "Brand Identity Design", "Branding"];
+const faqTags = ["Custom Tattoos", "Black & Grey", "Fine Line"];
 
 function SectionButton({ href, children }: { href: string; children: string }) {
   return (
@@ -126,7 +126,7 @@ export default function FAQ() {
 
           {/* CTA */}
           <Reveal variants={fadeUp} delay={0.35}>
-            <SectionButton href="https://cal.com/rick/get-rick-rolled">Book a Free Call</SectionButton>
+            <SectionButton href="https://www.instagram.com/eric.le.tattoo/">Book a Session</SectionButton>
           </Reveal>
         </div>
 
