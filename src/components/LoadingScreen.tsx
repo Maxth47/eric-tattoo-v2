@@ -7,7 +7,7 @@ const words = ["Your Story.", "Our Craft.", "One Masterpiece."];
 const DURATION = 2700;
 const WORD_INTERVAL = 900;
 const COMPLETE_DELAY = 400;
-const ease = [0.4, 0, 0.2, 1];
+const ease: [number, number, number, number] = [0.4, 0, 0.2, 1];
 
 export default function LoadingScreen({
   onComplete,

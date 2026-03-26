@@ -253,14 +253,13 @@ export default function Testimonials() {
           </Reveal>
 
           {/* Stats – bg #0d0d0d, rounded 18px, padding 48px 40px, max-width 1200px */}
+          <div
+            className="w-full max-w-[1200px] overflow-hidden"
+            style={{ backgroundColor: "#0d0d0d", borderRadius: "18px", padding: "48px 40px" }}
+          >
           <StaggerReveal
-            className="flex flex-wrap items-center justify-center gap-6 w-full max-w-[1200px] overflow-hidden"
+            className="flex flex-wrap items-center justify-center gap-6 w-full"
             stagger={0.15}
-            style={{
-              backgroundColor: "#0d0d0d",
-              borderRadius: "18px",
-              padding: "48px 40px",
-            }}
           >
             {stats.map((stat) => (
               <Reveal
@@ -279,6 +278,7 @@ export default function Testimonials() {
               </Reveal>
             ))}
           </StaggerReveal>
+          </div>
         </div>
       </div>
     </section>
