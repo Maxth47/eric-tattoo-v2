@@ -275,42 +275,6 @@ export default function Hero() {
           </div>
         </main>
       </div>
-
-      {/* Client logos – height 55px */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.4 }}
-        className="relative z-[1] w-full overflow-hidden p-2.5"
-        style={{
-          maskImage:
-            "linear-gradient(to right, transparent 0%, black 12.5%, black 87.5%, transparent 100%)",
-        }}
-      >
-        <div className="flex animate-marquee-slow whitespace-nowrap gap-[100px] items-center h-[35px]">
-          {[
-            ...clientLogos,
-            ...clientLogos,
-            ...clientLogos,
-            ...clientLogos,
-            ...clientLogos,
-            ...clientLogos,
-          ].map((logo, i) => (
-            <div
-              key={i}
-              className="flex-shrink-0 flex items-center"
-              style={{ opacity: 0.65 }}
-            >
-              <img
-                src={logo.src}
-                alt={logo.alt}
-                className="h-[27px] w-auto"
-                style={{ filter: "brightness(0) invert(1)" }}
-              />
-            </div>
-          ))}
-        </div>
-      </motion.div>
     </section>
   );
 }

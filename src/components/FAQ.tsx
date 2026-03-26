@@ -14,6 +14,7 @@ const faqs = [
   { question: "Do you require a deposit?", answer: "Yes, a non-refundable deposit is required to secure your booking. This goes toward the final cost of your tattoo and ensures commitment from both sides." },
   { question: "Can I bring my own design?", answer: "Absolutely! I welcome reference images and your own designs. I'll work with you to refine and adapt it to work beautifully as a tattoo." },
   { question: "Do you offer instalment payments?", answer: "Yes! We support instalment payments through Klarna, so you can split the cost of your tattoo into manageable payments. Ask about Klarna options when booking your session." },
+  { question: "Do you work as a guest artist in other cities?", answer: "Yes! I regularly travel as a guest artist to Helsinki, Amsterdam, Berlin, and Paris. Follow me on Instagram for announcements on upcoming guest spots and booking availability in each city." },
 ];
 
 const faqTags = ["Custom Tattoos", "Black & Grey", "Fine Line"];

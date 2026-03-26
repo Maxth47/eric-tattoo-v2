@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
-const locations = ["Melbourne CBD", "Fitzroy", "St Kilda", "Richmond", "Other"];
+const locations = ["Helsinki", "Amsterdam", "Berlin", "Paris", "Other"];
 
 export default function BookingModal({
   isOpen,
@@ -126,7 +126,7 @@ export default function BookingModal({
                   }}
                 >
                   <Image
-                    src="/images/faq-artist.webp"
+                    src="/images/booking-artist.webp"
                     alt="Eric Le"
                     fill
                     className="object-cover object-top"

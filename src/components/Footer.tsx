@@ -129,21 +129,19 @@ export default function Footer() {
         </div>
 
         {/* Footer detail – bottom bar, space-between */}
-        <Reveal variants={fadeUp} delay={0.4} className="w-full">
-          <div className="flex flex-row items-end justify-between w-full">
-            <div className="flex flex-col md:flex-row flex-1 items-center justify-between gap-6">
-              <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white font-[family-name:var(--font-satoshi)]">
-                eric.le.tattoo@gmail.com
-              </span>
-              <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white font-[family-name:var(--font-satoshi)]">
-                Tattoo Art by Eric Le
-              </span>
-              <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white font-[family-name:var(--font-satoshi)]">
-                All rights reserved, ©2025 Eric Le
-              </span>
-            </div>
+        <div className="w-full">
+          <div className="flex flex-col md:flex-row flex-1 items-center justify-between gap-6">
+            <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white/60 font-[family-name:var(--font-satoshi)]">
+              erictattoo.fi@gmail.com
+            </span>
+            <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white/60 font-[family-name:var(--font-satoshi)]">
+              Tattoo Art by Eric Le
+            </span>
+            <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white/60 font-[family-name:var(--font-satoshi)]">
+              All rights reserved, ©{new Date().getFullYear()} Eric Le
+            </span>
           </div>
-        </Reveal>
+        </div>
       </div>
     </footer>
   );
