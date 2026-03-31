@@ -50,7 +50,7 @@ export default function ProjectsGrid() {
       style={{ padding: "10px 5px 100px", gap: "54px" }}
     >
       {/* 3-column grid – center column 20% wider */}
-      <div className="flex flex-col md:flex-row items-center gap-[10px] w-full max-w-[1600px] mx-auto">
+      <div className="flex flex-col lg:flex-row items-center gap-[10px] w-full max-w-[1600px] mx-auto">
         {/* Col 1 */}
         <div className="flex flex-col items-center gap-[10px] flex-1 w-full overflow-hidden">
           <ProjectCard src="/images/projects/project-1.webp" />

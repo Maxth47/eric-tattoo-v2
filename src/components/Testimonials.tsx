@@ -180,7 +180,7 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="relative flex items-center justify-center w-full overflow-hidden rounded-[48px] px-[18px] py-[80px] md:px-[80px] md:py-[100px]"
+      className="relative flex items-center justify-center w-full overflow-hidden rounded-[48px] px-[18px] py-[80px] lg:px-[80px] lg:py-[100px]"
     >
       {/* Border overlay */}
       <div
@@ -195,11 +195,11 @@ export default function Testimonials() {
       {/* Container */}
       <div className="flex flex-col items-center gap-[44px] w-full max-w-[1600px]">
         {/* Top – image + text side by side */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-[44px] w-full overflow-hidden">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-[44px] w-full overflow-hidden">
           {/* Left image */}
           <Reveal
             variants={fadeLeft}
-            className="flex-1 min-w-0 md:min-w-[460px] w-full md:w-auto"
+            className="flex-1 min-w-0 lg:min-w-[460px] w-full lg:w-auto"
           >
             <div
               className="relative w-full overflow-hidden grayscale h-[300px] md:h-[503px]"
@@ -215,7 +215,7 @@ export default function Testimonials() {
           </Reveal>
 
           {/* Right text content */}
-          <div className="flex flex-col items-start gap-6 flex-1 min-w-0 md:min-w-[460px] w-full md:w-auto">
+          <div className="flex flex-col items-start gap-6 flex-1 min-w-0 lg:min-w-[460px] w-full lg:w-auto">
             {/* Badge – dark card style */}
             <Reveal variants={fadeRight}>
               <div
@@ -268,13 +268,13 @@ export default function Testimonials() {
           {/* Review carousel */}
           <Reveal className="w-full">
             {/* Mobile: auto-advancing snap carousel */}
-            <div className="md:hidden">
+            <div className="lg:hidden">
               <MobileReviewCarousel />
             </div>
 
             {/* Desktop: marquee */}
             <div
-              className="relative w-full overflow-hidden hidden md:block"
+              className="relative w-full overflow-hidden hidden lg:block"
               style={{
                 height: "500px",
                 maskImage: "linear-gradient(to right, transparent 0%, black 12.5%, black 87.5%, transparent 100%)",

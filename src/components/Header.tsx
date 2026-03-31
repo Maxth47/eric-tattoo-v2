@@ -41,7 +41,7 @@ export default function Header() {
           </a>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-8">
             <nav className="flex items-center gap-8">
               {navLinks.map((link) => (
                 <a key={link.label} href={link.href} className="text-[15px] text-white hover:text-white/65 transition-colors font-[family-name:var(--font-satoshi)]">
@@ -67,7 +67,7 @@ export default function Header() {
           {/* Mobile menu button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="flex md:hidden items-center justify-center w-[48px] h-[48px] rounded-[12px]"
+            className="flex lg:hidden items-center justify-center w-[48px] h-[48px] rounded-[12px]"
             style={{ backgroundColor: "rgba(255,255,255,0.08)" }}
             aria-label="Menu"
           >
@@ -87,7 +87,7 @@ export default function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[60] bg-black flex flex-col md:hidden"
+            className="fixed inset-0 z-[60] bg-black flex flex-col lg:hidden"
           >
             {/* Top bar */}
             <div className="flex items-center justify-between px-5 py-5">

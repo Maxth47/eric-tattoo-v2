@@ -104,7 +104,7 @@ export default function FAQ() {
   return (
     <section
       id="faq"
-      className="relative flex items-center justify-center w-full overflow-visible rounded-[48px] px-[18px] py-[80px] md:px-[80px] md:py-[100px]"
+      className="relative flex items-center justify-center w-full overflow-visible rounded-[48px] px-[18px] py-[80px] lg:px-[80px] lg:py-[100px]"
     >
       {/* Border overlay */}
       <div
@@ -132,9 +132,9 @@ export default function FAQ() {
       />
 
       {/* Container – flex-wrap, max-width 1600px, gap 44px */}
-      <div className="relative z-[2] flex flex-col md:flex-row items-start justify-start gap-[44px] w-full max-w-[1600px]">
+      <div className="relative z-[2] flex flex-col lg:flex-row items-start justify-start gap-[44px] w-full max-w-[1600px]">
         {/* Left column */}
-        <div className="flex flex-col items-start gap-6 flex-1 min-w-0 md:min-w-[460px] w-full md:w-auto">
+        <div className="flex flex-col items-start gap-6 flex-1 min-w-0 lg:min-w-[460px] w-full lg:w-auto">
           {/* Badge */}
           <Reveal variants={fadeLeft}>
             <div
@@ -219,7 +219,7 @@ export default function FAQ() {
         </div>
 
         {/* Right – Accordion */}
-        <div className="flex-1 min-w-0 md:min-w-[460px] w-full md:w-auto">
+        <div className="flex-1 min-w-0 lg:min-w-[460px] w-full lg:w-auto">
           <div className="flex flex-col gap-4 w-full">
             {faqs.map((faq, i) => {
               const isOpen = openIndex === i;

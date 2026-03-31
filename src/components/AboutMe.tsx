@@ -81,7 +81,7 @@ export default function AboutMe() {
   return (
     <section
       id="about-me"
-      className="relative flex flex-col items-center gap-[44px] w-full py-[100px] px-[80px] max-md:px-[18px] max-md:py-[80px] overflow-hidden rounded-[48px]"
+      className="relative flex flex-col items-center gap-[44px] w-full py-[100px] px-[80px] max-lg:px-[18px] max-lg:py-[80px] overflow-hidden rounded-[48px]"
     >
       {/* Border overlay – fades toward bottom */}
       <div
@@ -94,9 +94,9 @@ export default function AboutMe() {
       />
 
       {/* Container – max-width 1600px, flex-wrap */}
-      <div className="flex flex-col md:flex-row justify-center items-center gap-[44px] w-full max-w-[1600px]">
+      <div className="flex flex-col lg:flex-row justify-center items-center gap-[44px] w-full max-w-[1600px]">
         {/* Left column – more info */}
-        <div className="flex flex-col gap-8 flex-1 min-w-0 md:min-w-[460px] w-full md:w-auto pr-5 max-md:pr-0">
+        <div className="flex flex-col gap-8 flex-1 min-w-0 lg:min-w-[460px] w-full lg:w-auto pr-5 max-lg:pr-0">
           <Reveal variants={fadeLeft}>
             <h2 className="text-[44px] md:text-[64px] lg:text-[92px] font-normal leading-[1em] tracking-[0em] text-white font-[family-name:var(--font-satoshi)]">
               Meet Eric
@@ -168,7 +168,7 @@ export default function AboutMe() {
         <Reveal
           variants={fadeRight}
           delay={0.2}
-          className="flex-1 min-w-0 md:min-w-[460px] w-full md:w-auto"
+          className="flex-1 min-w-0 lg:min-w-[460px] w-full lg:w-auto"
         >
           <div
             className="relative rounded-[4px] overflow-hidden w-full"
@@ -227,7 +227,7 @@ export default function AboutMe() {
                 href="https://www.instagram.com/eric.le.tattoo/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex-shrink-0 h-full rounded-[4px] overflow-hidden w-[70vw] md:w-[calc(25%-7.5px)]"
+                className="group relative flex-shrink-0 h-full rounded-[4px] overflow-hidden w-[70vw] lg:w-[calc(25%-7.5px)]"
                 style={{ scrollSnapAlign: "center" }}
               >
                 <Image

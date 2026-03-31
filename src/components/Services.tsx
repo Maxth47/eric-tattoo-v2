@@ -209,7 +209,7 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative flex items-center justify-center w-full overflow-hidden rounded-[48px] px-[18px] py-[80px] md:px-[80px] md:py-[100px]"
+      className="relative flex items-center justify-center w-full overflow-hidden rounded-[48px] px-[18px] py-[80px] lg:px-[80px] lg:py-[100px]"
     >
       {/* Border overlay */}
       <div
@@ -224,9 +224,9 @@ export default function Services() {
       {/* Container – flex column, max-width 1600px, gap 44px */}
       <div className="flex flex-col items-center gap-[44px] w-full max-w-[1600px]">
         {/* Top container – flex wrap, gap 44px */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-[44px] w-full">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-[44px] w-full">
           {/* Left content – flex 1, min-width 460px, gap 24px, pr 40px */}
-          <div className="flex flex-col items-start gap-6 flex-1 min-w-0 md:min-w-[460px] w-full md:w-auto pr-10 max-md:pr-0">
+          <div className="flex flex-col items-start gap-6 flex-1 min-w-0 lg:min-w-[460px] w-full lg:w-auto pr-10 max-lg:pr-0">
             {/* Badge – dark card style */}
             <Reveal variants={fadeLeft}>
               <div
@@ -294,7 +294,7 @@ export default function Services() {
           <Reveal
             variants={fadeRight}
             delay={0.2}
-            className="flex-1 min-w-0 md:min-w-[460px] w-full md:w-auto"
+            className="flex-1 min-w-0 lg:min-w-[460px] w-full lg:w-auto"
           >
             <div
               className="relative w-full h-[300px] md:h-[503px] overflow-hidden grayscale"
@@ -316,9 +316,9 @@ export default function Services() {
         </div>
 
         {/* Service cards – flex wrap, gap 24px */}
-        <StaggerReveal className="flex flex-col md:flex-row gap-6 w-full" stagger={0.1}>
+        <StaggerReveal className="flex flex-col lg:flex-row gap-6 w-full" stagger={0.1}>
           {/* Two columns */}
-          <div className="flex flex-col gap-6 flex-1 w-full md:min-w-[460px]">
+          <div className="flex flex-col gap-6 flex-1 w-full lg:min-w-[460px]">
             {services.slice(0, 2).map((service) => (
               <Reveal key={service.title} variants={scaleUp}>
                 <div
@@ -339,7 +339,7 @@ export default function Services() {
               </Reveal>
             ))}
           </div>
-          <div className="flex flex-col gap-6 flex-1 w-full md:min-w-[460px]">
+          <div className="flex flex-col gap-6 flex-1 w-full lg:min-w-[460px]">
             {services.slice(2, 4).map((service) => (
               <Reveal key={service.title} variants={scaleUp}>
                 <div

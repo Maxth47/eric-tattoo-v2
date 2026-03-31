@@ -43,7 +43,7 @@ function SectionButton({ href, onClick, children }: { href?: string; onClick?: (
 export default function Footer() {
   const { open: openBooking } = useBooking();
   return (
-    <footer className="relative flex flex-col items-center w-full overflow-hidden px-[20px] md:px-[80px]">
+    <footer className="relative flex flex-col items-center w-full overflow-hidden px-[20px] lg:px-[80px]">
       {/* BG video layer – B&W */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <video
@@ -131,7 +131,7 @@ export default function Footer() {
 
         {/* Footer detail – bottom bar, space-between */}
         <div className="w-full">
-          <div className="flex flex-col md:flex-row flex-1 items-center justify-between gap-6">
+          <div className="flex flex-col lg:flex-row flex-1 items-center justify-between gap-6">
             <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white/60 font-[family-name:var(--font-satoshi)]">
               erictattoo.fi@gmail.com
             </span>

@@ -81,7 +81,7 @@ export default function Process() {
   const { open: openBooking } = useBooking();
   return (
     <section
-      className="relative flex items-center justify-center w-full overflow-hidden rounded-[48px] px-[18px] py-[80px] md:px-[80px] md:py-[100px]"
+      className="relative flex items-center justify-center w-full overflow-hidden rounded-[48px] px-[18px] py-[80px] lg:px-[80px] lg:py-[100px]"
     >
       {/* Border overlay – fades toward bottom */}
       <div
@@ -94,9 +94,9 @@ export default function Process() {
       />
 
       {/* Container – flex-wrap, max-width 1600px, gap 44px */}
-      <div className="flex flex-col md:flex-row items-center justify-center gap-[44px] w-full max-w-[1600px]">
+      <div className="flex flex-col lg:flex-row items-center justify-center gap-[44px] w-full max-w-[1600px]">
         {/* Left image – flex: 1, min-width 460px, self-stretch, rounded 17px, shadow */}
-        <Reveal variants={fadeLeft} className="flex-1 min-w-0 md:min-w-[460px] w-full md:w-auto self-stretch">
+        <Reveal variants={fadeLeft} className="flex-1 min-w-0 lg:min-w-[460px] w-full lg:w-auto self-stretch">
           <div
             className="relative w-full h-full min-h-[260px] md:min-h-[360px] overflow-hidden grayscale"
             style={{
@@ -114,7 +114,7 @@ export default function Process() {
         </Reveal>
 
         {/* Right content – flex: 1, min-width 460px, gap 24px */}
-        <div className="flex flex-col items-start justify-start gap-6 flex-1 min-w-0 md:min-w-[460px] w-full md:w-auto">
+        <div className="flex flex-col items-start justify-start gap-6 flex-1 min-w-0 lg:min-w-[460px] w-full lg:w-auto">
           {/* Badge – dark card style with dot icon */}
           <Reveal variants={fadeRight}>
             <div

@@ -82,7 +82,7 @@ export default function BookingModal({
             </button>
 
             {/* Two-column layout like FAQ */}
-            <div className="flex flex-col lg:flex-row items-start justify-center gap-[44px] w-full max-w-[1400px]">
+            <div className="flex flex-col xl:flex-row items-start justify-center gap-[44px] w-full max-w-[1400px]">
               {/* Left – Title + Image */}
               <motion.div
                 initial={{ opacity: 0, x: -40 }}
@@ -92,7 +92,7 @@ export default function BookingModal({
                   delay: 0.1,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="flex flex-col items-start gap-6 w-full lg:w-[50%] lg:max-w-[680px]"
+                className="flex flex-col items-start gap-6 w-full xl:w-[50%] xl:max-w-[680px]"
               >
                 {/* Badge */}
                 <div
@@ -122,14 +122,14 @@ export default function BookingModal({
                 </h2>
 
                 {/* Description */}
-                <p className="text-[20px] lg:text-[24px] leading-[1.4] text-[#ffffffa6] opacity-90 max-w-[640px] font-[family-name:var(--font-inter-display)]">
+                <p className="text-[20px] xl:text-[24px] leading-[1.4] text-[#ffffffa6] opacity-90 max-w-[640px] font-[family-name:var(--font-inter-display)]">
                   Curious about what we can create together? Let&apos;s bring
                   something extraordinary to life!
                 </p>
 
                 {/* Image – height matches form */}
                 <div
-                  className="relative w-full overflow-hidden grayscale h-[300px] lg:h-[400px] hidden lg:block invisible"
+                  className="relative w-full overflow-hidden grayscale h-[300px] xl:h-[400px] hidden xl:block invisible"
                   style={{
                     borderRadius: "17px",
                     boxShadow: "20px 30px 20px 8px rgba(0,0,0,0.4)",
@@ -154,7 +154,7 @@ export default function BookingModal({
                   delay: 0.2,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="w-full lg:w-[45%] lg:flex-1 min-w-0"
+                className="w-full xl:w-[45%] xl:flex-1 min-w-0"
               >
                 <form
                   className="flex flex-col gap-4"
