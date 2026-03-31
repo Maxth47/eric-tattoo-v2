@@ -28,15 +28,14 @@ const experience = [
   },
   {
     role: "Guest Artist",
-    company: "Berlin",
+    company: "TheFoxDenAmsterdam",
     location: "Amsterdam",
   },
-  // {
-  //   role: "Guest Artist",
-  //   company: "Guest Studio",
-  //   // company: "Brennnessel Studio",
-  //   location: "Berlin",
-  // },
+  {
+    role: "Guest Artist",
+    company: "Brennnessel Studio",
+    location: "Berlin",
+  },
 ];
 
 const works = [

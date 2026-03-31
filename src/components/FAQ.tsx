@@ -9,7 +9,7 @@ const faqs = [
   {
     question: "How do I book a tattoo session?",
     answer:
-      "Simply reach out through Instagram DM or email. We'll discuss your design idea, placement, size, and schedule your session.",
+      "Simply reach out through Instagram, email, or booking form on our website. We'll discuss your design idea, placement, size, and schedule your session.",
   },
   {
     question: "How much does a tattoo cost?",
