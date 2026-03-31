@@ -1,8 +1,14 @@
 "use client";
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useCallback, useRef } from "react";
 
-const BookingContext = createContext<{ open: () => void }>({ open: () => {} });
+const BookingContext = createContext<{
+  open: () => void;
+  onCloseCallback: React.MutableRefObject<(() => void) | null>;
+}>({
+  open: () => {},
+  onCloseCallback: { current: null },
+});
 
 export function useBooking() {
   return useContext(BookingContext);
@@ -10,13 +16,19 @@ export function useBooking() {
 
 export function BookingProvider({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
+  const onCloseCallback = useRef<(() => void) | null>(null);
+
+  const handleClose = useCallback(() => {
+    setIsOpen(false);
+    onCloseCallback.current?.();
+    onCloseCallback.current = null;
+  }, []);
 
   return (
-    <BookingContext.Provider value={{ open: () => setIsOpen(true) }}>
+    <BookingContext.Provider value={{ open: () => setIsOpen(true), onCloseCallback }}>
       {children}
-      {/* Lazy import to avoid SSR issues */}
       {isOpen && (
-        <DynamicModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
+        <DynamicModal isOpen={isOpen} onClose={handleClose} />
       )}
     </BookingContext.Provider>
   );

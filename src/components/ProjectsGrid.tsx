@@ -77,7 +77,7 @@ export default function ProjectsGrid() {
 
       {/* Bottom CTAs */}
       <div className="flex flex-wrap items-center justify-center gap-4 px-10">
-        <a href="#projects" className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white underline underline-offset-4 font-[family-name:var(--font-satoshi)]">
+        <a href="https://www.instagram.com/eric.le.tattoo/" target="_blank" rel="noopener noreferrer" className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white underline underline-offset-4 font-[family-name:var(--font-satoshi)]">
           All Works
         </a>
         <button
