@@ -87,8 +87,8 @@ export default function BookingModal({
     const email = (fd.get("email") as string)?.trim();
     const description = (fd.get("description") as string)?.trim();
 
-    if (!firstName) errors.firstName = true;
-    if (!lastName) errors.lastName = true;
+    if (!firstName || /\d/.test(firstName)) errors.firstName = true;
+    if (!lastName || /\d/.test(lastName)) errors.lastName = true;
     if (!phone || !/^[+\d][\d\s\-()]{6,}$/.test(phone)) errors.phone = true;
     if (!location) errors.location = true;
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
@@ -102,6 +102,17 @@ export default function BookingModal({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg("");
+
+    // Client-side rate limit check
+    const lastSubmit = Number(localStorage.getItem("booking_last") || "0");
+    const submitCount = Number(localStorage.getItem("booking_count") || "0");
+    const now = Date.now();
+    const twelveHours = 12 * 60 * 60 * 1000;
+
+    if (now - lastSubmit < twelveHours && submitCount >= 5) {
+      setErrorMsg("You've reached the maximum number of bookings. Please try again later.");
+      return;
+    }
 
     const form = formRef.current!;
     const fd = new FormData(form);
@@ -129,6 +140,13 @@ export default function BookingModal({
       setStatus("success");
       setFiles([]);
       form.reset();
+
+      // Track submission count in localStorage
+      const prevCount = Number(localStorage.getItem("booking_count") || "0");
+      const prevTime = Number(localStorage.getItem("booking_last") || "0");
+      const isNewWindow = Date.now() - prevTime > 12 * 60 * 60 * 1000;
+      localStorage.setItem("booking_count", String(isNewWindow ? 1 : prevCount + 1));
+      localStorage.setItem("booking_last", String(Date.now()));
     } catch {
       setStatus("error");
       setErrorMsg("Network error. Please try again.");

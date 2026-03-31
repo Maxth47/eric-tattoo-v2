@@ -4,15 +4,19 @@ import { Resend } from "resend";
 const resend = new Resend(process.env.RESEND_API_KEY);
 const TO_EMAIL = "erictattoo.fi@gmail.com";
 
-// Simple in-memory rate limiter (per IP, 3 submissions per 10 minutes)
-const rateMap = new Map<string, number[]>();
-const RATE_LIMIT = 5;
+// Rate limiter persisted via globalThis (survives HMR and stays in memory)
+const RATE_LIMIT = 3;
 const RATE_WINDOW = 12 * 60 * 60 * 1000;
+
+const globalRateMap = (globalThis as Record<string, unknown>)
+  .__bookingRateMap as Map<string, number[]> | undefined;
+const rateMap: Map<string, number[]> = globalRateMap || new Map();
+(globalThis as Record<string, unknown>).__bookingRateMap = rateMap;
 
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
   const timestamps = (rateMap.get(ip) || []).filter(
-    (t) => now - t < RATE_WINDOW
+    (t) => now - t < RATE_WINDOW,
   );
   if (timestamps.length >= RATE_LIMIT) return true;
   timestamps.push(now);
@@ -28,7 +32,7 @@ export async function POST(req: NextRequest) {
     if (isRateLimited(ip)) {
       return NextResponse.json(
         { error: "Too many requests. Please try again later." },
-        { status: 429 }
+        { status: 429 },
       );
     }
 
@@ -50,8 +54,8 @@ export async function POST(req: NextRequest) {
 
     // Validation
     const errors: string[] = [];
-    if (!firstName) errors.push("First name is required");
-    if (!lastName) errors.push("Last name is required");
+    if (!firstName || /\d/.test(firstName)) errors.push("First name is required and cannot contain numbers");
+    if (!lastName || /\d/.test(lastName)) errors.push("Last name is required and cannot contain numbers");
     if (!phone || !/^[+\d][\d\s\-()]{6,}$/.test(phone))
       errors.push("Valid phone number is required");
     if (!location) errors.push("Location is required");
@@ -122,13 +126,17 @@ export async function POST(req: NextRequest) {
               <p style="color: #333; font-size: 15px; line-height: 1.7; margin: 0;">${description.replace(/\n/g, "<br>")}</p>
             </div>
 
-            ${hasImages ? `
+            ${
+              hasImages
+                ? `
             <!-- Attachments -->
             <div style="background-color: #f8f8f8; border-radius: 12px; padding: 24px;">
               <h3 style="color: #666; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 4px;">Reference Images</h3>
               <p style="color: #888; font-size: 14px; margin: 0;">${attachments.length} image${attachments.length > 1 ? "s" : ""} attached to this email</p>
             </div>
-            ` : ""}
+            `
+                : ""
+            }
 
             <!-- Reply CTA -->
             <div style="text-align: center; margin-top: 32px;">
@@ -150,7 +158,7 @@ export async function POST(req: NextRequest) {
     console.error("Booking email error:", error);
     return NextResponse.json(
       { error: "Failed to send booking request. Please try again." },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
