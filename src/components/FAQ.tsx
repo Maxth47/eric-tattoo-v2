@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { useBooking } from "@/lib/BookingContext";
-import { Reveal, StaggerReveal, fadeUp, fadeLeft, scaleUp } from "@/lib/motion";
+import { Reveal, StaggerReveal, motion, fadeUp, fadeLeft, scaleUp } from "@/lib/motion";
 
 const faqs = [
   {
@@ -231,12 +231,13 @@ export default function FAQ() {
 
         {/* Right – Accordion */}
         <div className="flex-1 min-w-0 lg:min-w-[460px] w-full lg:w-auto">
-          <div className="flex flex-col gap-4 w-full">
+          <StaggerReveal className="flex flex-col gap-4 w-full" stagger={0.06}>
             {faqs.map((faq, i) => {
               const isOpen = openIndex === i;
               return (
-                <div
+                <motion.div
                   key={i}
+                  variants={fadeUp}
                   className="overflow-hidden transition-all duration-300"
                   style={{
                     backgroundColor: "rgb(15,15,15)",
@@ -272,10 +273,10 @@ export default function FAQ() {
                       </p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
-          </div>
+          </StaggerReveal>
         </div>
       </div>
     </section>

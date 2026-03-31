@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getAllBlogs } from "@/lib/blogs";
-import BlogListClient from "./BlogListClient";
+import BlogListClient, { BlogHeader } from "./BlogListClient";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -20,14 +20,7 @@ export default function BlogsPage() {
     <main className="min-h-screen pt-32 pb-20 px-5 md:px-10">
       <div className="max-w-[1280px] mx-auto">
         {/* Header */}
-        <div className="mb-16 text-center">
-          <h1 className="text-[40px] md:text-[56px] font-bold text-white font-[family-name:var(--font-satoshi)] leading-tight">
-            Blog
-          </h1>
-          <p className="text-[16px] md:text-[18px] text-white/50 mt-4 font-[family-name:var(--font-inter-display)]">
-            Stories, insights, and the art behind the ink
-          </p>
-        </div>
+        <BlogHeader />
 
         {/* Grid */}
         <BlogListClient blogs={blogs} />

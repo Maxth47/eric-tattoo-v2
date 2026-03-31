@@ -14,9 +14,9 @@ function SparkleIcon() {
 }
 
 const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
-  { label: "Testimonials", href: "#testimonials" },
+  { label: "Services", href: "/#services" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Testimonials", href: "/#testimonials" },
   { label: "Blog", href: "/blogs" },
   { label: "Contact", href: "https://www.instagram.com/eric.le.tattoo/" },
 ];
@@ -45,7 +45,7 @@ export default function Header() {
           <div className="hidden lg:flex items-center gap-8">
             <nav className="flex items-center gap-8">
               {navLinks.map((link) => (
-                <a key={link.label} href={link.href} className="text-[15px] text-white hover:text-white/65 transition-colors font-[family-name:var(--font-satoshi)]">
+                <a key={link.label} href={link.href} {...(link.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="text-[15px] text-white hover:text-white/65 transition-colors font-[family-name:var(--font-satoshi)]">
                   {link.label}
                 </a>
               ))}
@@ -114,6 +114,7 @@ export default function Header() {
                 <motion.a
                   key={link.label}
                   href={link.href}
+                  {...(link.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                   onClick={() => setMenuOpen(false)}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getBlogBySlug, getAllSlugs, getAllBlogs } from "@/lib/blogs";
+import { BlogHero, BlogContent, BlogRelated, BlogRelatedCard, BlogBackLink } from "@/components/BlogPostAnimations";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -66,28 +67,30 @@ export default async function BlogPostPage({ params }: Props) {
     <main className="min-h-screen pt-32 pb-20 px-5 md:px-10">
       <div className="max-w-[720px] mx-auto">
         {/* Back link */}
-        <Link
-          href="/blogs"
-          className="inline-flex items-center gap-2 text-[14px] text-white/40 hover:text-white/70 transition-colors mb-10 font-[family-name:var(--font-satoshi)]"
-        >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+        <BlogBackLink>
+          <Link
+            href="/blogs"
+            className="inline-flex items-center gap-2 text-[14px] text-white/40 hover:text-white/70 transition-colors mb-10 font-[family-name:var(--font-satoshi)]"
           >
-            <path d="M19 12H5" />
-            <path d="M12 19l-7-7 7-7" />
-          </svg>
-          Back to Blog
-        </Link>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M19 12H5" />
+              <path d="M12 19l-7-7 7-7" />
+            </svg>
+            Back to Blog
+          </Link>
+        </BlogBackLink>
 
         {/* Hero */}
-        <header className="mb-12">
+        <BlogHero>
           {/* Tags */}
           <div className="flex flex-wrap gap-2 mb-4">
             {meta.tags.map((tag) => (
@@ -129,7 +132,7 @@ export default async function BlogPostPage({ params }: Props) {
               sizes="(max-width: 768px) 100vw, 720px"
             />
           </div>
-        </header>
+        </BlogHero>
 
         {/* JSON-LD */}
         <script
@@ -163,44 +166,47 @@ export default async function BlogPostPage({ params }: Props) {
         />
 
         {/* Content */}
-        <article
-          className="prose prose-invert prose-lg max-w-none
-          prose-headings:font-[family-name:var(--font-satoshi)] prose-headings:text-white prose-headings:font-bold
-          prose-p:text-[#d1d1d1] prose-p:font-[family-name:var(--font-inter-display)] prose-p:leading-relaxed
-          prose-a:text-white prose-a:underline hover:prose-a:brightness-75
-          prose-blockquote:border-l-white/20 prose-blockquote:text-white/60 prose-blockquote:italic
-          prose-strong:text-white
-          prose-li:text-[#d1d1d1]
-          prose-img:rounded-2xl
-        "
-        >
-          {content}
-        </article>
+        <BlogContent>
+          <article
+            className="prose prose-invert prose-lg max-w-none
+            prose-headings:font-[family-name:var(--font-satoshi)] prose-headings:text-white prose-headings:font-bold
+            prose-p:text-[#d1d1d1] prose-p:font-[family-name:var(--font-inter-display)] prose-p:leading-relaxed
+            prose-a:text-white prose-a:underline hover:prose-a:brightness-75
+            prose-blockquote:border-l-white/20 prose-blockquote:text-white/60 prose-blockquote:italic
+            prose-strong:text-white
+            prose-li:text-[#d1d1d1]
+            prose-img:rounded-2xl
+          "
+          >
+            {content}
+          </article>
+        </BlogContent>
 
         {/* Related Posts */}
         {related.length > 0 && (
-          <section className="mt-20 pt-12 border-t border-white/8">
+          <BlogRelated>
             <h2 className="text-[24px] font-bold text-white mb-8 font-[family-name:var(--font-satoshi)]">
               Related Posts
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {related.map((r) => (
-                <Link
-                  key={r.slug}
-                  href={`/blogs/${r.slug}`}
-                  className="block group rounded-2xl overflow-hidden card-border p-4"
-                  style={{ backgroundColor: "#0d0d0d" }}
-                >
-                  <h3 className="text-[15px] font-bold text-white leading-snug mb-2 font-[family-name:var(--font-satoshi)] group-hover:text-white/80 transition-colors">
-                    {r.title}
-                  </h3>
-                  <p className="text-[13px] text-white/40 line-clamp-2 font-[family-name:var(--font-inter-display)]">
-                    {r.excerpt}
-                  </p>
-                </Link>
+              {related.map((r, i) => (
+                <BlogRelatedCard key={r.slug} index={i}>
+                  <Link
+                    href={`/blogs/${r.slug}`}
+                    className="block group rounded-2xl overflow-hidden card-border p-4"
+                    style={{ backgroundColor: "#0d0d0d" }}
+                  >
+                    <h3 className="text-[15px] font-bold text-white leading-snug mb-2 font-[family-name:var(--font-satoshi)] group-hover:text-white/80 transition-colors">
+                      {r.title}
+                    </h3>
+                    <p className="text-[13px] text-white/40 line-clamp-2 font-[family-name:var(--font-inter-display)]">
+                      {r.excerpt}
+                    </p>
+                  </Link>
+                </BlogRelatedCard>
               ))}
             </div>
-          </section>
+          </BlogRelated>
         )}
       </div>
     </main>

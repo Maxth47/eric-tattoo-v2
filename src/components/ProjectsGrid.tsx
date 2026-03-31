@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useBooking } from "@/lib/BookingContext";
+import { motion, Reveal, StaggerReveal, fadeUp, scaleUp } from "@/lib/motion";
 
 function ArrowIcon() {
   return (
@@ -13,7 +14,7 @@ function ArrowIcon() {
 
 function ProjectCard({ src, href = "https://www.instagram.com/eric.le.tattoo/" }: { src: string; href?: string }) {
   return (
-    <div className="w-full">
+    <motion.div variants={scaleUp} className="w-full">
       <a
         href={href}
         target="_blank"
@@ -23,7 +24,7 @@ function ProjectCard({ src, href = "https://www.instagram.com/eric.le.tattoo/" }
       >
         <Image src={src} alt="Custom tattoo artwork by Eric Le - Helsinki tattoo artist" fill className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500" sizes="(max-width: 768px) 100vw, 33vw" />
         <div
-          className="absolute z-[2] bottom-[10px] left-[8px] right-[8px] flex items-center justify-center gap-1 overflow-hidden"
+          className="absolute z-[2] bottom-[10px] left-[8px] right-[8px] flex items-center justify-center gap-1 overflow-hidden opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300"
           style={{
             padding: "12px 20px",
             backdropFilter: "blur(6px)",
@@ -37,7 +38,7 @@ function ProjectCard({ src, href = "https://www.instagram.com/eric.le.tattoo/" }
           <ArrowIcon />
         </div>
       </a>
-    </div>
+    </motion.div>
   );
 }
 
@@ -52,31 +53,31 @@ export default function ProjectsGrid() {
       {/* 3-column grid – center column 20% wider */}
       <div className="flex flex-col lg:flex-row items-center gap-[10px] w-full max-w-[1600px] mx-auto">
         {/* Col 1 */}
-        <div className="flex flex-col items-center gap-[10px] flex-1 w-full overflow-hidden">
+        <StaggerReveal className="flex flex-col items-center gap-[10px] flex-1 w-full overflow-hidden" stagger={0.12}>
           <ProjectCard src="/images/projects/project-1.webp" />
           <ProjectCard src="/images/projects/project-2.webp" />
           <ProjectCard src="/images/projects/project-3.webp" />
-        </div>
+        </StaggerReveal>
 
         {/* Col 2 (center) – 20% wider */}
         <div className="w-full" style={{ flex: "1.2 0 0" }}>
-          <div className="flex flex-col items-center gap-[10px] w-full overflow-hidden">
+          <StaggerReveal className="flex flex-col items-center gap-[10px] w-full overflow-hidden" stagger={0.12} delay={0.1}>
             <ProjectCard src="/images/projects/project-4.webp" />
             <ProjectCard src="/images/projects/project-5.webp" />
             <ProjectCard src="/images/projects/project-6.webp" />
-          </div>
+          </StaggerReveal>
         </div>
 
         {/* Col 3 */}
-        <div className="flex flex-col items-center gap-[10px] flex-1 w-full overflow-hidden">
+        <StaggerReveal className="flex flex-col items-center gap-[10px] flex-1 w-full overflow-hidden" stagger={0.12} delay={0.2}>
           <ProjectCard src="/images/projects/project-7.webp" />
           <ProjectCard src="/images/projects/project-8.webp" />
           <ProjectCard src="/images/projects/project-9.webp" />
-        </div>
+        </StaggerReveal>
       </div>
 
       {/* Bottom CTAs */}
-      <div className="flex flex-wrap items-center justify-center gap-4 px-10">
+      <Reveal variants={fadeUp} className="flex flex-wrap items-center justify-center gap-4 px-10">
         <a href="https://www.instagram.com/eric.le.tattoo/" target="_blank" rel="noopener noreferrer" className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white underline underline-offset-4 font-[family-name:var(--font-satoshi)]">
           All Works
         </a>
@@ -87,7 +88,7 @@ export default function ProjectsGrid() {
         >
           Book a Session
         </button>
-      </div>
+      </Reveal>
     </section>
   );
 }
