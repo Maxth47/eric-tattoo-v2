@@ -23,15 +23,20 @@ const skills = [
 const experience = [
   {
     role: "Lead Artist",
-    company: "Tattoo Helsinki Studio",
-    period: "Currently",
+    company: "Eric Tattoo Studio",
+    location: "Helsinki",
   },
   {
     role: "Guest Artist",
-    company: "Amsterdam & Berlin",
-    period: "2024-25",
+    company: "Berlin",
+    location: "Amsterdam",
   },
-  { role: "Tattoo Artist", company: "Espoo Ink Studio", period: "2020-24" },
+  // {
+  //   role: "Guest Artist",
+  //   company: "Guest Studio",
+  //   // company: "Brennnessel Studio",
+  //   location: "Berlin",
+  // },
 ];
 
 const works = [
@@ -156,7 +161,7 @@ export default function AboutMe() {
                     {exp.company}
                   </span>
                   <span className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-[#ffffffa6] font-[family-name:var(--font-satoshi)] flex-1 text-right">
-                    {exp.period}
+                    {exp.location}
                   </span>
                 </div>
               </Reveal>

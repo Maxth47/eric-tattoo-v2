@@ -9,7 +9,7 @@ const faqs = [
   {
     question: "How do I book a tattoo session?",
     answer:
-      "Simply reach out through Instagram DM or book a consultation. We'll discuss your design idea, placement, size, and schedule your session.",
+      "Simply reach out through Instagram DM or email. We'll discuss your design idea, placement, size, and schedule your session.",
   },
   {
     question: "How much does a tattoo cost?",
@@ -55,10 +55,23 @@ const faqs = [
 
 const faqTags = ["Custom Tattoos", "Black & Grey", "Fine Line"];
 
-function SectionButton({ href, onClick, children }: { href?: string; onClick?: () => void; children: string }) {
+function SectionButton({
+  href,
+  onClick,
+  children,
+}: {
+  href?: string;
+  onClick?: () => void;
+  children: string;
+}) {
   const Tag = onClick ? "button" : "a";
   return (
-    <Tag {...(onClick ? { onClick } : { href, target: "_blank", rel: "noopener noreferrer" })} className="relative flex flex-col items-center group">
+    <Tag
+      {...(onClick
+        ? { onClick }
+        : { href, target: "_blank", rel: "noopener noreferrer" })}
+      className="relative flex flex-col items-center group"
+    >
       <div
         className="relative z-[2] flex flex-col items-center self-stretch w-auto p-[1.4px] overflow-hidden transition-shadow duration-300 group-hover:shadow-[rgba(255,255,255,0.12)_0px_1px_9px_0px]"
         style={{ backgroundColor: "rgb(59,59,59)", borderRadius: "11.5px" }}
@@ -212,9 +225,7 @@ export default function FAQ() {
 
           {/* CTA */}
           <Reveal variants={fadeUp} delay={0.35}>
-            <SectionButton onClick={openBooking}>
-              Book a Session
-            </SectionButton>
+            <SectionButton onClick={openBooking}>Book a Session</SectionButton>
           </Reveal>
         </div>
 
