@@ -59,7 +59,7 @@ export default function BookingModal({
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             onClick={(e) => e.stopPropagation()}
-            className="relative z-[1] w-full min-h-screen px-[18px] py-[80px] md:px-[80px] md:py-[100px]"
+            className="relative z-[1] flex flex-col items-center justify-center w-full min-h-screen px-[18px] md:px-[80px] py-[100px]"
           >
             {/* Close button */}
             <button
@@ -82,7 +82,7 @@ export default function BookingModal({
             </button>
 
             {/* Two-column layout like FAQ */}
-            <div className="flex flex-col md:flex-row items-start justify-center gap-[44px] w-full max-w-[1400px] mx-auto pt-40">
+            <div className="flex flex-col lg:flex-row items-start justify-center gap-[44px] w-full max-w-[1400px]">
               {/* Left – Title + Image */}
               <motion.div
                 initial={{ opacity: 0, x: -40 }}
@@ -92,7 +92,7 @@ export default function BookingModal({
                   delay: 0.1,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="flex flex-col items-start gap-6 w-full md:w-[50%] md:max-w-[680px]"
+                className="flex flex-col items-start gap-6 w-full lg:w-[50%] lg:max-w-[680px]"
               >
                 {/* Badge */}
                 <div
@@ -117,7 +117,8 @@ export default function BookingModal({
 
                 {/* Heading */}
                 <h2 className="text-[44px] md:text-[74px] lg:text-[92px] font-normal leading-[1em] tracking-[0em] text-white font-[family-name:var(--font-satoshi)]">
-                  Book a Session
+                  Book <br />
+                  Appointments
                 </h2>
 
                 {/* Description */}
@@ -128,7 +129,7 @@ export default function BookingModal({
 
                 {/* Image – height matches form */}
                 <div
-                  className="relative w-full overflow-hidden grayscale h-[300px] md:h-[400px]"
+                  className="relative w-full overflow-hidden grayscale h-[300px] lg:h-[400px] hidden lg:block invisible"
                   style={{
                     borderRadius: "17px",
                     boxShadow: "20px 30px 20px 8px rgba(0,0,0,0.4)",
@@ -153,7 +154,7 @@ export default function BookingModal({
                   delay: 0.2,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="w-full md:w-[45%] md:flex-1"
+                className="w-full lg:w-[45%] lg:flex-1 min-w-0"
               >
                 <form
                   className="flex flex-col gap-4"

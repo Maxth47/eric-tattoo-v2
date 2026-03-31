@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useBooking } from "@/lib/BookingContext";
 import { Reveal, StaggerReveal, fadeUp, fadeLeft, fadeRight } from "@/lib/motion";
 
 const steps = [
@@ -56,9 +57,10 @@ const steps = [
   },
 ];
 
-function ProcessButton({ href, children }: { href: string; children: string }) {
+function ProcessButton({ href, onClick, children }: { href?: string; onClick?: () => void; children: string }) {
+  const Tag = onClick ? "button" : "a";
   return (
-    <a href={href} className="relative flex flex-col items-center group">
+    <Tag {...(onClick ? { onClick } : { href, target: "_blank", rel: "noopener noreferrer" })} className="relative flex flex-col items-center group">
       <div
         className="relative z-[2] flex flex-col items-center self-stretch w-auto p-[1.4px] overflow-hidden transition-shadow duration-300 group-hover:shadow-[rgba(255,255,255,0.12)_0px_1px_9px_0px]"
         style={{ backgroundColor: "rgb(59,59,59)", borderRadius: "11.5px" }}
@@ -71,11 +73,12 @@ function ProcessButton({ href, children }: { href: string; children: string }) {
         </div>
         <div className="absolute z-[1] w-[95px] h-[36px] overflow-hidden" style={{ top: "-19px", right: "-17px", backgroundColor: "white", filter: "blur(8px)" }} />
       </div>
-    </a>
+    </Tag>
   );
 }
 
 export default function Process() {
+  const { open: openBooking } = useBooking();
   return (
     <section
       className="relative flex items-center justify-center w-full overflow-hidden rounded-[48px] px-[18px] py-[80px] md:px-[80px] md:py-[100px]"
@@ -149,8 +152,8 @@ export default function Process() {
           {/* CTAs – gap 24px, dark button style */}
           <Reveal variants={fadeUp} delay={0.2}>
             <div className="flex flex-wrap items-center gap-6">
-              <ProcessButton href="https://www.instagram.com/eric.le.tattoo/">Book a Session</ProcessButton>
-              <ProcessButton href="#projects">See Portfolio</ProcessButton>
+              <ProcessButton onClick={openBooking}>Book a Session</ProcessButton>
+              <ProcessButton href="https://www.instagram.com/eric.le.tattoo/">See Portfolio</ProcessButton>
             </div>
           </Reveal>
 

@@ -1,13 +1,13 @@
 "use client";
 
+import { useBooking } from "@/lib/BookingContext";
 import { Reveal, fadeUp } from "@/lib/motion";
 
-function SectionButton({ href, children }: { href: string; children: string }) {
+function SectionButton({ href, onClick, children }: { href?: string; onClick?: () => void; children: string }) {
+  const Tag = onClick ? "button" : "a";
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
+    <Tag
+      {...(onClick ? { onClick } : { href, target: "_blank", rel: "noopener noreferrer" })}
       className="relative flex flex-col items-center group"
     >
       <div
@@ -36,11 +36,12 @@ function SectionButton({ href, children }: { href: string; children: string }) {
           }}
         />
       </div>
-    </a>
+    </Tag>
   );
 }
 
 export default function Footer() {
+  const { open: openBooking } = useBooking();
   return (
     <footer className="relative flex flex-col items-center w-full overflow-hidden px-[20px] md:px-[80px]">
       {/* BG video layer – B&W */}
@@ -121,7 +122,7 @@ export default function Footer() {
           {/* CTA – dark button, gap 40px container */}
           <Reveal delay={0.2}>
             <div className="flex items-center justify-center gap-10">
-              <SectionButton href="https://www.instagram.com/eric.le.tattoo/">
+              <SectionButton onClick={openBooking}>
                 Book a Session
               </SectionButton>
             </div>

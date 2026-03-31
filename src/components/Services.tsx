@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useBooking } from "@/lib/BookingContext";
 import {
   Reveal,
   StaggerReveal,
@@ -169,9 +170,10 @@ const marqueeRow2 = [
   },
 ];
 
-function SectionButton({ href, children }: { href: string; children: string }) {
+function SectionButton({ href, onClick, children }: { href?: string; onClick?: () => void; children: string }) {
+  const Tag = onClick ? "button" : "a";
   return (
-    <a href={href} className="relative flex flex-col items-center group">
+    <Tag {...(onClick ? { onClick } : { href, target: "_blank", rel: "noopener noreferrer" })} className="relative flex flex-col items-center group">
       <div
         className="relative z-[2] flex flex-col items-center self-stretch w-auto p-[1.4px] overflow-hidden transition-shadow duration-300 group-hover:shadow-[rgba(255,255,255,0.12)_0px_1px_9px_0px]"
         style={{ backgroundColor: "rgb(59,59,59)", borderRadius: "11.5px" }}
@@ -198,11 +200,12 @@ function SectionButton({ href, children }: { href: string; children: string }) {
           }}
         />
       </div>
-    </a>
+    </Tag>
   );
 }
 
 export default function Services() {
+  const { open: openBooking } = useBooking();
   return (
     <section
       id="services"
@@ -279,10 +282,10 @@ export default function Services() {
             {/* CTAs – gap 24px, dark buttons */}
             <Reveal variants={fadeUp} delay={0.3}>
               <div className="flex flex-wrap items-center gap-6">
-                <SectionButton href="https://www.instagram.com/eric.le.tattoo/">
+                <SectionButton onClick={openBooking}>
                   Book a Session
                 </SectionButton>
-                <SectionButton href="#projects">See Portfolio</SectionButton>
+                <SectionButton href="https://www.instagram.com/eric.le.tattoo/">See Portfolio</SectionButton>
               </div>
             </Reveal>
           </div>

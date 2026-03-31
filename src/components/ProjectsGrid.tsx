@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useBooking } from "@/lib/BookingContext";
 
 function ArrowIcon() {
   return (
@@ -41,6 +42,7 @@ function ProjectCard({ src, href = "https://www.instagram.com/eric.le.tattoo/" }
 }
 
 export default function ProjectsGrid() {
+  const { open: openBooking } = useBooking();
   return (
     <section
       id="projects"
@@ -78,13 +80,13 @@ export default function ProjectsGrid() {
         <a href="#projects" className="text-[15px] leading-[1.5em] tracking-[-0.02em] text-white underline underline-offset-4 font-[family-name:var(--font-satoshi)]">
           All Works
         </a>
-        <a
-          href="https://www.instagram.com/eric.le.tattoo/"
+        <button
+          onClick={openBooking}
           className="px-6 py-3 rounded-full text-[15px] leading-[1.5em] tracking-[-0.02em] text-white hover:bg-white/5 transition-colors font-[family-name:var(--font-satoshi)]"
           style={{ border: "1px solid rgba(255,255,255,0.1)" }}
         >
           Book a Session
-        </a>
+        </button>
       </div>
     </section>
   );

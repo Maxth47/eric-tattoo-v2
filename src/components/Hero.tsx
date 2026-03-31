@@ -3,6 +3,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { motion } from "@/lib/motion";
+import { useBooking } from "@/lib/BookingContext";
 
 const clientLogos = [
   {
@@ -57,9 +58,10 @@ function MouseIcon() {
   );
 }
 
-function HeroButton({ href, children }: { href: string; children: string }) {
+function HeroButton({ href, onClick, children }: { href?: string; onClick?: () => void; children: string }) {
+  const Tag = onClick ? "button" : "a";
   return (
-    <a href={href} className="relative flex flex-col items-center group">
+    <Tag {...(onClick ? { onClick } : { href, target: "_blank", rel: "noopener noreferrer" })} className="relative flex flex-col items-center group">
       {/* Container – 1.4px border via padding */}
       <div
         className="relative z-[2] flex flex-col items-center self-stretch w-auto p-[1.4px] overflow-hidden transition-shadow duration-300 group-hover:shadow-[rgba(255,255,255,0.12)_0px_1px_9px_0px]"
@@ -159,11 +161,12 @@ function HeroButton({ href, children }: { href: string; children: string }) {
           opacity: 0.62,
         }}
       />
-    </a>
+    </Tag>
   );
 }
 
 export default function Hero() {
+  const { open: openBooking } = useBooking();
   return (
     <section
       id="hero"
@@ -274,10 +277,10 @@ export default function Hero() {
                 transition={{ duration: 0.95, ease: "linear", delay: 1.0 }}
                 className="flex flex-wrap items-center justify-center gap-4"
               >
-                <HeroButton href="https://www.instagram.com/eric.le.tattoo/">
+                <HeroButton onClick={openBooking}>
                   Book Now
                 </HeroButton>
-                <HeroButton href="#projects">See Portfolio</HeroButton>
+                <HeroButton href="https://www.instagram.com/eric.le.tattoo/">See Portfolio</HeroButton>
               </motion.div>
             </div>
 
