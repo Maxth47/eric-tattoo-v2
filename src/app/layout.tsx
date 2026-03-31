@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import AppWrapper from "@/components/AppWrapper";
+import Header from "@/components/Header";
 
 const siteUrl = "https://erictattoo.fi";
 
@@ -216,7 +217,10 @@ export default function RootLayout({
             }),
           }}
         />
-        <AppWrapper>{children}</AppWrapper>
+        <AppWrapper>
+          <Header />
+          {children}
+        </AppWrapper>
       </body>
     </html>
   );

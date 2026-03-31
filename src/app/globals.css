@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme inline {
   --color-background: #000000;
@@ -18,6 +19,10 @@
     color: #ffffff;
     font-family: "Satoshi", sans-serif;
     overflow-x: hidden;
+  }
+
+  button, [role="button"] {
+    cursor: pointer;
   }
 }
 

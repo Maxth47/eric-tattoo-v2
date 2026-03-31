@@ -266,9 +266,9 @@ export default function Hero() {
                 transition={{ duration: 2.8, ease: "linear", delay: 0.5 }}
                 className="text-[44px] md:text-[74px] lg:text-[92px] font-normal leading-[1em] tracking-[0em] text-white text-center font-[family-name:var(--font-satoshi)]"
               >
-                Tattoo Art that you
+                Tattoo Art that tells
                 <br />
-                need Indeed
+                your story
               </motion.h1>
 
               {/* Subtitle */}

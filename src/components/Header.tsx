@@ -17,6 +17,7 @@ const navLinks = [
   { label: "Services", href: "#services" },
   { label: "Projects", href: "#projects" },
   { label: "Testimonials", href: "#testimonials" },
+  { label: "Blog", href: "/blogs" },
   { label: "Contact", href: "https://www.instagram.com/eric.le.tattoo/" },
 ];
 
@@ -36,7 +37,7 @@ export default function Header() {
       >
         <div className="flex items-center justify-between max-w-[1680px] mx-auto px-5 md:px-10">
           {/* Logo */}
-          <a href="#hero">
+          <a href="/">
             <Image src="/images/logo-eric.png" alt="Eric Le Tattoo" width={48} height={40} />
           </a>
 
@@ -91,7 +92,7 @@ export default function Header() {
           >
             {/* Top bar */}
             <div className="flex items-center justify-between px-5 py-5">
-              <a href="#hero" onClick={() => setMenuOpen(false)}>
+              <a href="/" onClick={() => setMenuOpen(false)}>
                 <Image src="/images/logo-eric.png" alt="Eric Le Tattoo" width={48} height={40} />
               </a>
               <button
