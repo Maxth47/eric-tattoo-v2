@@ -198,7 +198,7 @@ export default function Hero() {
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover scale-110"
         >
           <source src="/hero-web.mp4" type="video/mp4" />
         </video>
