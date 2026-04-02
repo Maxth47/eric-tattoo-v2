@@ -5,6 +5,14 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 const locations = ["Helsinki", "Amsterdam", "Berlin", "Other"];
+const budgets = [
+  "Under €1,000",
+  "€1,000 – €2,000",
+  "€2,000 – €3,500",
+  "€3500 – €5,000",
+  "€5,000+",
+  "Not sure yet",
+];
 
 const inputClass =
   "w-full px-5 py-5 rounded-[15px] bg-[rgb(15,15,15)] text-white text-[18px] leading-[1.6em] placeholder:text-white/30 font-[family-name:var(--font-inter-display)] outline-none";
@@ -24,9 +32,12 @@ export default function BookingModal({
   const [dragOver, setDragOver] = useState(false);
   const [selectedLocation, setSelectedLocation] = useState("");
   const [locationOpen, setLocationOpen] = useState(false);
+  const [selectedBudget, setSelectedBudget] = useState("");
+  const [budgetOpen, setBudgetOpen] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const locationRef = useRef<HTMLDivElement>(null);
+  const budgetRef = useRef<HTMLDivElement>(null);
 
   const [status, setStatus] = useState<
     "idle" | "loading" | "success" | "error"
@@ -38,13 +49,28 @@ export default function BookingModal({
   useEffect(() => {
     if (!locationOpen) return;
     const handler = (e: MouseEvent) => {
-      if (locationRef.current && !locationRef.current.contains(e.target as Node)) {
+      if (
+        locationRef.current &&
+        !locationRef.current.contains(e.target as Node)
+      ) {
         setLocationOpen(false);
       }
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, [locationOpen]);
+
+  // Close budget dropdown on outside click
+  useEffect(() => {
+    if (!budgetOpen) return;
+    const handler = (e: MouseEvent) => {
+      if (budgetRef.current && !budgetRef.current.contains(e.target as Node)) {
+        setBudgetOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [budgetOpen]);
 
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
@@ -75,6 +101,8 @@ export default function BookingModal({
     setFiles([]);
     setSelectedLocation("");
     setLocationOpen(false);
+    setSelectedBudget("");
+    setBudgetOpen(false);
     onClose();
   };
 
@@ -110,7 +138,9 @@ export default function BookingModal({
     const twelveHours = 12 * 60 * 60 * 1000;
 
     if (now - lastSubmit < twelveHours && submitCount >= 5) {
-      setErrorMsg("You've reached the maximum number of bookings. Please try again later.");
+      setErrorMsg(
+        "You've reached the maximum number of bookings. Please try again later.",
+      );
       return;
     }
 
@@ -145,7 +175,10 @@ export default function BookingModal({
       const prevCount = Number(localStorage.getItem("booking_count") || "0");
       const prevTime = Number(localStorage.getItem("booking_last") || "0");
       const isNewWindow = Date.now() - prevTime > 12 * 60 * 60 * 1000;
-      localStorage.setItem("booking_count", String(isNewWindow ? 1 : prevCount + 1));
+      localStorage.setItem(
+        "booking_count",
+        String(isNewWindow ? 1 : prevCount + 1),
+      );
       localStorage.setItem("booking_last", String(Date.now()));
     } catch {
       setStatus("error");
@@ -389,14 +422,22 @@ export default function BookingModal({
                         onChange={() => clearFieldError("phone")}
                       />
                       <div className="flex-1 relative" ref={locationRef}>
-                        <input type="hidden" name="location" value={selectedLocation} />
+                        <input
+                          type="hidden"
+                          name="location"
+                          value={selectedLocation}
+                        />
                         <button
                           type="button"
                           onClick={() => setLocationOpen((v) => !v)}
                           className={`${inputClass} text-left cursor-pointer flex items-center justify-between`}
                           style={inputShadow(!!fieldErrors.location)}
                         >
-                          <span className={selectedLocation ? "text-white" : "text-white/30"}>
+                          <span
+                            className={
+                              selectedLocation ? "text-white" : "text-white/30"
+                            }
+                          >
                             {selectedLocation || "Location"}
                           </span>
                           <svg
@@ -443,7 +484,16 @@ export default function BookingModal({
                                 >
                                   {loc}
                                   {selectedLocation === loc && (
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                    <svg
+                                      width="16"
+                                      height="16"
+                                      viewBox="0 0 24 24"
+                                      fill="none"
+                                      stroke="white"
+                                      strokeWidth="2.5"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                    >
                                       <polyline points="20 6 9 17 4 12" />
                                     </svg>
                                   )}
@@ -475,13 +525,107 @@ export default function BookingModal({
                       />
                     </motion.div>
 
-                    {/* Description */}
+                    {/* Budget */}
                     <motion.div
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{
                         duration: 0.5,
                         delay: 0.6,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                    >
+                      <div className="relative" ref={budgetRef}>
+                        <input
+                          type="hidden"
+                          name="budget"
+                          value={selectedBudget}
+                        />
+                        <button
+                          type="button"
+                          onClick={() => setBudgetOpen((v) => !v)}
+                          className={`${inputClass} text-left cursor-pointer flex items-center justify-between`}
+                          style={inputShadow(!!fieldErrors.budget)}
+                        >
+                          <span
+                            className={
+                              selectedBudget ? "text-white" : "text-white/30"
+                            }
+                          >
+                            {selectedBudget || "Budget"}
+                          </span>
+                          <svg
+                            width="12"
+                            height="8"
+                            viewBox="0 0 12 8"
+                            fill="none"
+                            className={`transition-transform duration-200 ${budgetOpen ? "rotate-180" : ""}`}
+                          >
+                            <path
+                              d="M1 1.5L6 6.5L11 1.5"
+                              stroke="white"
+                              strokeOpacity="0.4"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </button>
+                        <AnimatePresence>
+                          {budgetOpen && (
+                            <motion.div
+                              initial={{ opacity: 0, y: -4, scale: 0.98 }}
+                              animate={{ opacity: 1, y: 0, scale: 1 }}
+                              exit={{ opacity: 0, y: -4, scale: 0.98 }}
+                              transition={{ duration: 0.15 }}
+                              className="absolute z-50 top-full left-0 right-0 mt-2 rounded-[12px] overflow-hidden"
+                              style={{
+                                backgroundColor: "rgb(20,20,20)",
+                                border: "1px solid rgba(255,255,255,0.1)",
+                                boxShadow: "0 16px 40px rgba(0,0,0,0.6)",
+                              }}
+                            >
+                              {budgets.map((b) => (
+                                <button
+                                  key={b}
+                                  type="button"
+                                  onClick={() => {
+                                    setSelectedBudget(b);
+                                    setBudgetOpen(false);
+                                    clearFieldError("budget");
+                                  }}
+                                  className="w-full flex items-center justify-between px-5 py-3.5 text-[16px] text-white/80 hover:bg-white/5 hover:text-white transition-colors font-[family-name:var(--font-inter-display)]"
+                                >
+                                  {b}
+                                  {selectedBudget === b && (
+                                    <svg
+                                      width="16"
+                                      height="16"
+                                      viewBox="0 0 24 24"
+                                      fill="none"
+                                      stroke="white"
+                                      strokeWidth="2.5"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                    >
+                                      <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                  )}
+                                </button>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    </motion.div>
+
+                    {/* Description */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        duration: 0.5,
+                        delay: 0.7,
                         ease: [0.22, 1, 0.36, 1],
                       }}
                     >
@@ -501,7 +645,7 @@ export default function BookingModal({
                       animate={{ opacity: 1, y: 0 }}
                       transition={{
                         duration: 0.5,
-                        delay: 0.7,
+                        delay: 0.8,
                         ease: [0.22, 1, 0.36, 1],
                       }}
                     >
@@ -570,7 +714,7 @@ export default function BookingModal({
                       animate={{ opacity: 1, y: 0 }}
                       transition={{
                         duration: 0.5,
-                        delay: 0.8,
+                        delay: 0.9,
                         ease: [0.22, 1, 0.36, 1],
                       }}
                     >

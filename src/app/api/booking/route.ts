@@ -51,6 +51,7 @@ export async function POST(req: NextRequest) {
     const location = (formData.get("location") as string)?.trim();
     const email = (formData.get("email") as string)?.trim();
     const description = (formData.get("description") as string)?.trim();
+    const budget = (formData.get("budget") as string)?.trim();
 
     // Validation
     const errors: string[] = [];
@@ -117,6 +118,10 @@ export async function POST(req: NextRequest) {
                   <td style="padding: 10px 0; color: #888; font-size: 14px; vertical-align: top; border-top: 1px solid #eee;">Location</td>
                   <td style="padding: 10px 0; color: #111; font-size: 14px; font-weight: 500; border-top: 1px solid #eee;">${location}</td>
                 </tr>
+                ${budget ? `<tr>
+                  <td style="padding: 10px 0; color: #888; font-size: 14px; vertical-align: top; border-top: 1px solid #eee;">Budget</td>
+                  <td style="padding: 10px 0; color: #111; font-size: 14px; font-weight: 500; border-top: 1px solid #eee;">${budget}</td>
+                </tr>` : ""}
               </table>
             </div>
 
