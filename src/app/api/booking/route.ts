@@ -57,7 +57,8 @@ export async function POST(req: NextRequest) {
     const errors: string[] = [];
     if (!firstName || /\d/.test(firstName)) errors.push("First name is required and cannot contain numbers");
     if (!lastName || /\d/.test(lastName)) errors.push("Last name is required and cannot contain numbers");
-    if (!phone || !/^[+\d][\d\s\-()]{6,}$/.test(phone))
+    const phoneDigits = (phone || "").replace(/\D/g, "").length;
+    if (!phone || !/^[+\d][\d\s\-()]{6,18}$/.test(phone) || phoneDigits < 7 || phoneDigits > 15)
       errors.push("Valid phone number is required");
     if (!location) errors.push("Location is required");
     if (!email) errors.push("Email is required");
@@ -69,12 +70,13 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: errors.join(", ") }, { status: 400 });
     }
 
-    // Collect image attachments (max 5)
+    // Collect image attachments (max 5, max 5MB each)
+    const MAX_FILE_SIZE = 5 * 1024 * 1024;
     const attachments: { filename: string; content: Buffer }[] = [];
     const imageEntries = formData.getAll("images");
     for (const entry of imageEntries) {
       if (attachments.length >= 5) break;
-      if (entry instanceof File && entry.size > 0) {
+      if (entry instanceof File && entry.size > 0 && entry.size <= MAX_FILE_SIZE) {
         const buffer = Buffer.from(await entry.arrayBuffer());
         attachments.push({ filename: entry.name, content: buffer });
       }

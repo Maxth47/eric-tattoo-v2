@@ -9,7 +9,7 @@ const budgets = [
   "Under €1,000",
   "€1,000 – €2,000",
   "€2,000 – €3,500",
-  "€3500 – €5,000",
+  "€3,500 – €5,000",
   "€5,000+",
   "Not sure yet",
 ];
@@ -72,20 +72,21 @@ export default function BookingModal({
     return () => document.removeEventListener("mousedown", handler);
   }, [budgetOpen]);
 
+  const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+
+  const filterFiles = (fileList: File[]) =>
+    fileList.filter((f) => f.type.startsWith("image/") && f.size <= MAX_FILE_SIZE);
+
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     setDragOver(false);
-    const dropped = Array.from(e.dataTransfer.files).filter((f) =>
-      f.type.startsWith("image/"),
-    );
+    const dropped = filterFiles(Array.from(e.dataTransfer.files));
     setFiles((prev) => [...prev, ...dropped].slice(0, 5));
   };
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      const selected = Array.from(e.target.files).filter((f) =>
-        f.type.startsWith("image/"),
-      );
+      const selected = filterFiles(Array.from(e.target.files));
       setFiles((prev) => [...prev, ...selected].slice(0, 5));
     }
   };
@@ -117,7 +118,8 @@ export default function BookingModal({
 
     if (!firstName || /\d/.test(firstName)) errors.firstName = true;
     if (!lastName || /\d/.test(lastName)) errors.lastName = true;
-    if (!phone || !/^[+\d][\d\s\-()]{6,}$/.test(phone)) errors.phone = true;
+    const phoneDigits = phone.replace(/\D/g, "").length;
+    if (!phone || !/^[+\d][\d\s\-()]{6,18}$/.test(phone) || phoneDigits < 7 || phoneDigits > 15) errors.phone = true;
     if (!location) errors.location = true;
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
       errors.email = true;
@@ -382,13 +384,13 @@ export default function BookingModal({
                         delay: 0.3,
                         ease: [0.22, 1, 0.36, 1],
                       }}
-                      className="flex flex-col sm:flex-row gap-4"
+                      className="grid grid-cols-1 sm:grid-cols-2 gap-4"
                     >
                       <input
                         type="text"
                         name="firstName"
                         placeholder="First name"
-                        className={`flex-1 ${inputClass}`}
+                        className={inputClass}
                         style={inputShadow(!!fieldErrors.firstName)}
                         onChange={() => clearFieldError("firstName")}
                       />
@@ -396,7 +398,7 @@ export default function BookingModal({
                         type="text"
                         name="lastName"
                         placeholder="Last name"
-                        className={`flex-1 ${inputClass}`}
+                        className={inputClass}
                         style={inputShadow(!!fieldErrors.lastName)}
                         onChange={() => clearFieldError("lastName")}
                       />
@@ -411,17 +413,17 @@ export default function BookingModal({
                         delay: 0.4,
                         ease: [0.22, 1, 0.36, 1],
                       }}
-                      className="flex flex-col sm:flex-row gap-4"
+                      className="grid grid-cols-1 sm:grid-cols-2 gap-4"
                     >
                       <input
                         type="tel"
                         name="phone"
                         placeholder="Phone number"
-                        className={`flex-1 ${inputClass}`}
+                        className={inputClass}
                         style={inputShadow(!!fieldErrors.phone)}
                         onChange={() => clearFieldError("phone")}
                       />
-                      <div className="flex-1 relative" ref={locationRef}>
+                      <div className="relative" ref={locationRef}>
                         <input
                           type="hidden"
                           name="location"
@@ -674,7 +676,7 @@ export default function BookingModal({
                               Drag your images here
                             </span>
                             <span className="text-[14px] text-white/20 font-[family-name:var(--font-inter-display)]">
-                              Optional - up to 5 images
+                              Optional - up to 5 images, 5MB each
                             </span>
                           </div>
                         ) : (
